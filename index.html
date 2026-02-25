@@ -179,6 +179,11 @@
     .section-label {
       font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase;
       color: var(--gold); font-weight: 700; margin-bottom: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .section-label::before {
+      content: ''; display: inline-block;
+      width: 24px; height: 2px; background: currentColor;
     }
     .section-label.saffron { color: var(--saffron); }
     .section-title {
@@ -276,7 +281,7 @@
       color: var(--text-mid); line-height: 1.85; margin-bottom: 48px;
     }
     .tourism-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 26px;
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 26px;
     }
     .tourism-card {
       background: #fff; border-radius: 6px; overflow: hidden;
@@ -287,8 +292,8 @@
     }
     .tourism-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,58,26,0.13); }
     .tourism-thumb {
-      height: 148px; display: flex; align-items: center; justify-content: center;
-      font-size: 4.2rem; position: relative;
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; position: relative;
     }
     .tourism-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
     .tourism-tag {
@@ -317,7 +322,7 @@
       color: var(--text-mid); line-height: 1.85; margin-bottom: 48px;
     }
     .shop-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 26px;
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 26px;
     }
     .product-card {
       background: #fff; border-radius: 6px; overflow: hidden;
@@ -757,7 +762,7 @@
       .nav-links .nav-donate > a { display: inline-block; }
       section { padding: 70px 20px; }
       .about-grid, .contact-grid, .community-grid, .donations-grid { grid-template-columns: 1fr; gap: 40px; }
-      .agri-grid, .edu-grid, .shop-grid, .tourism-grid { grid-template-columns: 1fr; }
+      .agri-grid, .edu-grid, .shop-grid, .tourism-grid, .nearby-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2,1fr); }
       .gallery-item.tall, .gallery-item.wide { grid-row: span 1; grid-column: span 1; }
       .nearby-grid { grid-template-columns: 1fr; }
@@ -930,6 +935,11 @@
           <h3>Sandalwood</h3>
           <p>Among the most valuable trees grown in the region, sandalwood is cultivated carefully by a few farmers in Poongulam. The heartwood commands premium prices for incense, oils, and religious use. Its slow growth makes it a long-term but highly rewarding crop.</p>
         </div>
+        <div class="agri-card agri-tree-card">
+          <div class="agri-icon">🌴</div>
+          <h3>Oil Palm</h3>
+          <p>Palm oil cultivation is a growing addition to Poongulam's agroforestry landscape. Oil palm trees thrive in the humid Cauvery delta climate and yield high quantities of palm oil used in cooking, cosmetics, and industry — providing farmers a perennial, high-value income crop with relatively low maintenance once established.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1047,7 +1057,7 @@
             <div class="nearby-header">
               <span class="nearby-dist">📍 ~2 km from Poongulam</span>
               <h3>Srivanjiyam — Vanchinadha Swamy Temple</h3>
-              <div class="nearby-tamil">வஞ்சிநாத சுவாமி கோயில், ஸ்ரீவஞ்சியம்</div>
+              <div class="nearby-tamil">வஞ்சிநாத சுவாமி கோவில், ஸ்ரீவஞ்சியம்</div>
             </div>
             <div class="nearby-body">
               <p>The most accessible sacred site from Poongulam, Srivanjiyam (also written Srivanchiyam) is home to the ancient Vanchinadha Swamy temple dedicated to Lord Shiva. Built on the banks of the River Mudikondan, this is one of the Paadal Petra Shiva Sthalangal — the 276 Shiva temples glorified in the Thevaram hymns of the Nayanmars.</p>
@@ -1067,7 +1077,7 @@
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~10 km from Poongulam</span>
             <h3>Koothanur Maha Saraswathi Temple</h3>
-            <div class="nearby-tamil">கூத்தனூர் மகா சரஸ்வதி அம்மன் கோயில்</div>
+            <div class="nearby-tamil">கூத்தனூர் மகா சரஸ்வதி அம்மன் கோவில்</div>
           </div>
           <div class="nearby-body">
             <p>One of the most celebrated Saraswathi temples in all of Tamil Nadu, the Koothanur Maha Saraswathi temple draws lakhs of devotees every year — particularly students seeking blessings before exams and at the start of new academic journeys.</p>
@@ -1080,12 +1090,31 @@
           </div>
         </div>
 
+        <!-- Thiruvarur -->
+        <div class="nearby-card">
+          <div class="nearby-header">
+            <span class="nearby-dist">📍 ~17 km from Poongulam</span>
+            <h3>Thiruvarur — Thyagarajaswamy Temple</h3>
+            <div class="nearby-tamil">திருவாரூர் தியாகராஜசுவாமி கோவில்</div>
+          </div>
+          <div class="nearby-body">
+            <p>The district headquarters of Thiruvarur is home to the magnificent Arulmigu Thyagarajaswamy Temple — one of the most sacred Shiva temples in Tamil Nadu. The presiding deity Lord Thyagaraja (also called Vanmeekanathar) and Goddess Nilotpalambigai have been glorified in the Thevaram hymns of the Nayanmars, making this a Paadal Petra Sthalangal.</p>
+            <p>This temple is one of the Panchasabhas — the five cosmic dance halls of Shiva — known as the Nithya Sabha. It is also one of the Saptha Vidanga Sthalangal. The world's largest temple chariot (ther) is housed here and drawn during the grand Brahmotsavam festival, drawing lakhs of devotees from across Tamil Nadu.</p>
+            <div class="nearby-facts">
+              <span class="nearby-fact">🛕 Paadal Petra Sthalangal</span>
+              <span class="nearby-fact">💃 Panchasabha — Nithya Sabha</span>
+              <span class="nearby-fact">🚗 World's Largest Temple Chariot</span>
+              <span class="nearby-fact">📍 ~17 km · 25 mins</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Kumbakonam -->
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~30 km from Poongulam</span>
             <h3>Kumbakonam — City of Temples</h3>
-            <div class="nearby-tamil">கும்பகோணம் — கோயில்களின் நகரம்</div>
+            <div class="nearby-tamil">கும்பகோணம் — கோவில்களின் நகரம்</div>
           </div>
           <div class="nearby-body">
             <p>Known as the "City of Temples", Kumbakonam is home to over 188 temples within its municipal limits and is one of the most sacred towns in Tamil Nadu. Located ~30 km from Poongulam, it is an unmissable destination for anyone in the region.</p>
@@ -1451,28 +1480,42 @@
         <div class="temple-card" data-num="01">
           <div class="temple-icon">🛕</div>
           <h3>Mariamman Temple</h3>
-          <div class="tamil-name">மாரியம்மன் கோயில்</div>
+          <div class="tamil-name">மாரியம்மன் கோவில்</div>
           <p>The village goddess temple, where Mariamman is worshipped as the protector of Poongulam. The Navarathri celebrations here are a nine-night spectacle of devotion, music, and community bonding that unites every household.</p>
         </div>
         <div class="temple-card" data-num="02">
           <div class="temple-icon">🛕</div>
           <h3>Agastheeswarar Temple</h3>
-          <div class="tamil-name">அகஸ்தீஸ்வரர் கோயில்</div>
+          <div class="tamil-name">அகஸ்தீஸ்வரர் கோவில்</div>
           <p>Dedicated to Lord Shiva under the name Agastheeswarar. The Cauvery delta region has a rich Shiva temple tradition, and this temple is a spiritual anchor for the village. Maha Shivaratri is observed here with a grand overnight puja attended by all.</p>
         </div>
         <div class="temple-card" data-num="03">
           <div class="temple-icon">🛕</div>
           <h3>Ayyanar Temple</h3>
-          <div class="tamil-name">அய்யனார் கோயில்</div>
+          <div class="tamil-name">அய்யனார் கோவில்</div>
           <p>Ayyanar is the guardian deity of the village and its farmlands, worshipped at the boundary of the settlement. The terracotta horses and votive figures surrounding this temple are a striking example of Tamil folk art and tradition.</p>
         </div>
         <div class="temple-card" data-num="04" style="border-color: rgba(232,117,26,0.5);">
           <div class="temple-icon">🏗️</div>
           <h3>Vishnu Temple <span style="font-size:0.8rem; color: var(--saffron); font-family:'Lato',sans-serif; font-weight:700; letter-spacing:1px;">· Under Construction</span></h3>
-          <div class="tamil-name">திருமால் கோயில்</div>
+          <div class="tamil-name">திருமால் கோவில்</div>
           <p>A new temple dedicated to Lord Vishnu is currently under construction in Poongulam — a testament to the community's ongoing devotion and collective effort. When complete, it will become the fourth sacred site in the village.</p>
         </div>
       </div>
+
+      <!-- Nearby Great Temple -->
+      <div class="agri-sub-heading" style="border-top-color: rgba(201,168,76,0.3);">
+        <div class="section-label" style="margin-bottom:6px;">Nearby · 17 km</div>
+        <h3 class="agri-sub-title" style="color:#fff;">Thiruvarur Thyagarajaswamy Temple</h3>
+        <p class="agri-sub-desc" style="color:rgba(255,255,255,0.7);">The grandest Shiva temple in the region — and the spiritual heart of Thiruvarur district.</p>
+      </div>
+      <div class="temple-card" style="max-width:760px;">
+        <div class="temple-icon">🛕</div>
+        <h3>Arulmigu Thyagarajaswamy Temple, Thiruvarur</h3>
+        <div class="tamil-name">திருவாரூர் தியாகராஜசுவாமி கோவில்</div>
+        <p>One of Tamil Nadu's most magnificent Shiva temples, the Thyagarajaswamy temple at Thiruvarur (~17 km from Poongulam) is a Paadal Petra Sthalangal glorified in the Thevaram hymns. The presiding deity is Lord Thyagaraja, with Goddess Nilotpalambigai. This temple is one of the celebrated Panchasabhas — the five cosmic dance halls of Shiva — known here as the <em>Nithya Sabha</em>. It is also one of the Saptha Vidanga Sthalangal. The temple houses the <strong>world's largest temple chariot (ther)</strong>, drawn with great ceremony during the annual Brahmotsavam festival, attracting lakhs of devotees from across India. The main deity Mahalinga is believed to be swayambhu — self-manifested.</p>
+      </div>
+
     </div>
   </section>
 
