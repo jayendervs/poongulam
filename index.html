@@ -586,6 +586,41 @@
     .footer-links a:hover { color: var(--gold-light); }
     .footer-note { font-size: 0.78rem; color: rgba(255,255,255,0.28); letter-spacing: 1px; }
 
+    /* ─────────────────── NEARBY ATTRACTIONS ─────────────────── */
+    .nearby-sub-heading {
+      margin: 60px 0 28px; padding-top: 48px;
+      border-top: 2px dashed rgba(232,117,26,0.35);
+    }
+    .nearby-sub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900; color: var(--green-deep); margin-bottom: 12px;
+    }
+    .nearby-sub-desc { max-width: 660px; font-size: 1rem; color: var(--text-mid); line-height: 1.8; }
+    .nearby-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-top: 28px; }
+    .nearby-card {
+      background: #fff; border-radius: 6px; overflow: hidden;
+      box-shadow: 0 4px 24px rgba(26,58,26,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .nearby-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(26,58,26,0.13); }
+    .nearby-card.featured { grid-column: span 2; flex-direction: row; }
+    .nearby-header { padding: 22px 24px 0; }
+    .nearby-dist {
+      display: inline-block; font-size: 0.68rem; letter-spacing: 2px;
+      text-transform: uppercase; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
+      background: var(--saffron-pale); color: var(--saffron);
+    }
+    .nearby-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green-deep); margin-bottom: 4px; }
+    .nearby-tamil { font-family: 'Tiro Tamil', serif; font-size: 0.95rem; color: var(--text-light); margin-bottom: 12px; }
+    .nearby-body { padding: 12px 24px 22px; }
+    .nearby-body p { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; margin-bottom: 10px; }
+    .nearby-facts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .nearby-fact { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.5px; background: var(--gold-pale); color: var(--brown); padding: 4px 12px; border-radius: 20px; }
+    .nearby-thumb { min-width: 220px; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: linear-gradient(135deg, var(--gold-pale), var(--saffron-pale)); padding: 30px; }
+
     /* ─────────────────── AGROFORESTRY SUB ─────────────────── */
     .agri-sub-heading {
       margin: 60px 0 28px;
@@ -725,6 +760,9 @@
       .agri-grid, .edu-grid, .shop-grid, .tourism-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2,1fr); }
       .gallery-item.tall, .gallery-item.wide { grid-row: span 1; grid-column: span 1; }
+      .nearby-grid { grid-template-columns: 1fr; }
+      .nearby-card.featured { flex-direction: column; grid-column: span 1; }
+      .nearby-thumb { min-width: unset; min-height: 120px; }
       .temples-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .impact-grid { grid-template-columns: 1fr; }
@@ -813,7 +851,7 @@
           <h2 class="section-title">History &amp;<br>Heritage</h2>
           <div class="gold-line"></div>
           <p>
-            Poongulam — meaning "Lake of Flowers" in Tamil — is a serene village located near Nannilam in the Thiruvarur district of Tamil Nadu. Sitting in the lush Cauvery delta, the village has been home to generations of farmers, priests, and artisans who have shaped its rich identity.
+            Poongulam — meaning "Lake of Flowers" in Tamil — is a serene village located near Nannilam in the Thiruvarur district of Tamil Nadu. Sitting in the lush Cauvery delta, it is surrounded by some of the region's most sacred sites: the ancient Vanchinadha Swamy temple of Srivanjiyam just 2 km away, the celebrated Koothanur Maha Saraswathi temple 10 km away, and the great temple city of Kumbakonam 30 km away.
           </p>
           <div class="about-quote">
             <p>"Where the paddy waves in the breeze and temple bells echo across the fields — that is Poongulam."</p>
@@ -987,6 +1025,76 @@
               <span>🕐 2 hrs</span>
               <span>🌅 Sunrise/Sunset</span>
               <span>📅 All year</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Nearby Attractions subsection -->
+      <div class="nearby-sub-heading">
+        <div class="section-label saffron" style="margin-bottom:6px;">Day Trips &amp; Sacred Sites</div>
+        <h3 class="nearby-sub-title">Nearby Attractions</h3>
+        <p class="nearby-sub-desc">Poongulam sits at the heart of one of Tamil Nadu's richest temple corridors. Within a short drive you can visit some of the most revered sacred sites and historic towns in the Cauvery delta.</p>
+      </div>
+
+      <div class="nearby-grid">
+
+        <!-- Srivanjiyam — featured (full width) -->
+        <div class="nearby-card featured">
+          <div class="nearby-thumb">🛕</div>
+          <div style="flex:1;">
+            <div class="nearby-header">
+              <span class="nearby-dist">📍 ~2 km from Poongulam</span>
+              <h3>Srivanjiyam — Vanchinadha Swamy Temple</h3>
+              <div class="nearby-tamil">வஞ்சிநாத சுவாமி கோயில், ஸ்ரீவஞ்சியம்</div>
+            </div>
+            <div class="nearby-body">
+              <p>The most accessible sacred site from Poongulam, Srivanjiyam (also written Srivanchiyam) is home to the ancient Vanchinadha Swamy temple dedicated to Lord Shiva. Built on the banks of the River Mudikondan, this is one of the Paadal Petra Shiva Sthalangal — the 276 Shiva temples glorified in the Thevaram hymns of the Nayanmars.</p>
+              <p>What makes this temple truly unique is its separate sannidhi (shrine) for Lord Yamadharmaraja — one of the very few temples in Tamil Nadu with this distinction. The temple is also known as a Poorva Jenma Pava Vimochana Sthalam, meaning a place where the sins of past lives are washed away.</p>
+              <div class="nearby-facts">
+                <span class="nearby-fact">🛕 Paadal Petra Sthalangal</span>
+                <span class="nearby-fact">⚡ Unique Yamadharmaraja Shrine</span>
+                <span class="nearby-fact">🌊 On River Mudikondan</span>
+                <span class="nearby-fact">📍 ~2 km from Poongulam</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Koothanur Saraswathi -->
+        <div class="nearby-card">
+          <div class="nearby-header">
+            <span class="nearby-dist">📍 ~10 km from Poongulam</span>
+            <h3>Koothanur Maha Saraswathi Temple</h3>
+            <div class="nearby-tamil">கூத்தனூர் மகா சரஸ்வதி அம்மன் கோயில்</div>
+          </div>
+          <div class="nearby-body">
+            <p>One of the most celebrated Saraswathi temples in all of Tamil Nadu, the Koothanur Maha Saraswathi temple draws lakhs of devotees every year — particularly students seeking blessings before exams and at the start of new academic journeys.</p>
+            <p>This is also considered the Dakshina Thiruveni Sangamam — the southern confluence of the sacred rivers Ganga, Yamuna, and Saraswathi. The presiding deity is seen in a seated posture, radiating grace and wisdom. During Navarathri and Vijayadasami, the temple becomes a great spectacle of devotion.</p>
+            <div class="nearby-facts">
+              <span class="nearby-fact">📚 Goddess of Learning</span>
+              <span class="nearby-fact">🎓 Famous Among Students</span>
+              <span class="nearby-fact">🌊 Dakshina Thiruveni Sangamam</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kumbakonam -->
+        <div class="nearby-card">
+          <div class="nearby-header">
+            <span class="nearby-dist">📍 ~30 km from Poongulam</span>
+            <h3>Kumbakonam — City of Temples</h3>
+            <div class="nearby-tamil">கும்பகோணம் — கோயில்களின் நகரம்</div>
+          </div>
+          <div class="nearby-body">
+            <p>Known as the "City of Temples", Kumbakonam is home to over 188 temples within its municipal limits and is one of the most sacred towns in Tamil Nadu. Located ~30 km from Poongulam, it is an unmissable destination for anyone in the region.</p>
+            <p>Key highlights include the Adi Kumbeswarar Temple, Sarangapani Temple, Ramaswamy Temple, and the legendary Mahamaham tank — where a sacred festival held every 12 years draws millions of pilgrims. Kumbakonam is also famous for its silk sarees, bronze castings, and traditional sweets.</p>
+            <div class="nearby-facts">
+              <span class="nearby-fact">🛕 188+ Temples</span>
+              <span class="nearby-fact">💧 Mahamaham Tank</span>
+              <span class="nearby-fact">🧵 Silk &amp; Bronze Crafts</span>
+              <span class="nearby-fact">🚌 ~45 mins by bus</span>
             </div>
           </div>
         </div>
