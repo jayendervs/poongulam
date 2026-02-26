@@ -228,20 +228,11 @@
     .about-visual { position: relative; }
     .about-img-frame {
       width: 100%; padding-bottom: 110%;
-      background: linear-gradient(145deg, var(--green-mid), var(--green-deep));
       border-radius: 4px; position: relative; overflow: hidden;
     }
-    .about-img-frame::before {
-      content: '🌾'; position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 8rem; opacity: 0.2;
-    }
-    .about-img-frame::after {
-      content: 'Paddy Fields of Poongulam';
-      position: absolute; bottom: 20px; left: 0; right: 0;
-      text-align: center; color: var(--gold-light);
-      font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
-      font-family: 'Lato', sans-serif;
+    .about-img-frame img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; border-radius: 4px;
     }
     .about-visual::after {
       content: ''; position: absolute; top: 20px; left: 20px;
@@ -929,7 +920,9 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-visual">
-          <div class="about-img-frame"></div>
+          <div class="about-img-frame">
+            <img src="photos/photo-14.jpg" alt="Paddy Fields of Poongulam">
+          </div>
         </div>
         <div class="about-text">
           <div class="section-label">Our Story</div>
