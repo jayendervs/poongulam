@@ -9,21 +9,24 @@
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     :root {
-      --green-deep:   #1a3a1a;
-      --green-mid:    #2d5a27;
-      --green-light:  #4a8c3f;
-      --green-pale:   #a8c89e;
+      /* Corporate palette — deep slate with gold & saffron accents */
+      --green-deep:   #0f1c2e;   /* deep navy-slate (was forest green) */
+      --green-mid:    #1a3048;   /* medium slate */
+      --green-light:  #2a5070;   /* lighter slate-teal */
+      --green-pale:   #a8bece;   /* pale blue-grey (was pale green) */
       --gold:         #c9a84c;
       --gold-light:   #e8cc7a;
       --gold-pale:    #f5e9c0;
       --saffron:      #E8751A;
       --saffron-light:#F4924A;
       --saffron-pale: #FDE8D8;
-      --cream:        #faf6ed;
+      --cream:        #f8f9fb;   /* clean off-white (was warm cream) */
       --brown:        #5a3e1b;
-      --text-dark:    #1a1a0e;
-      --text-mid:     #3a3a28;
-      --text-light:   #6a6a50;
+      --text-dark:    #0f1c2e;
+      --text-mid:     #2c3e50;
+      --text-light:   #6b7c93;
+      --card-bg:      #ffffff;
+      --section-alt:  #f0f4f8;   /* cool light grey for alternating sections */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -189,7 +192,7 @@
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 900; color: var(--green-deep); line-height: 1.1;
+      font-weight: 900; color: var(--text-dark); line-height: 1.1;
     }
     .section-title.light { color: #fff; }
     .gold-line    { width: 60px; height: 3px; background: var(--gold);    margin: 20px 0 36px; }
@@ -218,7 +221,7 @@
     }
 
     /* ─────────────────── ABOUT ─────────────────── */
-    .about { background: var(--cream); }
+    .about { background: var(--card-bg); }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
     }
@@ -256,7 +259,7 @@
     }
 
     /* ─────────────────── AGRICULTURE ─────────────────── */
-    .agriculture { background: linear-gradient(160deg, #f0ead8 0%, #e8f0e0 100%); }
+    .agriculture { background: var(--section-alt); }
     .agri-grid {
       display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 20px;
     }
@@ -275,7 +278,7 @@
     .agri-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.7; }
 
     /* ─────────────────── TOURISM ─────────────────── */
-    .tourism { background: var(--cream); }
+    .tourism { background: var(--card-bg); }
     .tourism-intro {
       max-width: 660px; font-size: 1.05rem;
       color: var(--text-mid); line-height: 1.85; margin-bottom: 48px;
@@ -316,7 +319,7 @@
     .tourism-meta span { display: flex; align-items: center; gap: 5px; }
 
     /* ─────────────────── SHOP ─────────────────── */
-    .shop { background: linear-gradient(160deg, #fdf8ef 0%, #f5f0e8 100%); }
+    .shop { background: var(--section-alt); }
     .shop-intro {
       max-width: 640px; font-size: 1.05rem;
       color: var(--text-mid); line-height: 1.85; margin-bottom: 48px;
@@ -495,7 +498,7 @@
     .temple-card p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
 
     /* ─────────────────── COMMUNITY ─────────────────── */
-    .community { background: var(--cream); }
+    .community { background: var(--card-bg); }
     .community-grid {
       display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: start;
     }
@@ -504,9 +507,10 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px;
     }
     .highlight-chip {
-      background: var(--green-mid); color: #fff; border-radius: 2px;
+      background: var(--green-deep); color: #fff; border-radius: 4px;
       padding: 14px 16px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px;
       display: flex; align-items: center; gap: 10px;
+      border-left: 3px solid var(--gold);
     }
     .community-sidebar {
       background: var(--green-deep); border-radius: 4px; padding: 32px;
@@ -525,7 +529,7 @@
     .festival-list li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
 
     /* ─────────────────── EDUCATION ─────────────────── */
-    .education { background: linear-gradient(160deg, #e8f0e0 0%, #f0ead8 100%); }
+    .education { background: var(--section-alt); }
     .edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
     .edu-card {
       background: #fff; border-radius: 4px; padding: 32px;
@@ -1765,7 +1769,7 @@
       Thiruvarur District · Tamil Nadu · India &nbsp;|&nbsp; Built with pride for our village
     </div>
     <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.15); font-size: 0.78rem; color: rgba(255,255,255,0.25);">
-      Designed &amp; built by <span style="color: var(--gold-light); font-weight: 700;">Jayender</span> &nbsp;·&nbsp; Poongulam Village Portal &nbsp;·&nbsp; 2026
+      Crafted with pride for Poongulam &nbsp;·&nbsp; By <span style="color: var(--gold-light); font-weight: 700; letter-spacing: 0.5px;">Jayender</span> &nbsp;·&nbsp; 2026
     </div>
   </footer>
 
