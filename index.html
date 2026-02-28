@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Poongulam – Heart of Thiruvarur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Tiro+Tamil:ital@0;1&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <!-- Razorpay SDK — replace YOUR_RAZORPAY_KEY_ID in the script below with your live/test key -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
   <style>
     :root {
       /* Corporate palette — deep slate with gold & saffron accents */
@@ -1132,10 +1134,10 @@
     .news-card-top { padding: 22px 22px 0; }
     .news-date { font-size: 0.67rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--text-light); margin-bottom: 8px; }
     .news-tag { display: inline-block; font-size: 0.63rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
-    .tag-festival  { background: var(--saffron-pale); color: var(--saffron); }
-    .tag-update    { background: var(--gold-pale);    color: var(--brown); }
-    .tag-agri      { background: #e8f0e0;             color: #2a6a2a; }
-    .tag-community { background: #eef0ff;             color: #4a5cc7; }
+    .news-tag.tag-festival  { background: var(--saffron-pale); color: var(--saffron); }
+    .tag-update             { background: var(--gold-pale);    color: var(--brown); }
+    .news-tag.tag-agri      { background: #e8f0e0;             color: #2a6a2a; }
+    .news-tag.tag-community { background: #eef0ff;             color: #4a5cc7; }
     .news-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green-deep); margin-bottom: 0; }
     .news-card-body { padding: 10px 22px 18px; flex: 1; }
     .news-card-body p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
@@ -1414,7 +1416,7 @@
       <div class="about-grid">
         <div class="about-visual">
           <div class="about-img-frame">
-            <img src="photos/photo-14.jpg" alt="Paddy Fields of Poongulam">
+            <img src="photos/photo-14.jpg" alt="Paddy Fields of Poongulam" loading="lazy">
           </div>
         </div>
         <div class="about-text">
@@ -1927,59 +1929,59 @@
       <div class="gallery-grid">
 
         <div class="gallery-item tall" onclick="openLightbox('photos/photo-13.jpg')">
-          <img src="photos/photo-13.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-13.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-14.jpg')">
-          <img src="photos/photo-14.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-14.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-03.jpg')">
-          <img src="photos/photo-03.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-03.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item wide" onclick="openLightbox('photos/photo-04.jpg')">
-          <img src="photos/photo-04.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-04.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-05.jpg')">
-          <img src="photos/photo-05.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-05.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-06.jpg')">
-          <img src="photos/photo-06.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-06.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-07.jpg')">
-          <img src="photos/photo-07.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-07.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-08.jpg')">
-          <img src="photos/photo-08.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-08.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-09.jpg')">
-          <img src="photos/photo-09.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-09.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item wide" onclick="openLightbox('photos/photo-10.jpg')">
-          <img src="photos/photo-10.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-10.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-11.jpg')">
-          <img src="photos/photo-11.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-11.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-12.jpg')">
-          <img src="photos/photo-12.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-12.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-01.jpg')">
-          <img src="photos/photo-01.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-01.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
         <div class="gallery-item" onclick="openLightbox('photos/photo-02.jpg')">
-          <img src="photos/photo-02.jpg" alt="Poongulam Village" onerror="this.style.display='none'">
+          <img src="photos/photo-02.jpg" alt="Poongulam Village" loading="lazy" onerror="this.style.display='none'">
         </div>
 
       </div>
