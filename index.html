@@ -48,24 +48,23 @@
     nav {
       position: fixed; top: 0; width: 100%; z-index: 200;
       background: rgba(15,35,15,0.98);
-      backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      padding: 0; height: 64px;
+      display: flex; align-items: center;
+      padding: 0 110px 0 20px; height: 64px;
+      overflow: visible;
     }
     .nav-logo {
-      position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
       font-family: 'Playfair Display', serif;
       color: #ffffff;
-      font-size: 1.5rem; font-weight: 700; letter-spacing: 1px;
-      white-space: nowrap; z-index: 10;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+      font-size: 1.4rem; font-weight: 700; letter-spacing: 1px;
+      white-space: nowrap; flex-shrink: 0;
+      overflow: visible; margin-right: 30px;
     }
     .nav-logo span {
       color: var(--gold-light); font-weight: 400; font-size: 0.65rem;
       display: block; letter-spacing: 1.5px;
     }
-    .nav-links { display: flex; gap: 16px; list-style: none; }
+    .nav-links { display: flex; gap: 16px; list-style: none; margin-left: auto; }
     .nav-links a {
       color: var(--green-pale); text-decoration: none;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
