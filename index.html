@@ -51,25 +51,25 @@
       backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--gold);
       display: flex; align-items: center;
-      justify-content: space-between;
-      padding: 0 28px 0 24px;
+      padding: 0 100px 0 24px;
       height: 64px;
     }
     .nav-logo {
       font-family: 'Playfair Display', serif;
       color: var(--gold-light);
-      font-size: 1.3rem; font-weight: 700; letter-spacing: 1px;
-      flex-shrink: 0; width: 180px;
+      font-size: 1.25rem; font-weight: 700; letter-spacing: 1px;
+      white-space: nowrap; flex-shrink: 0;
+      margin-right: 32px;
       text-shadow: 0 0 12px rgba(201,168,76,0.4);
     }
     .nav-logo span {
-      color: rgba(255,255,255,0.6); font-weight: 400; font-size: 0.65rem;
-      display: block; letter-spacing: 1.5px; text-shadow: none;
+      color: rgba(255,255,255,0.55); font-weight: 400; font-size: 0.62rem;
+      display: block; letter-spacing: 1.5px;
     }
-    .nav-links { display: flex; gap: 14px; list-style: none; flex: 1; justify-content: flex-end; padding: 0; padding-right: 100px; }
+    .nav-links { display: flex; gap: 20px; list-style: none; margin-left: auto; }
     .nav-links a {
       color: var(--green-pale); text-decoration: none;
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.8px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.8px;
       text-transform: uppercase; transition: color 0.2s; white-space: nowrap;
     }
     .nav-links a:hover { color: var(--gold-light); }
@@ -80,8 +80,7 @@
     }
     .nav-links .nav-donate > a:hover { background: var(--saffron-light) !important; }
     .nav-actions {
-      display: flex; align-items: center; flex: 0 0 auto;
-      padding-right: 90px;
+      display: flex; align-items: center; flex-shrink: 0;
     }
     .nav-toggle {
       display: none; background: none; border: none;
