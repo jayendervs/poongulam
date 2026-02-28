@@ -30,12 +30,18 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;           /* Prevents horizontal scroll without breaking position:fixed on iOS */
+      -webkit-text-size-adjust: 100%; /* Prevent font scaling on orientation change */
+      text-size-adjust: 100%;
+    }
     body {
       font-family: 'Lato', sans-serif;
       background: var(--cream);
       color: var(--text-dark);
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent; /* Remove tap flash on iOS */
     }
 
     /* ─────────────────── NAV ─────────────────── */
@@ -78,7 +84,10 @@
 
     /* ─────────────────── HERO ─────────────────── */
     .hero {
-      height: 100vh; position: relative;
+      height: 100vh;
+      height: 100svh; /* iOS Safari: excludes browser chrome from viewport height */
+      min-height: 580px; /* Floor so content never gets squished */
+      position: relative;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden; background: var(--green-deep);
     }
@@ -796,35 +805,314 @@
       .shop-grid, .tourism-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
+      /* ── Nav ── */
+      nav { padding: 0 16px; }
       .nav-toggle { display: block; }
       .nav-links {
         display: none; position: absolute; top: 64px; left: 0; right: 0;
-        background: rgba(26,58,26,0.98); flex-direction: column;
-        padding: 12px 20px 20px; gap: 0;
+        background: rgba(15,28,46,0.99); flex-direction: column;
+        padding: 8px 16px 20px; gap: 0;
         border-bottom: 2px solid var(--gold);
       }
       .nav-links.open { display: flex; }
-      .nav-links li { border-bottom: 1px solid rgba(201,168,76,0.12); }
-      .nav-links a { padding: 12px 0; display: block; font-size: 0.85rem; }
-      .nav-links .nav-donate { padding: 8px 0; }
+      .nav-links li { border-bottom: 1px solid rgba(201,168,76,0.1); }
+      .nav-links a { padding: 14px 0; display: block; font-size: 0.88rem; }
+      .nav-links .nav-donate { padding: 6px 0; }
       .nav-links .nav-donate > a { display: inline-block; }
-      section { padding: 70px 20px; }
-      .about-grid, .contact-grid, .community-grid, .donations-grid { grid-template-columns: 1fr; gap: 40px; }
+      .nav-lang { padding: 10px 0; }
+      .nav-lang .lang-toggle {
+        background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.35);
+        width: 100%; text-align: left; padding: 11px 14px;
+        font-size: 0.85rem; border-radius: 4px;
+      }
+      /* ── Spacing ── */
+      section { padding: 50px 16px; }
+      .stats-band { padding: 40px 16px; }
+      footer { padding: 36px 16px; }
+      .footer-links { gap: 14px; }
+      /* ── Grids ── */
+      .about-grid, .contact-grid, .community-grid, .donations-grid { grid-template-columns: 1fr; gap: 32px; }
       .agri-grid, .edu-grid, .shop-grid, .tourism-grid, .nearby-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); gap: 8px; }
       .gallery-item.tall, .gallery-item.wide { grid-row: span 1; grid-column: span 1; }
       .nearby-grid { grid-template-columns: 1fr; }
       .nearby-card.featured { flex-direction: column; grid-column: span 1; }
-      .nearby-thumb { min-width: unset; min-height: 120px; }
+      .nearby-thumb { min-width: unset; min-height: 110px; }
       .temples-grid { grid-template-columns: 1fr; }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .impact-grid { grid-template-columns: 1fr; }
       .community-highlights { grid-template-columns: 1fr; }
+      /* ── Hero ── */
       .hero-kolam { display: none; }
-      .hero-ctas { flex-direction: column; align-items: center; }
+      .hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      /* ── About ── */
+      .about-visual::after { display: none; }
+      .about-img-frame { padding-bottom: 68%; }
+      /* ── Cards ── */
+      .tourism-thumb { height: 140px; }
+      .tourism-meta { flex-wrap: wrap; gap: 8px; }
+      /* ── Donations ── */
       .donate-card { position: static; }
-      #toast { right: 16px; left: 16px; max-width: none; bottom: 20px; }
+      .donate-amounts { flex-wrap: wrap; }
+      .donate-amt-btn { flex: 1 1 auto; min-width: 70px; text-align: center; padding: 12px 8px; }
+      /* ── Contact ── */
+      .map-frame { height: 250px; }
+      .contact-form-wrap { margin-top: 32px; padding-top: 28px; }
+      /* ── Toast ── */
+      #toast { right: 16px; left: 16px; max-width: none; bottom: 16px; }
+    }
+
+    /* ── Small phones (≤ 480px) ── */
+    @media (max-width: 480px) {
+      .stat-num { font-size: 2.2rem; }
+      .stat-label { font-size: 0.63rem; letter-spacing: 1px; }
+      .section-label { font-size: 0.63rem; letter-spacing: 2px; }
+      .agri-card, .temple-card { padding: 26px 18px; }
+      .edu-card { padding: 24px 18px; }
+      .tourism-thumb { height: 120px; font-size: 3.5rem; }
+      .news-featured-thumb { font-size: 3rem; min-height: 90px; }
+      .gallery-placeholder { min-height: 130px; }
+      .location-name { font-size: 1.25rem; }
+      .donate-card { padding: 26px 20px; }
+      .community-sidebar { padding: 24px 20px; }
+    }
+
+    /* ─────────────────── LANG TOGGLE ─────────────────── */
+    .nav-lang { display: flex; align-items: center; }
+    .lang-toggle {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.45);
+      color: var(--gold-light);
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+      padding: 5px 12px; border-radius: 3px;
+      cursor: pointer; font-family: 'Lato', sans-serif;
+      transition: all 0.2s; line-height: 1.5; white-space: nowrap;
+    }
+    .lang-toggle:hover { background: rgba(201,168,76,0.16); border-color: var(--gold); color: var(--gold); }
+
+    /* ─────────────────── WHATSAPP FLOAT ─────────────────── */
+    .wa-float {
+      position: fixed; bottom: 80px; right: 28px; z-index: 8000;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25D366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.65rem; text-decoration: none;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.5);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.65); }
+    .wa-tooltip {
+      position: absolute; right: 66px; top: 50%; transform: translateY(-50%);
+      background: var(--green-deep); color: #fff; white-space: nowrap;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;
+      padding: 6px 14px; border-radius: 4px;
+      border: 1px solid rgba(201,168,76,0.45);
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ─────────────────── NEWS / EVENTS ─────────────────── */
+    .news { background: var(--section-alt); }
+    .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; margin-top: 8px; }
+    .news-card {
+      background: #fff; border-radius: 6px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26,58,26,0.07);
+      border: 1px solid rgba(201,168,76,0.18);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(26,58,26,0.13); }
+    .news-card-top { padding: 22px 22px 0; }
+    .news-date { font-size: 0.67rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--text-light); margin-bottom: 8px; }
+    .news-tag { display: inline-block; font-size: 0.63rem; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .tag-festival  { background: var(--saffron-pale); color: var(--saffron); }
+    .tag-update    { background: var(--gold-pale);    color: var(--brown); }
+    .tag-agri      { background: #e8f0e0;             color: #2a6a2a; }
+    .tag-community { background: #eef0ff;             color: #4a5cc7; }
+    .news-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--green-deep); margin-bottom: 0; }
+    .news-card-body { padding: 10px 22px 18px; flex: 1; }
+    .news-card-body p { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; }
+    .news-card-footer { padding: 12px 22px 16px; border-top: 1px solid rgba(0,0,0,0.06); font-size: 0.76rem; color: var(--text-light); font-weight: 700; }
+    .news-featured { grid-column: span 3; flex-direction: row; border-left: 5px solid var(--saffron); }
+    .news-featured-thumb { width: 200px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 5rem; background: linear-gradient(135deg, var(--saffron-pale), var(--gold-pale)); }
+    .news-card-content { flex: 1; display: flex; flex-direction: column; }
+    .news-featured .news-card-top { padding: 26px 26px 0; }
+    .news-featured .news-card-body { padding: 10px 26px 20px; }
+    .news-featured .news-card-footer { padding: 12px 26px 20px; }
+
+    /* ─────────────────── CONTACT FORM ─────────────────── */
+    .contact-form-wrap { margin-top: 44px; padding-top: 40px; border-top: 1px solid rgba(201,168,76,0.2); }
+    .contact-form-wrap h3 { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.35rem; margin-bottom: 6px; }
+    .contact-form-wrap > p { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-bottom: 22px; line-height: 1.6; }
+    .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .cf-full { grid-column: 1 / -1; }
+    .cf-field { display: flex; flex-direction: column; gap: 6px; }
+    .cf-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--green-pale); font-weight: 700; }
+    .cf-input, .cf-select, .cf-textarea {
+      width: 100%; padding: 12px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 3px; color: #fff; font-size: 0.92rem;
+      font-family: 'Lato', sans-serif; transition: border-color 0.2s;
+    }
+    .cf-input:focus, .cf-select:focus, .cf-textarea:focus { outline: none; border-color: var(--gold); }
+    .cf-input::placeholder, .cf-textarea::placeholder { color: rgba(255,255,255,0.28); }
+    .cf-select { cursor: pointer; }
+    .cf-select option { background: var(--green-deep); color: #fff; }
+    .cf-textarea { resize: vertical; min-height: 110px; }
+    .btn-send {
+      width: 100%; padding: 15px; background: var(--gold); color: var(--green-deep);
+      border: none; border-radius: 3px; font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+      font-family: 'Lato', sans-serif; transition: background 0.2s, transform 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-send:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .news-featured { flex-direction: column; grid-column: span 1; }
+      .news-featured-thumb { width: 100%; min-height: 100px; }
+      .contact-form { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────────── AI CHATBOT ─────────────────── */
+    .chat-btn {
+      position: fixed; bottom: 20px; left: 20px; z-index: 8000;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a3048, #2a5070);
+      color: var(--gold-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.45rem; cursor: pointer;
+      border: 2px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .chat-btn:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(0,0,0,0.6); }
+    .chat-btn-dot {
+      position: absolute; top: -1px; right: -1px;
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--saffron); border: 2px solid #0f1c2e;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.3); opacity: 0.75; }
+    }
+    .chat-window {
+      position: fixed; bottom: 86px; left: 20px; z-index: 8001;
+      width: 340px;
+      background: var(--green-deep);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 16px 52px rgba(0,0,0,0.55);
+      display: flex; flex-direction: column;
+      transform: translateY(16px) scale(0.97); opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chat-window.open { transform: translateY(0) scale(1); opacity: 1; pointer-events: all; }
+    .chat-header {
+      background: linear-gradient(135deg, #1a3048, #2a5070);
+      border-bottom: 2px solid var(--gold);
+      padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+      flex-shrink: 0;
+    }
+    .chat-avatar { font-size: 1.5rem; }
+    .chat-header-info { flex: 1; }
+    .chat-header-name { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--gold-light); line-height: 1.2; }
+    .chat-header-status { font-size: 0.67rem; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; margin-top: 2px; }
+    .chat-header-status::before { content: '●'; color: #4caf50; margin-right: 5px; font-size: 0.55rem; vertical-align: middle; }
+    .chat-close { background: none; border: none; color: rgba(255,255,255,0.45); font-size: 1.2rem; cursor: pointer; line-height: 1; padding: 4px; transition: color 0.2s; }
+    .chat-close:hover { color: #fff; }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 14px 12px;
+      display: flex; flex-direction: column; gap: 10px;
+      scroll-behavior: smooth;
+      min-height: 260px; max-height: 340px;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 4px; }
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-msg.user { flex-direction: row-reverse; }
+    .chat-bubble {
+      max-width: 82%; padding: 10px 13px;
+      border-radius: 12px; font-size: 0.84rem; line-height: 1.55;
+    }
+    .chat-msg.bot .chat-bubble {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.18);
+      color: rgba(255,255,255,0.88);
+      border-radius: 4px 12px 12px 12px;
+    }
+    .chat-msg.user .chat-bubble {
+      background: var(--gold); color: var(--green-deep);
+      border-radius: 12px 4px 12px 12px; font-weight: 600;
+    }
+    .chat-bot-icon { font-size: 1rem; flex-shrink: 0; margin-bottom: 2px; }
+    .chat-typing {
+      display: flex; gap: 5px; align-items: center;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 4px 12px 12px 12px;
+      width: fit-content;
+    }
+    .chat-typing span {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold-light); display: inline-block;
+      animation: typing-dot 1.2s ease-in-out infinite;
+    }
+    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing-dot {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+      40%            { transform: translateY(-5px); opacity: 1; }
+    }
+    .chat-quick-replies { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 12px 10px; flex-shrink: 0; }
+    .chat-qr {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px;
+      padding: 6px 11px; border-radius: 20px;
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.28);
+      color: var(--gold-light); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .chat-qr:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); }
+    .chat-input-wrap { padding: 10px 12px; border-top: 1px solid rgba(201,168,76,0.18); display: flex; gap: 8px; flex-shrink: 0; }
+    .chat-input {
+      flex: 1; padding: 10px 14px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.28);
+      border-radius: 22px; color: #fff; font-size: 0.86rem;
+      font-family: 'Lato', sans-serif; outline: none; transition: border-color 0.2s;
+    }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-input::placeholder { color: rgba(255,255,255,0.26); }
+    .chat-send {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: var(--gold); color: var(--green-deep);
+      border: none; cursor: pointer; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .chat-send:hover { background: var(--gold-light); transform: scale(1.08); }
+
+    /* ═══ FLOATING BUTTONS — mobile overrides MUST live after all main definitions ═══ */
+    @media (max-width: 768px) {
+      /* WhatsApp button */
+      .wa-float { bottom: 20px !important; right: 16px !important; width: 50px !important; height: 50px !important; font-size: 1.45rem !important; }
+      .wa-tooltip { display: none !important; }
+      /* Chat button & window */
+      .chat-btn { bottom: 20px !important; left: 16px !important; }
+      .chat-window { left: 12px; right: 12px; width: auto; bottom: 82px; max-height: 72vh; }
+      .chat-messages { min-height: 160px; max-height: calc(72vh - 190px); }
+      /* iOS: prevent auto-zoom when tapping inputs (font-size must be ≥ 16px) */
+      .cf-input, .cf-select, .cf-textarea,
+      .chat-input, #customAmt, input[type="number"] { font-size: 16px !important; }
+    }
+    @media (max-width: 480px) {
+      .chat-btn { width: 50px !important; height: 50px !important; font-size: 1.3rem !important; }
+      .wa-float { width: 48px !important; height: 48px !important; font-size: 1.35rem !important; }
     }
   </style>
 </head>
@@ -838,13 +1126,15 @@
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#agriculture">Agriculture</a></li>
-      <li><a href="#tourism">Tourism</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li class="nav-donate"><a href="#donate">♥ Donate</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#hero"><span data-i18n="nav-home">Home</span></a></li>
+      <li><a href="#about"><span data-i18n="nav-about">About</span></a></li>
+      <li><a href="#agriculture"><span data-i18n="nav-agriculture">Agriculture</span></a></li>
+      <li><a href="#tourism"><span data-i18n="nav-tourism">Tourism</span></a></li>
+      <li><a href="#gallery"><span data-i18n="nav-gallery">Gallery</span></a></li>
+      <li><a href="#news"><span data-i18n="nav-news">News</span></a></li>
+      <li class="nav-donate"><a href="#donate"><span data-i18n="nav-donate">♥ Donate</span></a></li>
+      <li><a href="#contact"><span data-i18n="nav-contact">Contact</span></a></li>
+      <li class="nav-lang"><button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">தமிழ்</button></li>
     </ul>
   </nav>
 
@@ -857,16 +1147,16 @@
       <div class="hero-tamil">பூங்குளம்</div>
       <h1 class="hero-title">Poong<span>ulam</span></h1>
       <div class="hero-divider"></div>
-      <p class="hero-sub">A Village of Grace · Thiruvarur District · Tamil Nadu</p>
-      <p class="hero-desc">
+      <p class="hero-sub" data-i18n="hero-sub">A Village of Grace · Thiruvarur District · Tamil Nadu</p>
+      <p class="hero-desc" data-i18n="hero-desc">
         Nestled in the fertile delta of the Cauvery, Poongulam is a village where ancient temples stand among golden paddy fields, and generations of tradition live on in every harvest and festival.
       </p>
       <div class="hero-ctas">
-        <a href="#donate" class="btn btn-saffron">♥ Support Village</a>
-        <a href="#about" class="btn btn-outline-gold">Explore</a>
+        <a href="#donate" class="btn btn-saffron" data-i18n="hero-cta1">♥ Support Village</a>
+        <a href="#about" class="btn btn-outline-gold" data-i18n="hero-cta2">Explore</a>
       </div>
     </div>
-    <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Scroll</div>
+    <div class="hero-scroll" data-i18n="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Scroll</div>
   </section>
 
   <!-- ═══════════════════ LOCATION STRIP ═══════════════════ -->
@@ -898,19 +1188,19 @@
     <div class="stats-grid">
       <div>
         <div class="stat-num">4</div>
-        <div class="stat-label">Temples</div>
+        <div class="stat-label" data-i18n="stat-temples">Temples</div>
       </div>
       <div>
         <div class="stat-num">~360</div>
-        <div class="stat-label">Residents</div>
+        <div class="stat-label" data-i18n="stat-residents">Residents</div>
       </div>
       <div>
         <div class="stat-num">100%</div>
-        <div class="stat-label">Agricultural Land</div>
+        <div class="stat-label" data-i18n="stat-agri">Agricultural Land</div>
       </div>
       <div>
         <div class="stat-num">1000+</div>
-        <div class="stat-label">Years of Heritage</div>
+        <div class="stat-label" data-i18n="stat-heritage">Years of Heritage</div>
       </div>
     </div>
   </div>
@@ -925,8 +1215,8 @@
           </div>
         </div>
         <div class="about-text">
-          <div class="section-label">Our Story</div>
-          <h2 class="section-title">History &amp; Heritage</h2>
+          <div class="section-label" data-i18n="label-story">Our Story</div>
+          <h2 class="section-title" data-i18n="title-about">History &amp; Heritage</h2>
           <div class="gold-line"></div>
           <p>
             Poongulam — meaning "Lake of Flowers" in Tamil — is a serene village located near Nannilam in the Thiruvarur district of Tamil Nadu. Sitting in the lush Cauvery delta, it is surrounded by some of the region's most sacred sites: the ancient Vanchinadha Swamy temple of Srivanjiyam just 2 km away, the celebrated Koothanur Maha Saraswathi temple 10 km away, and the great temple city of Kumbakonam 30 km away.
@@ -947,8 +1237,8 @@
   <!-- ═══════════════════ AGRICULTURE ═══════════════════ -->
   <section class="agriculture" id="agriculture">
     <div class="container">
-      <div class="section-label">Livelihood</div>
-      <h2 class="section-title">Agriculture &amp; Farms</h2>
+      <div class="section-label" data-i18n="label-livelihood">Livelihood</div>
+      <h2 class="section-title" data-i18n="title-agri">Agriculture &amp; Farms</h2>
       <div class="gold-line"></div>
       <div class="agri-grid">
         <div class="agri-card">
@@ -1027,8 +1317,8 @@
   <!-- ═══════════════════ TOURISM ═══════════════════ -->
   <section class="tourism" id="tourism">
     <div class="container">
-      <div class="section-label saffron">Discover</div>
-      <h2 class="section-title">Tourism &amp; Experiences</h2>
+      <div class="section-label saffron" data-i18n="label-discover">Discover</div>
+      <h2 class="section-title" data-i18n="title-tourism">Tourism &amp; Experiences</h2>
       <div class="saffron-line"></div>
       <p class="tourism-intro">
         Poongulam offers visitors an unhurried, authentic Tamil Nadu experience — ancient temple trails, golden paddy walks, canal-side mornings, and the warmth of a village that still lives by the rhythm of nature and tradition.
@@ -1215,8 +1505,8 @@
   <!-- ═══════════════════ GALLERY ═══════════════════ -->
   <section class="gallery" id="gallery">
     <div class="container">
-      <div class="section-label">Visual Story</div>
-      <h2 class="section-title light">Photos of Poongulam</h2>
+      <div class="section-label" data-i18n="label-visual">Visual Story</div>
+      <h2 class="section-title light" data-i18n="title-gallery">Photos of Poongulam</h2>
       <div class="gold-line"></div>
       <p class="gallery-intro">
         A glimpse of everyday life, golden harvests, ancient temples, and the natural beauty that makes Poongulam unlike any other village in the Cauvery delta.
@@ -1287,8 +1577,8 @@
   <!-- ═══════════════════ DONATIONS ═══════════════════ -->
   <section class="donations" id="donate">
     <div class="container">
-      <div class="section-label saffron">Give Back</div>
-      <h2 class="section-title light">Support Poongulam</h2>
+      <div class="section-label saffron" data-i18n="label-giveback">Give Back</div>
+      <h2 class="section-title light" data-i18n="title-donate">Support Poongulam</h2>
       <div class="saffron-line"></div>
       <div class="donations-grid">
 
@@ -1399,8 +1689,8 @@
   <!-- ═══════════════════ TEMPLES ═══════════════════ -->
   <section class="temples" id="temples">
     <div class="container">
-      <div class="section-label">Spirituality</div>
-      <h2 class="section-title light">Temples &amp; Culture</h2>
+      <div class="section-label" data-i18n="label-spirituality">Spirituality</div>
+      <h2 class="section-title light" data-i18n="title-temples">Temples &amp; Culture</h2>
       <div class="gold-line"></div>
       <p class="temples-intro">
         Poongulam is home to three standing temples — Mariamman, Agastheeswarar, and Ayyanar — that have been the spiritual backbone of village life for generations. A new Vishnu temple is currently under construction, soon to become the fourth sacred site in the village.
@@ -1451,8 +1741,8 @@
   <!-- ═══════════════════ COMMUNITY ═══════════════════ -->
   <section class="community" id="community">
     <div class="container">
-      <div class="section-label">Our People</div>
-      <h2 class="section-title">People &amp; Community</h2>
+      <div class="section-label" data-i18n="label-people">Our People</div>
+      <h2 class="section-title" data-i18n="title-community">People &amp; Community</h2>
       <div class="gold-line"></div>
       <div class="community-grid">
         <div class="community-main">
@@ -1493,8 +1783,8 @@
   <!-- ═══════════════════ EDUCATION ═══════════════════ -->
   <section class="education" id="education">
     <div class="container">
-      <div class="section-label">Learning</div>
-      <h2 class="section-title">Schools &amp; Education</h2>
+      <div class="section-label" data-i18n="label-learning">Learning</div>
+      <h2 class="section-title" data-i18n="title-education">Schools &amp; Education</h2>
       <div class="gold-line"></div>
       <div class="edu-grid">
         <div class="edu-card">
@@ -1534,8 +1824,8 @@
   <!-- ═══════════════════ CONTACT ═══════════════════ -->
   <section class="contact" id="contact">
     <div class="container">
-      <div class="section-label">Find Us</div>
-      <h2 class="section-title light">Contact &amp; Location</h2>
+      <div class="section-label" data-i18n="label-findus">Find Us</div>
+      <h2 class="section-title light" data-i18n="title-contact">Contact &amp; Location</h2>
       <div class="gold-line"></div>
       <div class="contact-grid">
         <div class="contact-info">
@@ -1595,6 +1885,133 @@
           </a>
         </div>
       </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap">
+        <h3>✉ Write to Us</h3>
+        <p>Have a question, want to visit, or planning to support Poongulam? We'd love to hear from you.</p>
+        <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+          <div class="cf-field">
+            <label class="cf-label" for="cf-name">Your Name</label>
+            <input class="cf-input" type="text" id="cf-name" placeholder="Enter your name" required>
+          </div>
+          <div class="cf-field">
+            <label class="cf-label" for="cf-contact">Phone / Email</label>
+            <input class="cf-input" type="text" id="cf-contact" placeholder="+91 or email address">
+          </div>
+          <div class="cf-field cf-full">
+            <label class="cf-label" for="cf-subject">Subject</label>
+            <select class="cf-select" id="cf-subject">
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Tourism &amp; Visit">Tourism &amp; Visit</option>
+              <option value="Donation &amp; Support">Donation &amp; Support</option>
+              <option value="Agriculture &amp; Products">Agriculture &amp; Products</option>
+              <option value="Temple &amp; Cultural Events">Temple &amp; Cultural Events</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="cf-field cf-full">
+            <label class="cf-label" for="cf-message">Message</label>
+            <textarea class="cf-textarea" id="cf-message" placeholder="Write your message here…" required></textarea>
+          </div>
+          <div class="cf-full">
+            <button type="submit" class="btn-send">✉ &nbsp;Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ NEWS & EVENTS ═══════════════════ -->
+  <section class="news" id="news">
+    <div class="container">
+      <div class="section-label" data-i18n="label-news">Village Updates</div>
+      <h2 class="section-title" data-i18n="title-news">News &amp; Events</h2>
+      <div class="gold-line"></div>
+      <div class="news-grid">
+
+        <!-- Featured: Pond Desilting Drive -->
+        <div class="news-card news-featured">
+          <div class="news-featured-thumb">🏞️</div>
+          <div class="news-card-content">
+            <div class="news-card-top">
+              <div class="news-date">📌 Ongoing Initiative</div>
+              <span class="news-tag tag-update">Village Initiative</span>
+              <h3>தூர் வாருதல் — Pond Restoration Drive</h3>
+            </div>
+            <div class="news-card-body">
+              <p>Poongulam's three ponds are actively undergoing desilting — a critical step to recharge groundwater, restore wells, and sustain farming through dry seasons. The community has united for this effort and donations are being channelled directly to the work on the ground.</p>
+            </div>
+            <div class="news-card-footer">🤝 Community-led &nbsp;·&nbsp; <a href="#donate" style="color:var(--saffron);text-decoration:none;">Donations open ♥</a></div>
+          </div>
+        </div>
+
+        <!-- Pongal 2026 -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 January 14, 2026</div>
+            <span class="news-tag tag-festival">Festival</span>
+            <h3>Pongal — The Harvest Festival</h3>
+          </div>
+          <div class="news-card-body">
+            <p>Poongulam celebrated Pongal with great joy — traditional Kolam decorations, Pongal cooking in every courtyard, and Mattu Pongal cattle worship. The village was filled with fragrance of freshly cooked rice and sugarcane.</p>
+          </div>
+          <div class="news-card-footer">🎊 Village-wide celebration</div>
+        </div>
+
+        <!-- Vishnu Temple Update -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 February 2026</div>
+            <span class="news-tag tag-update">Construction Update</span>
+            <h3>New Vishnu Temple — Progress Update</h3>
+          </div>
+          <div class="news-card-body">
+            <p>The new Vishnu temple being built in Poongulam is making good progress. The community is fundraising for the gopuram and inner sanctum. Once complete, it will be the fourth sacred site in the village.</p>
+          </div>
+          <div class="news-card-footer">🏗️ Under construction &nbsp;·&nbsp; Donations welcome</div>
+        </div>
+
+        <!-- Navarathri -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 October 2026</div>
+            <span class="news-tag tag-festival">Upcoming Festival</span>
+            <h3>Navarathri — Mariamman Nine Nights</h3>
+          </div>
+          <div class="news-card-body">
+            <p>The village's grandest annual celebration — nine nights of devotion at the Mariamman temple. Kolam competition, nadaswaram concerts, and the grand chariot procession on Vijayadasami. Every household participates.</p>
+          </div>
+          <div class="news-card-footer">📅 Coming Soon · October 2026</div>
+        </div>
+
+        <!-- Samba Harvest -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 November – January</div>
+            <span class="news-tag tag-agri">Agriculture</span>
+            <h3>Samba Harvest Season</h3>
+          </div>
+          <div class="news-card-body">
+            <p>The Samba paddy harvest is the most vibrant time in Poongulam. Golden fields are hand-cut in a tradition unchanged for centuries. Visitors are welcome to witness and participate in the harvest experience.</p>
+          </div>
+          <div class="news-card-footer">🌾 Best time to visit Poongulam</div>
+        </div>
+
+        <!-- School Supplies Drive -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 June 2026</div>
+            <span class="news-tag tag-community">Education</span>
+            <h3>School Supplies Drive — June 2026</h3>
+          </div>
+          <div class="news-card-body">
+            <p>As the new academic year begins, the village panchayat is organising a school supplies distribution drive — books, bags, and stationery for children in need. Help us reach every child in Poongulam.</p>
+          </div>
+          <div class="news-card-footer">🏫 <a href="#donate" style="color:var(--saffron);text-decoration:none;">Support this initiative ♥</a></div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -1609,6 +2026,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#donate">Donate</a>
       <a href="#temples">Temples</a>
+      <a href="#news">News</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="footer-note">
@@ -1618,6 +2036,49 @@
       Crafted with pride for Poongulam &nbsp;·&nbsp; By <span style="color: var(--gold-light); font-weight: 700; letter-spacing: 0.5px;">Jayender</span> &nbsp;·&nbsp; 2026
     </div>
   </footer>
+
+  <!-- ═══════════════════ AI CHATBOT ═══════════════════ -->
+  <button class="chat-btn" id="chatBtn" onclick="toggleChat()" aria-label="Ask Poongulam AI Assistant">
+    <span class="chat-btn-dot"></span>
+    🛕
+  </button>
+
+  <div class="chat-window" id="chatWindow" role="dialog" aria-label="Poongulam AI Assistant">
+    <div class="chat-header">
+      <div class="chat-avatar">🛕</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Poongulam Assistant</div>
+        <div class="chat-header-status">Online · Ask me anything</div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()" aria-label="Close chat">✕</button>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-quick-replies" id="chatQR">
+      <button class="chat-qr" onclick="sendQuick('How to reach Poongulam?')">🚌 Route</button>
+      <button class="chat-qr" onclick="sendQuick('Tell me about the temples')">🛕 Temples</button>
+      <button class="chat-qr" onclick="sendQuick('Who is the main contact?')">📞 Contact</button>
+      <button class="chat-qr" onclick="sendQuick('What festivals are celebrated?')">🎊 Festivals</button>
+      <button class="chat-qr" onclick="sendQuick('What tourism experiences are available?')">🌿 Tourism</button>
+    </div>
+
+    <div class="chat-input-wrap">
+      <input
+        class="chat-input" id="chatInput" type="text"
+        placeholder="Ask about Poongulam…"
+        onkeydown="if(event.key==='Enter')sendChat()"
+        autocomplete="off"
+      >
+      <button class="chat-send" onclick="sendChat()" aria-label="Send">➤</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ WHATSAPP BUTTON ═══════════════════ -->
+  <a class="wa-float" href="https://wa.me/919965822658?text=Hello%2C%20I%20am%20reaching%20out%20from%20the%20Poongulam%20Village%20Portal." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="wa-tooltip">Chat with us on WhatsApp</span>
+    💬
+  </a>
 
   <!-- ═══════════════════ TOAST ═══════════════════ -->
   <div id="toast">
@@ -1775,6 +2236,217 @@
         amount:      amount,
         description: 'Donation to Poongulam Village — supporting heritage, education & farmers',
       });
+    }
+
+    // ── LANGUAGE TOGGLE ─────────────────────────────────
+    const i18n = {
+      en: {
+        'nav-home': 'Home', 'nav-about': 'About',
+        'nav-agriculture': 'Agriculture', 'nav-tourism': 'Tourism',
+        'nav-gallery': 'Gallery', 'nav-news': 'News',
+        'nav-donate': '♥ Donate', 'nav-contact': 'Contact',
+        'hero-sub': 'A Village of Grace · Thiruvarur District · Tamil Nadu',
+        'hero-desc': 'Nestled in the fertile delta of the Cauvery, Poongulam is a village where ancient temples stand among golden paddy fields, and generations of tradition live on in every harvest and festival.',
+        'hero-cta1': '♥ Support Village', 'hero-cta2': 'Explore',
+        'hero-scroll': 'Scroll',
+        'stat-temples': 'Temples', 'stat-residents': 'Residents',
+        'stat-agri': 'Agricultural Land', 'stat-heritage': 'Years of Heritage',
+        'label-story': 'Our Story',       'title-about': 'History &amp; Heritage',
+        'label-livelihood': 'Livelihood', 'title-agri': 'Agriculture &amp; Farms',
+        'label-discover': 'Discover',     'title-tourism': 'Tourism &amp; Experiences',
+        'label-visual': 'Visual Story',   'title-gallery': 'Photos of Poongulam',
+        'label-giveback': 'Give Back',    'title-donate': 'Support Poongulam',
+        'label-spirituality': 'Spirituality', 'title-temples': 'Temples &amp; Culture',
+        'label-people': 'Our People',     'title-community': 'People &amp; Community',
+        'label-learning': 'Learning',     'title-education': 'Schools &amp; Education',
+        'label-findus': 'Find Us',        'title-contact': 'Contact &amp; Location',
+        'label-news': 'Village Updates',  'title-news': 'News &amp; Events',
+      },
+      ta: {
+        'nav-home': 'முகப்பு', 'nav-about': 'எங்களைப் பற்றி',
+        'nav-agriculture': 'வேளாண்மை', 'nav-tourism': 'சுற்றுலா',
+        'nav-gallery': 'படங்கள்', 'nav-news': 'செய்திகள்',
+        'nav-donate': '♥ நன்கொடை', 'nav-contact': 'தொடர்பு',
+        'hero-sub': 'அருளின் கிராமம் · திருவாரூர் மாவட்டம் · தமிழ்நாடு',
+        'hero-desc': 'காவிரியின் வளமான டெல்டாவில் அமைந்த பூங்குளம் — பண்டைய கோயில்கள் பொன்னிற நெல்வயல்களுக்கிடையே நிற்கும் கிராமம். தலைமுறை தலைமுறையாக வாழும் பாரம்பரியம் ஒவ்வொரு அறுவடையிலும் திருவிழாவிலும் தொடர்கிறது.',
+        'hero-cta1': '♥ கிராமத்தை ஆதரிக்கவும்', 'hero-cta2': 'ஆராயுங்கள்',
+        'hero-scroll': 'கீழே செல்',
+        'stat-temples': 'கோயில்கள்', 'stat-residents': 'மக்கள் தொகை',
+        'stat-agri': 'வேளாண் நிலம்', 'stat-heritage': 'ஆண்டுகள் பாரம்பரியம்',
+        'label-story': 'நம் கதை',          'title-about': 'வரலாறும் பாரம்பரியமும்',
+        'label-livelihood': 'வாழ்வாதாரம்', 'title-agri': 'வேளாண்மையும் பண்ணைகளும்',
+        'label-discover': 'கண்டறிக',       'title-tourism': 'சுற்றுலாவும் அனுபவங்களும்',
+        'label-visual': 'காட்சிக் கதை',   'title-gallery': 'பூங்குளம் படங்கள்',
+        'label-giveback': 'ஆதரவு அளிக்கவும்', 'title-donate': 'பூங்குளத்தை ஆதரிக்கவும்',
+        'label-spirituality': 'ஆன்மீகம்', 'title-temples': 'கோயில்களும் கலாச்சாரமும்',
+        'label-people': 'நம் மக்கள்',      'title-community': 'மக்களும் சமூகமும்',
+        'label-learning': 'கல்வி',         'title-education': 'பள்ளிகளும் கல்வியும்',
+        'label-findus': 'எங்களைக் காணுங்கள்', 'title-contact': 'தொடர்பு &amp; இடம்',
+        'label-news': 'கிராம செய்திகள்',  'title-news': 'செய்திகளும் நிகழ்வுகளும்',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ta' : 'en';
+      const t = i18n[currentLang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      const btn = document.getElementById('langToggle');
+      btn.textContent = currentLang === 'en' ? 'தமிழ்' : 'English';
+      document.documentElement.lang = currentLang;
+    }
+
+    // ── CONTACT FORM ─────────────────────────────────────
+    function submitContactForm(e) {
+      e.preventDefault();
+      const name    = document.getElementById('cf-name').value.trim();
+      const contact = document.getElementById('cf-contact').value.trim();
+      const subject = document.getElementById('cf-subject').value;
+      const message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !message) {
+        showToast('Please fill in your name and message.', 'error');
+        return;
+      }
+
+      const body = 'Name: ' + name + '\nContact: ' + contact +
+                   '\nSubject: ' + subject + '\n\nMessage:\n' + message;
+      window.location.href = 'mailto:poongulam@gmail.com'
+        + '?subject=' + encodeURIComponent('[Poongulam Portal] ' + subject)
+        + '&body='    + encodeURIComponent(body);
+
+      showToast('Opening your email app… Thank you for reaching out! 🙏');
+      document.getElementById('contactForm').reset();
+    }
+
+    // ── AI CHATBOT ──────────────────────────────────────
+    const chatKB = [
+      {
+        keys: ['hello','hi','hey','vanakkam','namaste','good morning','good evening','greetings','start'],
+        reply: '🙏 Vanakkam! Welcome to Poongulam — the "Lake of Flowers" village in Thiruvarur, Tamil Nadu.\n\nI can help you with:\n• 🚌 How to reach Poongulam\n• 🛕 Temples & festivals\n• 📞 Who to contact (Sivaraman)\n• 🌿 Tourism experiences\n• 🌾 Agriculture\n• ♥ How to donate\n\nWhat would you like to know?'
+      },
+      {
+        keys: ['route','direction','reach','how to get','bus','train','travel','come','drive','car','auto','transport','railway','station','airport','way to'],
+        reply: '📍 How to Reach Poongulam:\n\n🚌 By Bus — From Nannilam town (just 4 km). Frequent TNSTC buses run throughout the day.\n\n🚂 By Train — Nearest stations: Nannilam or Thiruvarur (17 km). Well-connected from Chennai, Thanjavur & Mayiladuthurai.\n\n🚗 By Car / Auto:\n   Nannilam → 4 km (10 mins)\n   Thiruvarur → 17 km (25 mins)\n   Kumbakonam → 30 km (45 mins)\n   Chennai → ~320 km via NH-36\n\n✈️ Nearest Airport — Tiruchirappalli (TRZ), ~100 km.\n\n📮 Address: Poongulam Village, Nannilam Taluk, Thiruvarur Dist, TN – 610 107\n\nFor exact GPS directions tap "📍 Get Directions" in the Contact section!'
+      },
+      {
+        keys: ['temple','temples','mariamman','agastheeswarar','ayyanar','vishnu','kovil','koil','worship','puja','deity','god','shiva','goddess','sannidhi','shrine'],
+        reply: '🛕 Temples of Poongulam:\n\n1️⃣ Mariamman Temple — Village goddess & protector. Grand 9-night Navarathri celebrations every year.\n\n2️⃣ Agastheeswarar Temple — Lord Shiva temple. Maha Shivaratri is observed with an all-night puja attended by all.\n\n3️⃣ Ayyanar Temple — Guardian deity of the village & farmlands. Beautiful terracotta horse sculptures — a rare Tamil folk art tradition.\n\n4️⃣ Vishnu Temple 🏗️ — Currently under construction. Will be the 4th sacred site in Poongulam.\n\n📍 Nearby:\n   Srivanjiyam Vanchinadha Swamy (2 km)\n   Koothanur Maha Saraswathi (10 km)\n   Thiruvarur Thyagarajaswamy (17 km)'
+      },
+      {
+        keys: ['contact','sivaraman','who to call','reach out','information','enquiry','enquire','organiser','coordinator','main person','village head','panchayat','phone number','whatsapp','email','mail'],
+        reply: '📞 Main Contact — Sivaraman\n\nFor all enquiries about Poongulam — visits, donations, tourism arrangements, temple events, or agriculture:\n\n👤 Name: Sivaraman\n📱 WhatsApp: +91 99658 22658\n📧 Email: poongulam@gmail.com\n\nYou can also:\n• Tap the 💬 WhatsApp button (bottom-right) to chat directly\n• Fill the Contact Form in the Contact section\n\nSivaraman is available to help with all village-related enquiries.'
+      },
+      {
+        keys: ['donat','fund','support','contribute','help','money','rupee','pay','payment','razorpay','upi','sponsor'],
+        reply: '♥ How to Support Poongulam:\n\nYour donation directly funds real village projects:\n\n🏞️ Pond Desilting — 3 ponds urgently need restoration to recharge groundwater\n🏫 School Supplies — Books, bags & stationery for children\n💧 Clean Water — Bore wells & water access points\n🛕 Temple Restoration — Preserving 1000-year-old structures\n🌾 Farmer Support — Seeds, tools & soil-health programmes\n📚 Village Library — Tamil literature for the youth\n\n💳 Donate via Razorpay (UPI · Cards · Net Banking) — scroll to the "Support Poongulam" section.\n\nFor direct / large donations contact Sivaraman: +91 99658 22658'
+      },
+      {
+        keys: ['festival','pongal','navarathri','shivaratri','karthigai','aadi perukku','deepam','celebration','event','cultural program','thai pongal'],
+        reply: '🎊 Festivals of Poongulam:\n\n🌾 Pongal — January 14 (Harvest festival, village-wide kolam & cooking)\n🛕 Navarathri — Sep/Oct (9-night Mariamman festival — the biggest!)\n🌙 Maha Shivaratri — Feb/Mar (All-night Agastheeswarar puja)\n🪔 Karthigai Deepam — November (Festival of Lights)\n🌊 Aadi Perukku — July/Aug (River Thanksgiving, Cauvery)\n🐎 Ayyanar Festival — Annual (Village guardian deity worship)\n🌺 Tamil New Year — April (Chithirai celebrations)\n\n🗓️ Best time to visit: October–January — festivals + Samba paddy harvest!'
+      },
+      {
+        keys: ['agri','farm','paddy','rice','coconut','banana','cotton','crop','harvest','cultivat','field','farmer','samba','kuruvai','thaladi','lotus','jasmine','cattle','dairy'],
+        reply: '🌾 Agriculture in Poongulam:\n\nPoongulam is a 100% agricultural village in the fertile Cauvery delta:\n\n🌾 Paddy — Samba, Kuruvai & Thaladi varieties; harvested twice yearly\n🥥 Coconut — Sold in local markets\n🍌 Banana — Nendran & Rasthali varieties for temples & markets\n🌸 Flowers — Lotus, Jasmine, Marigold for temple offerings\n🌿 Cotton — Key income crop\n🐄 Dairy & Cattle — Traditional small-scale farms\n\n🌲 Agroforestry:\n   Teak, Eucalyptus, Sandalwood, Bamboo & Oil Palm on bunds & field margins.\n\nIrrigation is fed by the ancient Grand Anicut canal (Chola era).\nBest time to witness harvest: November–January.'
+      },
+      {
+        keys: ['tourism','visit','tour','stay','experience','activity','things to do','kolam','photography','walk','immersion'],
+        reply: '🌿 Tourism Experiences in Poongulam:\n\n🛕 Temple Heritage Trail — 2-3 hrs; walk all 3 temples with a local guide (stone carvings & inscriptions)\n\n🌾 Paddy Field Walk — 1-2 hrs; best Oct–Feb during Samba harvest season\n\n🎭 Village Cultural Immersion — Half-day; traditional cooking + kolam art + village rhythms\n\n🚣 Canal & Waterway Walk — 1.5 hrs; explore the ancient Grand Anicut canal\n\n🎨 Kolam Art Workshop — 1 hr; learn sacred rice-flour rangoli from a village artisan\n\n📸 Village Photography Tour — 2 hrs; golden-hour temple gopurams & rural life\n\nFor bookings & arrangements:\n📱 Contact Sivaraman: +91 99658 22658'
+      },
+      {
+        keys: ['nearby','srivanjiyam','koothanur','saraswathi','thiruvarur','kumbakonam','nannilam','around','close by','close to','day trip','excursion'],
+        reply: '📍 Nearby Attractions from Poongulam:\n\n🛕 Srivanjiyam — Vanchinadha Swamy Temple (2 km)\n   Paadal Petra Sthalangal · Rare Yamadharmaraja shrine · On River Mudikondan\n\n📚 Koothanur — Maha Saraswathi Temple (10 km)\n   Goddess of Learning · Famous among students · Navarathri & Vijayadasami\n\n🛕 Thiruvarur — Thyagarajaswamy Temple (17 km)\n   Paadal Petra Sthalangal · Panchasabha (Nithya Sabha) · World\'s largest temple chariot\n\n🏛️ Kumbakonam — City of Temples (30 km)\n   188+ temples · Mahamaham tank (every 12 yrs) · Silk & bronze crafts'
+      },
+      {
+        keys: ['school','education','children','kids','study','college','anganwadi','library','student','learn','book'],
+        reply: '📚 Education in Poongulam:\n\n🏫 Government Primary School — Classes 1–5; free education for village children\n📚 Nannilam Middle School — Classes 6–8; 4 km away\n🎓 Higher Secondary — Classes 9–12; Nannilam & Thiruvarur\n📖 Village Community Library — Maintained by village panchayat\n👶 Anganwadi Centre — Early childhood care, nutrition & pre-school\n💻 Digital Literacy — Youth accessing online education platforms\n\nYou can support school supplies through our donation page!\nContact Sivaraman (+91 99658 22658) to get directly involved.'
+      },
+      {
+        keys: ['history','heritage','ancient','chola','old','origin','meaning','name','lake','flower','poongulam mean','about village','tell me about'],
+        reply: '🏛️ History of Poongulam:\n\nPoongulam means "Lake of Flowers" in Tamil:\n   Poo (பூ) = Flower · Kulam (குளம்) = Lake / Pond\n\nThe village has deep Chola-era roots — temples believed to date back over 1,000 years. Located in the Cauvery delta, it was part of the Chola hydraulic network using the Grand Anicut canal system (one of the oldest irrigation works in the world).\n\nThe village pond — its namesake — has served for centuries as an irrigation lifeline and spiritual gathering point during festivals.\n\nLocated near Nannilam, Thiruvarur District — at the heart of South India\'s richest temple corridor.'
+      },
+      {
+        keys: ['pond','water','desilt','thooral','groundwater','well','bore'],
+        reply: '🏞️ Pond Restoration — தூர் வாருதல்:\n\nPoongulam has 3 ponds that are silted up and urgently need desilting.\n\nWhy it matters:\n• Recharges the groundwater table\n• Restores bore wells & drinking water\n• Improves soil moisture for farming\n• Sustains agriculture through dry seasons\n\nThis is our #1 priority initiative. Every rupee donated goes directly to on-ground work.\n\n♥ Donate now — scroll to "Support Poongulam" section, or contact:\nSivaraman: +91 99658 22658'
+      },
+      {
+        keys: ['population','how many people','residents','families','size','big','small','village size'],
+        reply: '🌿 Poongulam at a Glance:\n\n👥 Population: ~360 residents\n🛕 Temples: 4 (3 standing + 1 under construction)\n🌾 Land: 100% agricultural\n🏛️ Heritage: 1,000+ years\n📍 Location: Nannilam Taluk, Thiruvarur District, Tamil Nadu – 610 107\n\nA close-knit community where every household knows its neighbour. Village life revolves around agriculture, temple festivals, and traditional crafts.\n\nFor more: contact Sivaraman at +91 99658 22658'
+      },
+    ];
+
+    // Catch-all fallback
+    const chatFallback = '🙏 I\'m not sure about that, but I\'m here to help!\n\nTry asking me:\n• 🚌 "How to reach Poongulam?"\n• 🛕 "Tell me about the temples"\n• 📞 "Who is the main contact?"\n• 🎊 "What festivals are celebrated?"\n• 🌿 "What tourism experiences are available?"\n• ♥ "How can I donate?"\n\nOr use the quick-reply buttons above!';
+
+    let chatOpen = false;
+    let chatInitialized = false;
+
+    function toggleChat() {
+      chatOpen = !chatOpen;
+      document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+      if (chatOpen && !chatInitialized) {
+        chatInitialized = true;
+        setTimeout(() => {
+          addBotMsg('🙏 Vanakkam! I\'m the Poongulam Village Assistant.\n\nAsk me anything about routes, temples, festivals, who to contact, tourism, or how to donate. I\'m here to help! 🌿');
+        }, 300);
+      }
+      if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 350);
+    }
+
+    function addBotMsg(text) {
+      const msgs = document.getElementById('chatMessages');
+      const typing = document.createElement('div');
+      typing.className = 'chat-msg bot';
+      typing.innerHTML = '<span class="chat-bot-icon">🛕</span><div class="chat-typing"><span></span><span></span><span></span></div>';
+      msgs.appendChild(typing);
+      msgs.scrollTop = msgs.scrollHeight;
+      setTimeout(() => {
+        msgs.removeChild(typing);
+        const msg = document.createElement('div');
+        msg.className = 'chat-msg bot';
+        msg.innerHTML = '<span class="chat-bot-icon">🛕</span><div class="chat-bubble">' +
+          text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>') +
+          '</div>';
+        msgs.appendChild(msg);
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 850);
+    }
+
+    function addUserMsg(text) {
+      const msgs = document.getElementById('chatMessages');
+      const msg = document.createElement('div');
+      msg.className = 'chat-msg user';
+      msg.innerHTML = '<div class="chat-bubble">' +
+        text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') +
+        '</div>';
+      msgs.appendChild(msg);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function getBotReply(input) {
+      const lower = input.toLowerCase();
+      for (const item of chatKB) {
+        if (item.keys.some(k => lower.includes(k))) return item.reply;
+      }
+      return chatFallback;
+    }
+
+    function sendChat() {
+      const inp = document.getElementById('chatInput');
+      const text = inp.value.trim();
+      if (!text) return;
+      addUserMsg(text);
+      inp.value = '';
+      setTimeout(() => addBotMsg(getBotReply(text)), 100);
+    }
+
+    function sendQuick(text) {
+      if (!chatOpen) toggleChat();
+      setTimeout(() => { addUserMsg(text); setTimeout(() => addBotMsg(getBotReply(text)), 100); }, chatInitialized ? 0 : 700);
     }
   </script>
 
