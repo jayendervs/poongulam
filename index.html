@@ -76,6 +76,9 @@
       transition: background 0.2s !important;
     }
     .nav-links .nav-donate > a:hover { background: var(--saffron-light) !important; }
+    .nav-actions {
+      display: flex; align-items: center; gap: 10px; margin-left: auto;
+    }
     .nav-toggle {
       display: none; background: none; border: none;
       color: var(--gold-light); font-size: 1.6rem; cursor: pointer;
@@ -807,6 +810,7 @@
     @media (max-width: 768px) {
       /* ── Nav ── */
       nav { padding: 0 16px; }
+      .nav-actions { display: flex; }
       .nav-toggle { display: block; }
       .nav-links {
         display: none; position: absolute; top: 64px; left: 0; right: 0;
@@ -819,12 +823,6 @@
       .nav-links a { padding: 14px 0; display: block; font-size: 0.88rem; }
       .nav-links .nav-donate { padding: 6px 0; }
       .nav-links .nav-donate > a { display: inline-block; }
-      .nav-lang { padding: 10px 0; }
-      .nav-lang .lang-toggle {
-        background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.35);
-        width: 100%; text-align: left; padding: 11px 14px;
-        font-size: 0.85rem; border-radius: 4px;
-      }
       /* ── Spacing ── */
       section { padding: 50px 16px; }
       .stats-band { padding: 40px 16px; }
@@ -1124,7 +1122,10 @@
       Poongulam
       <span>Thiruvarur District · Tamil Nadu</span>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">தமிழ்</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero"><span data-i18n="nav-home">Home</span></a></li>
       <li><a href="#about"><span data-i18n="nav-about">About</span></a></li>
@@ -1134,7 +1135,6 @@
       <li><a href="#news"><span data-i18n="nav-news">News</span></a></li>
       <li class="nav-donate"><a href="#donate"><span data-i18n="nav-donate">♥ Donate</span></a></li>
       <li><a href="#contact"><span data-i18n="nav-contact">Contact</span></a></li>
-      <li class="nav-lang"><button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">தமிழ்</button></li>
     </ul>
   </nav>
 
