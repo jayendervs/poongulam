@@ -50,8 +50,8 @@
       background: rgba(26,58,26,0.97);
       backdrop-filter: blur(10px);
       border-bottom: 2px solid var(--gold);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px;
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 28px;
       padding-top: env(safe-area-inset-top);
       height: calc(64px + env(safe-area-inset-top));
     }
@@ -65,21 +65,21 @@
       color: #fff; font-weight: 400; font-size: 0.8rem;
       display: block; letter-spacing: 2px;
     }
-    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links { display: flex; gap: 14px; list-style: none; flex: 1; justify-content: center; }
     .nav-links a {
       color: var(--green-pale); text-decoration: none;
-      font-size: 0.76rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; transition: color 0.2s;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; transition: color 0.2s; white-space: nowrap;
     }
     .nav-links a:hover { color: var(--gold-light); }
     .nav-links .nav-donate > a {
       background: var(--saffron); color: #fff !important;
-      padding: 7px 16px; border-radius: 3px;
+      padding: 6px 12px; border-radius: 3px;
       transition: background 0.2s !important;
     }
     .nav-links .nav-donate > a:hover { background: var(--saffron-light) !important; }
     .nav-actions {
-      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto;
     }
     .nav-toggle {
       display: none; background: none; border: none;
@@ -811,11 +811,11 @@
     }
     @media (max-width: 768px) {
       /* ── Nav ── */
-      nav { padding: 0 16px; }
-      .nav-actions { display: flex; }
+      nav { padding: 0 16px; padding-top: env(safe-area-inset-top); }
+      .nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
       .nav-toggle { display: block; }
       .nav-links {
-        display: none; position: absolute; top: 64px; left: 0; right: 0;
+        display: none; position: absolute; top: calc(64px + env(safe-area-inset-top)); left: 0; right: 0;
         background: rgba(15,28,46,0.99); flex-direction: column;
         padding: 8px 16px 20px; gap: 0;
         border-bottom: 2px solid var(--gold);
@@ -1127,7 +1127,6 @@
       <span>Thiruvarur District · Tamil Nadu</span>
     </div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#hero"><span data-i18n="nav-home">Home</span></a></li>
       <li><a href="#about"><span data-i18n="nav-about">About</span></a></li>
       <li><a href="#agriculture"><span data-i18n="nav-agriculture">Agriculture</span></a></li>
       <li><a href="#tourism"><span data-i18n="nav-tourism">Tourism</span></a></li>
@@ -1135,9 +1134,11 @@
       <li><a href="#news"><span data-i18n="nav-news">News</span></a></li>
       <li class="nav-donate"><a href="#donate"><span data-i18n="nav-donate">♥ Donate</span></a></li>
       <li><a href="#contact"><span data-i18n="nav-contact">Contact</span></a></li>
-      <li class="nav-lang"><button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇮🇳 தமிழ்</button></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇮🇳 தமிழ்</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    </div>
   </nav>
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
