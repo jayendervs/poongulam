@@ -71,11 +71,16 @@
     }
     .nav-links a:hover { color: var(--gold-light); }
     .nav-links .nav-donate > a {
-      background: var(--saffron); color: #fff !important;
-      padding: 6px 12px; border-radius: 3px;
-      transition: background 0.2s !important;
+      background: transparent; color: var(--gold-light) !important;
+      padding: 5px 12px; border-radius: 3px;
+      border: 1px solid rgba(201,168,76,0.6);
+      transition: background 0.2s, color 0.2s, border-color 0.2s !important;
     }
-    .nav-links .nav-donate > a:hover { background: var(--saffron-light) !important; }
+    .nav-links .nav-donate > a:hover {
+      background: rgba(201,168,76,0.15) !important;
+      border-color: var(--gold-light) !important;
+      color: var(--gold-light) !important;
+    }
     .nav-actions {
       display: flex; align-items: center; flex-shrink: 0;
     }
