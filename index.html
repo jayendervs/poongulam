@@ -47,7 +47,7 @@
     /* ─────────────────── NAV ─────────────────── */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 200;
-      background: rgba(10,15,30,0.98);
+      background: rgba(7,21,7,0.97);
       border-bottom: 2px solid var(--gold);
       display: flex;
       align-items: center;
@@ -95,19 +95,19 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201,168,76,0.28) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 80% at 15% 50%, rgba(26,45,82,0.7) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 85% 25%, rgba(15,28,58,0.9) 0%, transparent 60%),
-        linear-gradient(160deg, #0a0f1e 0%, #0f1c3a 40%, #1a2d52 100%);
+        radial-gradient(ellipse 120% 45% at 50% 108%, rgba(232,185,50,0.45) 0%, rgba(180,130,20,0.2) 45%, transparent 65%),
+        radial-gradient(ellipse 55% 65% at 8% 75%,  rgba(55,130,55,0.4) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 65% at 92% 35%, rgba(18,65,18,0.55) 0%, transparent 55%),
+        linear-gradient(175deg, #071507 0%, #0e2e0e 30%, #1a5018 62%, #266e22 100%);
     }
     .hero-field {
       position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
-      background: linear-gradient(to top, #0a0f1e 0%, transparent 100%);
+      background: linear-gradient(to top, #071507 0%, transparent 100%);
     }
     .hero-field::before {
       content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%230a0f1e' d='M0,80 Q60,40 120,70 Q180,100 240,60 Q300,20 360,55 Q420,90 480,50 Q540,10 600,45 Q660,80 720,55 Q780,30 840,60 Q900,90 960,65 Q1020,40 1080,70 Q1140,100 1200,75 Q1260,50 1320,65 Q1380,80 1440,70 L1440,120 L0,120 Z'/%3E%3C/svg%3E") no-repeat bottom center / cover;
+      position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140'%3E%3Cpath fill='%23071507' d='M0,90 Q40,55 90,80 Q140,105 200,65 Q260,25 330,60 Q400,95 460,55 Q520,15 590,50 Q660,85 720,58 Q780,30 845,62 Q910,94 970,68 Q1030,42 1100,72 Q1170,102 1230,78 Q1290,54 1360,70 Q1400,80 1440,75 L1440,140 L0,140 Z'/%3E%3Cpath fill='%230a1f0a' opacity='0.6' d='M0,110 Q50,90 110,100 Q170,110 230,95 Q290,80 350,92 Q410,104 480,88 Q550,72 620,85 Q690,98 760,85 Q830,72 900,82 Q970,92 1040,80 Q1110,68 1180,78 Q1250,88 1320,80 Q1380,74 1440,78 L1440,140 L0,140 Z'/%3E%3C/svg%3E") no-repeat bottom center / cover;
     }
     .hero-kolam {
       position: absolute; top: 20px; right: 40px; opacity: 0.12;
@@ -627,7 +627,7 @@
 
     /* ─────────────────── FOOTER ─────────────────── */
     footer {
-      background: #080d1a;
+      background: #060e06;
       border-top: 2px solid var(--gold);
       padding: 50px 40px; text-align: center;
     }
@@ -814,7 +814,7 @@
       .nav-toggle { display: block; }
       .nav-links {
         display: none; position: absolute; top: 60px; left: 0; right: 0;
-        background: rgba(15,28,46,0.99); flex-direction: column;
+        background: rgba(7,21,7,0.99); flex-direction: column;
         padding: 8px 16px 20px; gap: 0; justify-content: flex-start;
         border-bottom: 2px solid var(--gold);
       }
