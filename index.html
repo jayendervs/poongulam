@@ -175,6 +175,39 @@
     .btn-outline-gold:hover { background: var(--gold); color: var(--green-deep); transform: translateY(-2px); }
     .btn-green { background: var(--green-mid); color: #fff; }
     .btn-green:hover { background: var(--green-light); transform: translateY(-2px); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0;
+      margin-top: 44px;
+      border-top: 1px solid rgba(201,168,76,0.25);
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 4px;
+      overflow: hidden;
+      animation: fadeUp 1.2s 1.1s ease both;
+    }
+    .hero-stat {
+      flex: 1; text-align: center; padding: 16px 12px;
+      border-right: 1px solid rgba(201,168,76,0.2);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900; color: var(--gold-light); line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.62rem; letter-spacing: 1.8px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); font-weight: 700; margin-top: 5px;
+    }
+    @media (max-width: 480px) {
+      .hero-stats { gap: 0; }
+      .hero-stat { padding: 12px 6px; }
+      .hero-stat-num { font-size: 1.2rem; }
+      .hero-stat-label { font-size: 0.55rem; letter-spacing: 1px; }
+    }
+
     .hero-scroll {
       position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: 8px;
@@ -1325,6 +1358,24 @@
       <div class="hero-ctas">
         <a href="#donate" class="btn btn-saffron" data-i18n="hero-cta1">♥ Support Village</a>
         <a href="#about" class="btn btn-outline-gold" data-i18n="hero-cta2">Explore</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">Temples</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">~360</div>
+          <div class="hero-stat-label">Residents</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Agricultural</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">1000+</div>
+          <div class="hero-stat-label">Years Heritage</div>
+        </div>
       </div>
     </div>
     <div class="hero-scroll" data-i18n="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Scroll</div>
