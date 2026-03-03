@@ -53,7 +53,7 @@
       border-bottom: 2px solid var(--gold);
       display: flex;
       align-items: center;
-      padding: 0 130px 0 20px; height: 64px;
+      padding: 0 20px; height: 64px;
     }
     .nav-logo {
       font-family: 'Playfair Display', Georgia, serif;
@@ -1045,7 +1045,7 @@
       .nearby-card.featured { flex-direction: column; grid-column: span 1; }
       .nearby-thumb { min-width: unset; min-height: 110px; }
       .temples-grid { grid-template-columns: 1fr; }
-      .temples-grid .temple-card[style*="span 3"] { grid-column: span 1; }
+      .temples-grid .temple-card[style*="span 3"] { grid-column: span 1 !important; }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .impact-grid { grid-template-columns: 1fr; }
       .community-highlights { grid-template-columns: 1fr; }
@@ -1085,24 +1085,133 @@
       .community-sidebar { padding: 24px 20px; }
     }
 
+    /* ─────────────────── ROTATE OVERLAY ─────────────────── */
+    #rotate-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 99999;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(201,168,76,0.10) 0%, transparent 70%),
+        linear-gradient(160deg, #0b1620 0%, #0f1c2e 50%, #0a1520 100%);
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px 32px;
+      opacity: 0; transition: opacity 0.45s ease;
+    }
+    #rotate-overlay.visible { display: flex; }
+    #rotate-overlay.fade-in { opacity: 1; }
+
+    /* corner ornaments */
+    #rotate-overlay::before,
+    #rotate-overlay::after {
+      content: '';
+      position: absolute;
+      width: 48px; height: 48px;
+      border-color: rgba(201,168,76,0.25); border-style: solid;
+    }
+    #rotate-overlay::before { top: 24px; left: 24px; border-width: 1px 0 0 1px; }
+    #rotate-overlay::after  { bottom: 24px; right: 24px; border-width: 0 1px 1px 0; }
+
+    /* label chip */
+    #rotate-overlay .ro-label {
+      font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 28px;
+      background: rgba(201,168,76,0.06);
+    }
+
+    /* SVG icon wrapper */
+    #rotate-overlay .ro-icon-wrap {
+      position: relative; width: 90px; height: 90px;
+      margin-bottom: 28px;
+    }
+    #rotate-overlay .ro-icon-wrap svg {
+      width: 90px; height: 90px;
+      filter: drop-shadow(0 0 18px rgba(201,168,76,0.35));
+    }
+    /* phone body rotates */
+    #rotate-overlay .ro-phone {
+      transform-origin: 45px 45px;
+      animation: ro-tilt 2s cubic-bezier(0.4,0,0.2,1) infinite alternate;
+    }
+    @keyframes ro-tilt {
+      0%   { transform: rotate(0deg);   }
+      60%  { transform: rotate(88deg);  }
+      100% { transform: rotate(88deg);  }
+    }
+    /* arc arrow fades in sync */
+    #rotate-overlay .ro-arc {
+      animation: ro-arc-fade 2s cubic-bezier(0.4,0,0.2,1) infinite alternate;
+    }
+    @keyframes ro-arc-fade {
+      0%   { opacity: 1; }
+      60%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    #rotate-overlay h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-light); font-size: 1.6rem;
+      font-weight: 700; margin-bottom: 0;
+      letter-spacing: 0.5px;
+    }
+    #rotate-overlay .ro-gold-line {
+      width: 48px; height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 12px auto 14px;
+    }
+    #rotate-overlay p {
+      color: rgba(255,255,255,0.55); font-size: 0.88rem;
+      margin-bottom: 32px; line-height: 1.8;
+      max-width: 260px;
+    }
+    #rotate-overlay p strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+    /* ornament row */
+    #rotate-overlay .ro-ornament {
+      font-size: 0.55rem; letter-spacing: 6px;
+      color: rgba(201,168,76,0.4);
+      margin-bottom: 24px;
+    }
+
+    #rotate-dismiss {
+      background: var(--gold);
+      color: var(--green-deep);
+      font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 13px 28px; border: none; border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+    }
+    #rotate-dismiss:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,0.4);
+    }
+    #rotate-dismiss:active { transform: translateY(0); }
+
+    @media (orientation: landscape), (min-width: 769px) {
+      #rotate-overlay { display: none !important; }
+    }
+
     /* ─────────────────── LANG TOGGLE ─────────────────── */
     .lang-toggle {
-      position: fixed !important;
-      top: 10px !important;
-      right: 28px !important;
-      z-index: 99999 !important;
-      background: #ff6b00 !important;
-      color: #fff !important;
-      border: 2px solid #fff !important;
-      font-size: 0.82rem !important; font-weight: 800 !important;
-      padding: 8px 16px !important; border-radius: 20px !important;
+      background: #ff6b00;
+      color: #fff;
+      border: 2px solid #fff;
+      font-size: 0.78rem; font-weight: 800;
+      padding: 6px 13px; border-radius: 20px;
       cursor: pointer; font-family: 'Lato', sans-serif;
-      display: flex !important; align-items: center !important; gap: 6px !important;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
-      white-space: nowrap !important;
+      display: flex; align-items: center; gap: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      white-space: nowrap;
       transition: background 0.2s;
+      margin-right: 10px;
+      flex-shrink: 0;
     }
-    .lang-toggle:hover { background: #cc5500 !important; }
+    .lang-toggle:hover { background: #cc5500; }
 
     /* ─────────────────── WHATSAPP FLOAT ─────────────────── */
     .wa-float {
@@ -1312,6 +1421,12 @@
 
     /* ═══ FLOATING BUTTONS — mobile overrides MUST live after all main definitions ═══ */
     @media (max-width: 768px) {
+      /* Lang toggle — shrink on mobile */
+      .lang-toggle { font-size: 0.73rem; padding: 5px 10px; margin-right: 8px; }
+      /* Location info — reduce horizontal padding on small screens */
+      .location-info { padding: 24px 16px !important; }
+      /* Temple featured card — collapse the 3-col grid to 1 col */
+      .temple-era-grid { grid-template-columns: 1fr !important; }
       /* WhatsApp button */
       .wa-float { bottom: 20px !important; right: 16px !important; width: 50px !important; height: 50px !important; font-size: 1.45rem !important; }
       .wa-tooltip { display: none !important; }
@@ -1324,12 +1439,48 @@
       .chat-input, #customAmt, input[type="number"] { font-size: 16px !important; }
     }
     @media (max-width: 480px) {
+      /* Hide lang-toggle label on small phones — flag emoji only */
+      .lang-text { display: none; }
+      .lang-toggle { padding: 5px 8px; margin-right: 6px; }
       .chat-btn { width: 50px !important; height: 50px !important; font-size: 1.3rem !important; }
       .wa-float { width: 48px !important; height: 48px !important; font-size: 1.35rem !important; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ═══════════════════ ROTATE OVERLAY ═══════════════════ -->
+  <div id="rotate-overlay">
+    <div class="ro-label">Best Experience</div>
+
+    <div class="ro-icon-wrap">
+      <svg viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- rotation arc arrow -->
+        <g class="ro-arc">
+          <path d="M62 18 A32 32 0 0 1 76 45" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <polyline points="73,38 76,45 69,47" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <!-- phone body -->
+        <g class="ro-phone">
+          <rect x="28" y="14" width="34" height="58" rx="5" stroke="#c9a84c" stroke-width="2" fill="rgba(201,168,76,0.07)"/>
+          <line x1="28" y1="24" x2="62" y2="24" stroke="#c9a84c" stroke-width="1.2" opacity="0.4"/>
+          <line x1="28" y1="65" x2="62" y2="65" stroke="#c9a84c" stroke-width="1.2" opacity="0.4"/>
+          <circle cx="45" cy="69.5" r="2" fill="#c9a84c" opacity="0.5"/>
+          <!-- screen glow -->
+          <rect x="32" y="28" width="26" height="34" rx="2" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
+        </g>
+      </svg>
+    </div>
+
+    <h2>Rotate Your Device</h2>
+    <div class="ro-gold-line"></div>
+    <p>
+      <strong>Poongulam</strong> is crafted for landscape viewing.<br>
+      Turn your phone sideways for the full experience.
+    </p>
+    <div class="ro-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+    <button id="rotate-dismiss">Continue in Portrait &rarr;</button>
+  </div>
 
   <!-- ═══════════════════ NAV ═══════════════════ -->
   <nav>
@@ -1346,10 +1497,10 @@
       <li><a href="#contact"><span data-i18n="nav-contact">Contact</span></a></li>
     </ul>
     <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇮🇳 <span class="lang-text">தமிழ்</span></button>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
     </div>
   </nav>
-  <button class="lang-toggle" id="langToggle" onclick="toggleLanguage()">🇮🇳 தமிழ்</button>
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
   <section class="hero" id="hero">
@@ -1480,7 +1631,7 @@
           <p style="font-size:0.92rem; color:rgba(255,255,255,0.75); line-height:1.75; margin-bottom:16px;">
             This is not a new temple — it is an <strong style="color:var(--gold-light);">ancient sacred site being reclaimed</strong>. While the physical structure was lost to time for nearly a century, the spiritual memory of this temple lived on in the elders of Poongulam and in the soil itself.
           </p>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:16px;">
+          <div class="temple-era-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:16px;">
             <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,168,76,0.2); border-radius:6px; padding:14px;">
               <div style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px;">Chola Era · 10th–12th C</div>
               <p style="font-size:0.83rem; color:rgba(255,255,255,0.65); line-height:1.6; margin:0;">Origins rooted in the Later Chola period. Poongulam was part of a flourishing network of sacred settlements (Agraharams) in the Cauvery Delta. The style of the recovered Vigrahams confirms it was a significant Vaishnava shrine.</p>
@@ -1839,7 +1990,7 @@
             <span>Subscribe to get notified when temple festivals, harvest days &amp; village programs go live</span>
           </div>
         </div>
-        <a class="yt-sub-btn" href="https://www.youtube.com/@poongulam" target="_blank" rel="noopener">Subscribe to Channel</a>
+        <a class="yt-sub-btn" href="https://www.youtube.com/@PoongulamVillage" target="_blank" rel="noopener">Subscribe to Channel</a>
       </div>
 
       <!-- ── EVENTS GRID ── -->
@@ -2293,6 +2444,13 @@
               Poongulam Gram Panchayat, Nannilam Block,<br>Thiruvarur District
             </div>
           </div>
+          <div class="info-row">
+            <div class="info-icon">📧</div>
+            <div class="info-text">
+              <strong>Email</strong>
+              <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a>
+            </div>
+          </div>
         </div>
         <div>
           <div class="map-frame">
@@ -2316,7 +2474,7 @@
       <!-- Contact Form -->
       <div class="contact-form-wrap">
         <h3>✉ Write to Us</h3>
-        <p>Have a question, want to visit, or planning to support Poongulam? We'd love to hear from you.</p>
+        <p>Have a question, want to visit, or planning to support Poongulam? We'd love to hear from you. You can also reach us directly at <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a>.</p>
         <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
           <div class="cf-field">
             <label class="cf-label" for="cf-name">Your Name</label>
@@ -2502,7 +2660,7 @@
   </div>
 
   <!-- ═══════════════════ WHATSAPP BUTTON ═══════════════════ -->
-  <a class="wa-float" href="https://wa.me/919965822658?text=Hello%2C%20I%20am%20reaching%20out%20from%20the%20Poongulam%20Village%20Portal." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <a class="wa-float" href="https://wa.me/918523986239?text=Hello%2C%20I%20am%20reaching%20out%20from%20the%20Poongulam%20Village%20Portal." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     <span class="wa-tooltip">Chat with us on WhatsApp</span>
     💬
   </a>
@@ -2530,7 +2688,7 @@
     // To end stream: set LIVE_YT_ID to '' (empty string)
     const LIVE_YT_ID    = '';   // ← paste YouTube video ID here when streaming
     const LIVE_YT_TITLE = 'Poongulam Village — Live Event';
-    const LIVE_YT_CHANNEL = 'https://www.youtube.com/@poongulam';
+    const LIVE_YT_CHANNEL = 'https://www.youtube.com/@PoongulamVillage';
 
     function initLiveStream() {
       const banner  = document.getElementById('liveBanner');
@@ -2563,11 +2721,19 @@
 
     // ── REMIND ME ────────────────────────────────────
     function remindMe(btn, eventName) {
+      const subject = encodeURIComponent('Reminder Request: ' + eventName);
+      const body    = encodeURIComponent(
+        'Hello,\n\nI would like to be reminded about the upcoming event:\n\n'
+        + '📅 ' + eventName + '\n\n'
+        + 'Please notify me when more details are available.\n\nThank you.'
+      );
+      window.location.href = 'mailto:poongulamvillage@gmail.com'
+        + '?subject=' + subject + '&body=' + body;
       btn.textContent = '✓ Noted!';
       btn.style.background = 'var(--green-mid)';
       btn.style.color = '#fff';
       btn.disabled = true;
-      showToast('🔔 We\'ll remind you about: ' + eventName, false);
+      showToast('🔔 Opening email for: ' + eventName, false);
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -2773,7 +2939,7 @@
         if (t[key] !== undefined) el.innerHTML = t[key];
       });
       const btn = document.getElementById('langToggle');
-      btn.innerHTML = currentLang === 'en' ? '🇮🇳 தமிழ்' : '🇬🇧 English';
+      btn.innerHTML = currentLang === 'en' ? '🇮🇳 <span class="lang-text">தமிழ்</span>' : '🇬🇧 <span class="lang-text">English</span>';
       document.documentElement.lang = currentLang;
     }
 
@@ -2792,7 +2958,7 @@
 
       const body = 'Name: ' + name + '\nContact: ' + contact +
                    '\nSubject: ' + subject + '\n\nMessage:\n' + message;
-      window.location.href = 'mailto:poongulam@gmail.com'
+      window.location.href = 'mailto:poongulamvillage@gmail.com'
         + '?subject=' + encodeURIComponent('[Poongulam Portal] ' + subject)
         + '&body='    + encodeURIComponent(body);
 
@@ -2816,11 +2982,11 @@
       },
       {
         keys: ['contact','sivaraman','who to call','reach out','information','enquiry','enquire','organiser','coordinator','main person','village head','panchayat','phone number','whatsapp','email','mail'],
-        reply: '📞 Main Contact — Sivaraman\n\nFor all enquiries about Poongulam — visits, donations, tourism arrangements, temple events, or agriculture:\n\n👤 Name: Sivaraman\n📱 WhatsApp: +91 99658 22658\n📧 Email: poongulam@gmail.com\n\nYou can also:\n• Tap the 💬 WhatsApp button (bottom-right) to chat directly\n• Fill the Contact Form in the Contact section\n\nSivaraman is available to help with all village-related enquiries.'
+        reply: '📞 Main Contact — Sivaraman\n\nFor all enquiries about Poongulam — visits, donations, tourism arrangements, temple events, or agriculture:\n\n👤 Name: Sivaraman\n📱 WhatsApp: +91 85239 86239\n📧 Email: poongulamvillage@gmail.com\n\nYou can also:\n• Tap the 💬 WhatsApp button (bottom-right) to chat directly\n• Fill the Contact Form in the Contact section\n\nSivaraman is available to help with all village-related enquiries.'
       },
       {
         keys: ['donat','fund','support','contribute','help','money','rupee','pay','payment','razorpay','upi','sponsor'],
-        reply: '♥ How to Support Poongulam:\n\nYour donation directly funds real village projects:\n\n🏞️ Pond Desilting — 3 ponds urgently need restoration to recharge groundwater\n🏫 School Supplies — Books, bags & stationery for children\n💧 Clean Water — Bore wells & water access points\n🛕 Temple Restoration — Preserving 1000-year-old structures\n🌾 Farmer Support — Seeds, tools & soil-health programmes\n📚 Village Library — Tamil literature for the youth\n\n💳 Donate via Razorpay (UPI · Cards · Net Banking) — scroll to the "Support Poongulam" section.\n\nFor direct / large donations contact Sivaraman: +91 99658 22658'
+        reply: '♥ How to Support Poongulam:\n\nYour donation directly funds real village projects:\n\n🏞️ Pond Desilting — 3 ponds urgently need restoration to recharge groundwater\n🏫 School Supplies — Books, bags & stationery for children\n💧 Clean Water — Bore wells & water access points\n🛕 Temple Restoration — Preserving 1000-year-old structures\n🌾 Farmer Support — Seeds, tools & soil-health programmes\n📚 Village Library — Tamil literature for the youth\n\n💳 Donate via Razorpay (UPI · Cards · Net Banking) — scroll to the "Support Poongulam" section.\n\nFor direct / large donations contact Sivaraman: +91 85239 86239'
       },
       {
         keys: ['festival','pongal','navarathri','shivaratri','karthigai','aadi perukku','deepam','celebration','event','cultural program','thai pongal'],
@@ -2832,7 +2998,7 @@
       },
       {
         keys: ['tourism','visit','tour','stay','experience','activity','things to do','kolam','photography','walk','immersion'],
-        reply: '🌿 Tourism Experiences in Poongulam:\n\n🛕 Temple Heritage Trail — 2-3 hrs; walk all 3 temples with a local guide (stone carvings & inscriptions)\n\n🌾 Paddy Field Walk — 1-2 hrs; best Oct–Feb during Samba harvest season\n\n🎭 Village Cultural Immersion — Half-day; traditional cooking + kolam art + village rhythms\n\n🚣 Canal & Waterway Walk — 1.5 hrs; explore the ancient Grand Anicut canal\n\n🎨 Kolam Art Workshop — 1 hr; learn sacred rice-flour rangoli from a village artisan\n\n📸 Village Photography Tour — 2 hrs; golden-hour temple gopurams & rural life\n\nFor bookings & arrangements:\n📱 Contact Sivaraman: +91 99658 22658'
+        reply: '🌿 Tourism Experiences in Poongulam:\n\n🛕 Temple Heritage Trail — 2-3 hrs; walk all 3 temples with a local guide (stone carvings & inscriptions)\n\n🌾 Paddy Field Walk — 1-2 hrs; best Oct–Feb during Samba harvest season\n\n🎭 Village Cultural Immersion — Half-day; traditional cooking + kolam art + village rhythms\n\n🚣 Canal & Waterway Walk — 1.5 hrs; explore the ancient Grand Anicut canal\n\n🎨 Kolam Art Workshop — 1 hr; learn sacred rice-flour rangoli from a village artisan\n\n📸 Village Photography Tour — 2 hrs; golden-hour temple gopurams & rural life\n\nFor bookings & arrangements:\n📱 Contact Sivaraman: +91 85239 86239'
       },
       {
         keys: ['nearby','srivanjiyam','koothanur','saraswathi','thiruvarur','kumbakonam','nannilam','around','close by','close to','day trip','excursion'],
@@ -2840,7 +3006,7 @@
       },
       {
         keys: ['school','education','children','kids','study','college','anganwadi','library','student','learn','book'],
-        reply: '📚 Education in Poongulam:\n\n🏫 Government Primary School — Classes 1–5; free education for village children\n📚 Nannilam Middle School — Classes 6–8; 4 km away\n🎓 Higher Secondary — Classes 9–12; Nannilam & Thiruvarur\n📖 Village Community Library — Maintained by village panchayat\n👶 Anganwadi Centre — Early childhood care, nutrition & pre-school\n💻 Digital Literacy — Youth accessing online education platforms\n\nYou can support school supplies through our donation page!\nContact Sivaraman (+91 99658 22658) to get directly involved.'
+        reply: '📚 Education in Poongulam:\n\n🏫 Government Primary School — Classes 1–5; free education for village children\n📚 Nannilam Middle School — Classes 6–8; 4 km away\n🎓 Higher Secondary — Classes 9–12; Nannilam & Thiruvarur\n📖 Village Community Library — Maintained by village panchayat\n👶 Anganwadi Centre — Early childhood care, nutrition & pre-school\n💻 Digital Literacy — Youth accessing online education platforms\n\nYou can support school supplies through our donation page!\nContact Sivaraman (+91 85239 86239) to get directly involved.'
       },
       {
         keys: ['history','heritage','ancient','chola','old','origin','meaning','name','lake','flower','poongulam mean','about village','tell me about'],
@@ -2848,11 +3014,11 @@
       },
       {
         keys: ['pond','water','desilt','thooral','groundwater','well','bore'],
-        reply: '🏞️ Pond Restoration — தூர் வாருதல்:\n\nPoongulam has 3 ponds that are silted up and urgently need desilting.\n\nWhy it matters:\n• Recharges the groundwater table\n• Restores bore wells & drinking water\n• Improves soil moisture for farming\n• Sustains agriculture through dry seasons\n\nThis is our #1 priority initiative. Every rupee donated goes directly to on-ground work.\n\n♥ Donate now — scroll to "Support Poongulam" section, or contact:\nSivaraman: +91 99658 22658'
+        reply: '🏞️ Pond Restoration — தூர் வாருதல்:\n\nPoongulam has 3 ponds that are silted up and urgently need desilting.\n\nWhy it matters:\n• Recharges the groundwater table\n• Restores bore wells & drinking water\n• Improves soil moisture for farming\n• Sustains agriculture through dry seasons\n\nThis is our #1 priority initiative. Every rupee donated goes directly to on-ground work.\n\n♥ Donate now — scroll to "Support Poongulam" section, or contact:\nSivaraman: +91 85239 86239'
       },
       {
         keys: ['population','how many people','residents','families','size','big','small','village size'],
-        reply: '🌿 Poongulam at a Glance:\n\n👥 Population: ~360 residents\n🛕 Temples: 4 (3 standing + 1 under construction)\n🌾 Land: 100% agricultural\n🏛️ Heritage: 1,000+ years\n📍 Location: Nannilam Taluk, Thiruvarur District, Tamil Nadu – 610 107\n\nA close-knit community where every household knows its neighbour. Village life revolves around agriculture, temple festivals, and traditional crafts.\n\nFor more: contact Sivaraman at +91 99658 22658'
+        reply: '🌿 Poongulam at a Glance:\n\n👥 Population: ~360 residents\n🛕 Temples: 4 (3 standing + 1 under construction)\n🌾 Land: 100% agricultural\n🏛️ Heritage: 1,000+ years\n📍 Location: Nannilam Taluk, Thiruvarur District, Tamil Nadu – 610 107\n\nA close-knit community where every household knows its neighbour. Village life revolves around agriculture, temple festivals, and traditional crafts.\n\nFor more: contact Sivaraman at +91 85239 86239'
       },
     ];
 
@@ -2925,6 +3091,39 @@
       if (!chatOpen) toggleChat();
       setTimeout(() => { addUserMsg(text); setTimeout(() => addBotMsg(getBotReply(text)), 100); }, chatInitialized ? 0 : 700);
     }
+
+    /* ── Rotate overlay ── */
+    (function() {
+      var overlay = document.getElementById('rotate-overlay');
+      var dismiss = document.getElementById('rotate-dismiss');
+      var dismissed = false;
+
+      function check() {
+        if (dismissed) return;
+        var isMobile = window.innerWidth < 769 || window.innerHeight < 769;
+        var isPortrait = window.innerHeight > window.innerWidth;
+        if (isMobile && isPortrait) {
+          overlay.classList.add('visible');
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() { overlay.classList.add('fade-in'); });
+          });
+        } else {
+          overlay.classList.remove('visible');
+          overlay.classList.remove('fade-in');
+        }
+      }
+
+      dismiss.addEventListener('click', function() {
+        dismissed = true;
+        overlay.classList.remove('visible');
+      });
+
+      window.addEventListener('resize', check);
+      window.addEventListener('orientationchange', function() {
+        setTimeout(check, 300);
+      });
+      check();
+    })();
   </script>
 
 </body>
