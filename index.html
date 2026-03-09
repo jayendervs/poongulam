@@ -144,8 +144,18 @@
 
     /* ── LANGUAGE: data-lang pair visibility ── */
     [data-lang="ta"] { display: none; }
+    /* Higher specificity overrides for flex elements (.highlight-chip, .festival-list li) */
+    .highlight-chip[data-lang="ta"],
+    .festival-list li[data-lang="ta"] { display: none; }
+
     html[lang="ta"] [data-lang="ta"] { display: block; }
+    html[lang="ta"] span[data-lang="ta"] { display: inline; }
+    html[lang="ta"] .highlight-chip[data-lang="ta"] { display: flex; }
+    html[lang="ta"] .festival-list li[data-lang="ta"] { display: flex; }
+
     html[lang="ta"] [data-lang="en"] { display: none; }
+    html[lang="ta"] .highlight-chip[data-lang="en"] { display: none; }
+    html[lang="ta"] .festival-list li[data-lang="en"] { display: none; }
     .hero-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3.5rem, 10vw, 8rem);
