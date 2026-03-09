@@ -135,6 +135,17 @@
       color: var(--gold-light); letter-spacing: 6px; margin-bottom: 12px;
       animation: fadeUp 1.2s 0.2s ease both;
     }
+    /* ── LANGUAGE: hide Tamil-only elements by default (English mode) ── */
+    .hero-tamil, .tamil-name, .nearby-tamil, .footer-sub { display: none; }
+    html[lang="ta"] .hero-tamil { display: block; }
+    html[lang="ta"] .tamil-name { display: block; }
+    html[lang="ta"] .nearby-tamil { display: block; }
+    html[lang="ta"] .footer-sub { display: block; }
+
+    /* ── LANGUAGE: data-lang pair visibility ── */
+    [data-lang="ta"] { display: none; }
+    html[lang="ta"] [data-lang="ta"] { display: block; }
+    html[lang="ta"] [data-lang="en"] { display: none; }
     .hero-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(3.5rem, 10vw, 8rem);
@@ -1560,11 +1571,11 @@
     <div class="nav-logo"></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about"><span data-i18n="nav-about">About</span></a></li>
-      <li><a href="#temples"><span>Temples</span></a></li>
+      <li><a href="#temples"><span data-i18n="nav-temples">Temples</span></a></li>
       <li><a href="#agriculture"><span data-i18n="nav-agriculture">Agriculture</span></a></li>
       <li><a href="#tourism"><span data-i18n="nav-tourism">Tourism</span></a></li>
-      <li><a href="#shop"><span>Shop</span></a></li>
-      <li><a href="#programs"><span>Programs</span></a></li>
+      <li><a href="#shop"><span data-i18n="nav-shop">Shop</span></a></li>
+      <li><a href="#programs"><span data-i18n="nav-programs">Programs</span></a></li>
       <li><a href="#gallery"><span data-i18n="nav-gallery">Gallery</span></a></li>
       <li><a href="#news"><span data-i18n="nav-news">News</span></a></li>
       <li class="nav-donate"><a href="#donate"><span data-i18n="nav-donate">♥ Donate</span></a></li>
@@ -1614,13 +1625,20 @@
   <!-- ═══════════════════ LOCATION STRIP ═══════════════════ -->
   <div class="location-strip">
     <div class="location-info">
-      <div class="location-tag">Thiruvarur District · Tamil Nadu</div>
+      <div class="location-tag" data-lang="en">Thiruvarur District · Tamil Nadu</div>
+      <div class="location-tag" data-lang="ta">திருவாரூர் மாவட்டம் · தமிழ்நாடு</div>
       <div class="location-name">Poong<span>ulam</span><br>Village</div>
-      <div class="location-details">
+      <div class="location-details" data-lang="en">
         <span><strong>Taluk:</strong> Nannilam</span>
         <span><strong>Pin:</strong> 610 107</span>
         <span><strong>Nearest Town:</strong> Nannilam · 4 km</span>
         <span><strong>Thiruvarur:</strong> 17 km &nbsp;|&nbsp; Kumbakonam: 30 km</span>
+      </div>
+      <div class="location-details" data-lang="ta">
+        <span><strong>வட்டம்:</strong> நன்னிலம்</span>
+        <span><strong>அஞ்சல்:</strong> 610 107</span>
+        <span><strong>அருகிலுள்ள நகரம்:</strong> நன்னிலம் · 4 கி.மீ.</span>
+        <span><strong>திருவாரூர்:</strong> 17 கி.மீ. &nbsp;|&nbsp; கும்பகோணம்: 30 கி.மீ.</span>
       </div>
     </div>
     <div class="location-map-mini">
@@ -1649,14 +1667,21 @@
           </div>
         </div>
         <div class="about-text">
-          <p>
+          <p data-lang="en">
             Poongulam — meaning "Lake of Flowers" in Tamil — is a serene village located near Nannilam in the Thiruvarur district of Tamil Nadu. Sitting in the lush Cauvery delta, it is surrounded by some of the region's most sacred sites: the ancient Vanchinadha Swamy temple of Srivanjiyam just 2 km away, the celebrated Koothanur Maha Saraswathi temple 10 km away, and the great temple city of Kumbakonam 30 km away.
           </p>
+          <p data-lang="ta">
+            பூங்குளம் — தமிழில் "மலர்கள் நிறைந்த குளம்" என்று பொருள்படும் — நன்னிலம் அருகே திருவாரூர் மாவட்டத்தில் அமைந்த ஒரு அமைதியான கிராமம். காவிரி டெல்டாவின் வளமான நிலத்தில் அமைந்த இக்கிராமத்தைச் சுற்றி பல புனித தலங்கள் உள்ளன: 2 கி.மீ. தொலைவில் ஸ்ரீவஞ்சியம் வஞ்சிநாதசுவாமி கோவில், 10 கி.மீ. தொலைவில் கூத்தனூர் மகா சரஸ்வதி கோவில், மற்றும் 30 கி.மீ. தொலைவில் கும்பகோணம் கோவில் நகரம்.
+          </p>
           <div class="about-quote">
-            <p>"Where the paddy waves in the breeze and temple bells echo across the fields — that is Poongulam."</p>
+            <p data-lang="en">"Where the paddy waves in the breeze and temple bells echo across the fields — that is Poongulam."</p>
+            <p data-lang="ta">"காற்றில் அலையும் நெற்பயிர்களும் வயல்களில் எதிரொலிக்கும் கோவில் மணிகளும் — அதுவே பூங்குளம்."</p>
           </div>
-          <p>
+          <p data-lang="en">
             The village has a deep-rooted connection to the Chola era, with its temples believed to date back over a thousand years. Its pond — the very namesake of the village — has long served as a lifeline for irrigation and as a spiritual gathering point during festivals. The cultural fabric of Poongulam is woven with Carnatic music, classical dance, and the annual chariot festivals that bring the community together.
+          </p>
+          <p data-lang="ta">
+            கிராமம் சோழர் காலத்துடன் ஆழமான தொடர்பு கொண்டுள்ளது — இங்கு உள்ள கோவில்கள் ஆயிரம் ஆண்டுகளுக்கும் மேலாக பழமையானவை என்று நம்பப்படுகிறது. கிராமத்தின் பெயர்க்காரணமான குளம் நீண்ட காலமாக நீர்ப்பாசனத்திற்கும் திருவிழாக்களின் போது ஆன்மீகக் கூட்டத்திடமாகவும் விளங்கி வருகிறது. பூங்குளத்தின் கலாச்சார நெய்வு கர்நாடக இசை, செம்மொழி நடனம் மற்றும் ஆண்டுதோறும் நடைபெறும் தேர் திருவிழாக்களால் பின்னப்பட்டுள்ளது.
           </p>
         </div>
       </div>
@@ -1669,42 +1694,53 @@
       <div class="section-label" data-i18n="label-spirituality">Spirituality</div>
       <h2 class="section-title light" data-i18n="title-temples">Temples &amp; Culture</h2>
       <div class="gold-line"></div>
-      <p class="temples-intro">
+      <p class="temples-intro" data-lang="en">
         Poongulam is home to three standing temples — Mariamman, Agastheeswarar, and Ayyanar — that have been the spiritual backbone of village life for generations. The ancient Sri Lakshmi Narayana Perumal Temple, lost for nearly a century, is now being restored to its rightful place as the fourth sacred site in the village.
+      </p>
+      <p class="temples-intro" data-lang="ta">
+        பூங்குளத்தில் மூன்று கோவில்கள் உள்ளன — மாரியம்மன், அகஸ்தீஸ்வரர் மற்றும் அய்யனார் — இவை பல தலைமுறைகளாக கிராம வாழ்வின் ஆன்மீக முதுகெலும்பாக விளங்கி வருகின்றன. கிட்டத்தட்ட ஒரு நூற்றாண்டு காலம் மறைந்திருந்த பண்டைய ஸ்ரீ லக்ஷ்மி நாராயண பெருமாள் கோவில் இப்போது நான்காவது புனித தலமாக மீட்டெடுக்கப்படுகிறது.
       </p>
       <div class="temples-grid">
         <div class="temple-card" data-num="01">
           <div class="temple-icon">🛕</div>
-          <h3>Agastheeswarar Temple</h3>
+          <h3 data-lang="en">Agastheeswarar Temple</h3>
+          <h3 data-lang="ta">அகஸ்தீஸ்வரர் கோவில்</h3>
           <div class="tamil-name">அகஸ்தீஸ்வரர் கோவில்</div>
-          <p>Dedicated to Lord Shiva under the name Agastheeswarar. The Cauvery delta region has a rich Shiva temple tradition, and this temple is a spiritual anchor for the village. Maha Shivaratri is observed here with a grand overnight puja attended by all.</p>
+          <p data-lang="en">Dedicated to Lord Shiva under the name Agastheeswarar. The Cauvery delta region has a rich Shiva temple tradition, and this temple is a spiritual anchor for the village. Maha Shivaratri is observed here with a grand overnight puja attended by all.</p>
+          <p data-lang="ta">சிவபெருமானை அகஸ்தீஸ்வரர் என்ற திருநாமத்தில் வழிபடும் கோவில். காவிரி டெல்டா பகுதியில் சிவன் கோவில் மரபு வளமானது; இந்த கோவில் கிராமத்தின் ஆன்மீக ஆதாரமாக விளங்குகிறது. மகா சிவராத்திரி அன்று அனைவரும் கலந்துகொள்ளும் ஒரே இரவு பூஜையுடன் கோலாகலமாக கொண்டாடப்படுகிறது.</p>
         </div>
         <div class="temple-card" data-num="02">
           <div class="temple-icon">🛕</div>
-          <h3>Mariamman Temple</h3>
+          <h3 data-lang="en">Mariamman Temple</h3>
+          <h3 data-lang="ta">மாரியம்மன் கோவில்</h3>
           <div class="tamil-name">மாரியம்மன் கோவில்</div>
-          <p>The village goddess temple, where Mariamman is worshipped as the protector of Poongulam. The Navarathri celebrations here are a nine-night spectacle of devotion, music, and community bonding that unites every household.</p>
+          <p data-lang="en">The village goddess temple, where Mariamman is worshipped as the protector of Poongulam. The Navarathri celebrations here are a nine-night spectacle of devotion, music, and community bonding that unites every household.</p>
+          <p data-lang="ta">கிராம தேவதை கோவில், பூங்குளத்தின் காவலன் மாரியம்மன் வழிபடப்படும் இடம். இங்கு நவராத்திரி விழா ஒன்பது இரவுகளாக பக்தி, இசை மற்றும் சமுதாய ஒற்றுமையுடன் கொண்டாடப்படுகிறது — ஒவ்வொரு வீட்டையும் ஒன்றிணைக்கும் விழா.</p>
         </div>
         <div class="temple-card" data-num="03">
           <div class="temple-icon">🛕</div>
-          <h3>Ayyanar Temple</h3>
+          <h3 data-lang="en">Ayyanar Temple</h3>
+          <h3 data-lang="ta">அய்யனார் கோவில்</h3>
           <div class="tamil-name">அய்யனார் கோவில்</div>
-          <p>Ayyanar is the guardian deity of the village and its farmlands, worshipped at the boundary of the settlement. The terracotta horses and votive figures surrounding this temple are a striking example of Tamil folk art and tradition.</p>
+          <p data-lang="en">Ayyanar is the guardian deity of the village and its farmlands, worshipped at the boundary of the settlement. The terracotta horses and votive figures surrounding this temple are a striking example of Tamil folk art and tradition.</p>
+          <p data-lang="ta">அய்யனார் கிராமத்தின் மற்றும் வயல்களின் காவல் தெய்வம்; குடியிருப்பின் எல்லையில் வழிபடப்படுகிறார். கோவிலைச் சுற்றியுள்ள மண்ணால் செய்த குதிரைகளும் நேர்த்திச் சிலைகளும் தமிழ் நாட்டுப்புற கலை மற்றும் மரபின் சிறந்த எடுத்துக்காட்டுகளாக விளங்குகின்றன.</p>
         </div>
         <div class="temple-card" data-num="04" style="border-color: rgba(232,117,26,0.5); grid-column: span 3;">
           <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
             <div>
               <div class="temple-icon">🏛️</div>
               <h3>Sri Lakshmi Narayana Perumal Temple
-                <span style="font-size:0.75rem; color:var(--saffron); font-family:'Lato',sans-serif; font-weight:700; letter-spacing:1px; margin-left:8px;">· A Legacy Restored</span>
+                <span data-lang="en" style="font-size:0.75rem; color:var(--saffron); font-family:'Lato',sans-serif; font-weight:700; letter-spacing:1px; margin-left:8px;">· A Legacy Restored</span>
+                <span data-lang="ta" style="font-size:0.75rem; color:var(--saffron); font-family:'Lato',sans-serif; font-weight:700; letter-spacing:1px; margin-left:8px;">· மீட்டெடுக்கப்பட்ட பாரம்பரியம்</span>
               </h3>
               <div class="tamil-name">ஸ்ரீ லக்ஷ்மி நாராயண பெருமாள் கோவில், பூங்குளம்</div>
             </div>
             <span style="background:rgba(232,117,26,0.15); border:1px solid rgba(232,117,26,0.4); color:var(--saffron-light); font-size:0.68rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:20px; white-space:nowrap; align-self:flex-start;">🏗️ Under Construction</span>
           </div>
-          <p style="font-size:0.92rem; color:rgba(255,255,255,0.75); line-height:1.75; margin-bottom:16px;">
+          <p data-lang="en" style="font-size:0.92rem; color:rgba(255,255,255,0.75); line-height:1.75; margin-bottom:16px;">
             This is not a new temple — it is an <strong style="color:var(--gold-light);">ancient sacred site being reclaimed</strong>. While the physical structure was lost to time for nearly a century, the spiritual memory of this temple lived on in the elders of Poongulam and in the soil itself.
           </p>
+          <p data-lang="ta" style="font-size:0.92rem; color:rgba(255,255,255,0.75); line-height:1.75; margin-bottom:16px;">இது புதிய கோவில் அல்ல — இது ஒரு <strong style="color:var(--gold-light);">பண்டைய புனித தலம் மீட்டெடுக்கப்படுகிறது</strong>. உடல் கட்டமைப்பு கிட்டத்தட்ட ஒரு நூற்றாண்டு காலம் காலத்தால் அழிந்தாலும், இந்தக் கோவிலின் ஆன்மீக நினைவு பூங்குளத்தின் முதியோர்களிடமும் மண்ணிலும் வாழ்ந்து வந்தது.</p>
           <div class="temple-era-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:16px;">
             <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,168,76,0.2); border-radius:6px; padding:14px;">
               <div style="font-size:0.65rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:6px;">Chola Era · 10th–12th C</div>
@@ -1738,77 +1774,104 @@
       <div class="agri-grid">
         <div class="agri-card">
           <div class="agri-icon">🌾</div>
-          <h3>Paddy Cultivation</h3>
-          <p>The primary crop of Poongulam, harvested twice a year. The fertile Cauvery delta soil yields rich harvests of Samba, Kuruvai, and Thaladi varieties celebrated for their quality across the region.</p>
+          <h3 data-lang="en">Paddy Cultivation</h3>
+          <h3 data-lang="ta">நெல் சாகுபடி</h3>
+          <p data-lang="en">The primary crop of Poongulam, harvested twice a year. The fertile Cauvery delta soil yields rich harvests of Samba, Kuruvai, and Thaladi varieties celebrated for their quality across the region.</p>
+          <p data-lang="ta">பூங்குளத்தின் முதன்மை பயிர், ஆண்டுக்கு இரு முறை அறுவடை செய்யப்படுகிறது. காவிரி டெல்டாவின் வளமான மண்ணில் சம்பா, குறுவை மற்றும் தலடி ரகங்கள் பயிரிடப்படுகின்றன.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🥥</div>
-          <h3>Coconut Gardens</h3>
-          <p>Rows of swaying coconut palms line the village periphery, providing food and economic sustenance for many families. Fresh coconuts from Poongulam are sold in local markets and used widely in traditional cooking and daily life.</p>
+          <h3 data-lang="en">Coconut Gardens</h3>
+          <h3 data-lang="ta">தேங்காய் தோட்டங்கள்</h3>
+          <p data-lang="en">Rows of swaying coconut palms line the village periphery, providing food and economic sustenance for many families. Fresh coconuts from Poongulam are sold in local markets and used widely in traditional cooking and daily life.</p>
+          <p data-lang="ta">கிராமத்தின் சுற்றளவில் தேங்காய் மரங்கள் வரிசையாக நிற்கின்றன, பல குடும்பங்களுக்கு உணவு மற்றும் பொருளாதார ஆதாரமாக விளங்குகின்றன. பூங்குளத்தின் தேங்காய்கள் உள்ளூர் சந்தைகளில் விற்கப்படுகின்றன.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🍌</div>
-          <h3>Banana &amp; Plantain</h3>
-          <p>Grown in home gardens and small farms, bananas from Poongulam are used in temple offerings, local markets, and traditional cooking. The Nendran and Rasthali varieties are particularly prized.</p>
+          <h3 data-lang="en">Banana &amp; Plantain</h3>
+          <h3 data-lang="ta">வாழை மற்றும் பலா</h3>
+          <p data-lang="en">Grown in home gardens and small farms, bananas from Poongulam are used in temple offerings, local markets, and traditional cooking. The Nendran and Rasthali varieties are particularly prized.</p>
+          <p data-lang="ta">வீட்டுத் தோட்டங்களிலும் சிறிய பண்ணைகளிலும் வளர்க்கப்படும் வாழை கோவில் படைப்புக்கும் உள்ளூர் சந்தைக்கும் பயன்படுகிறது. நேந்திரன் மற்றும் ரஸ்தாலி ரகங்கள் குறிப்பாக மதிக்கப்படுகின்றன.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🥭</div>
-          <h3>Mango Orchards</h3>
-          <p>Mango trees are a prominent and beloved feature of Poongulam's landscape. Ancient mango trees shade homesteads and field boundaries, while younger orchards are cultivated for the market. Varieties like Alphonso, Neelam, and Imam Pasand ripen through the summer months, marking the season with fragrance and abundance — and finding their way to family kitchens and local mandis alike.</p>
+          <h3 data-lang="en">Mango Orchards</h3>
+          <h3 data-lang="ta">மாஞ்சோலைகள்</h3>
+          <p data-lang="en">Mango trees are a prominent and beloved feature of Poongulam's landscape. Ancient mango trees shade homesteads and field boundaries, while younger orchards are cultivated for the market. Varieties like Alphonso, Neelam, and Imam Pasand ripen through the summer months, marking the season with fragrance and abundance — and finding their way to family kitchens and local mandis alike.</p>
+          <p data-lang="ta">மா மரங்கள் பூங்குளத்தின் நிலப்பரப்பின் முக்கிய அம்சம். பண்டைய மா மரங்கள் வீட்டு முற்றங்களுக்கும் வயல் எல்லைகளுக்கும் நிழலிடுகின்றன. ஆல்பன்சோ, நீலம், இமாம் பசந்த் ரகங்கள் கோடையில் கனிந்து மணம் வீசுகின்றன.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">💧</div>
-          <h3>Canal Irrigation</h3>
-          <p>The village is blessed with access to the Grand Anicut canal system, an engineering marvel dating from the Chola period, ensuring year-round water supply to the farms of Poongulam.</p>
+          <h3 data-lang="en">Canal Irrigation</h3>
+          <h3 data-lang="ta">கால்வாய் நீர்ப்பாசனம்</h3>
+          <p data-lang="en">The village is blessed with access to the Grand Anicut canal system, an engineering marvel dating from the Chola period, ensuring year-round water supply to the farms of Poongulam.</p>
+          <p data-lang="ta">கிராமம் கிராண்ட் அணிக்கட் கால்வாய் அமைப்பை அணுகும் வரப்பிரசாதம் பெற்றுள்ளது — சோழர் காலத்திய பொறியியல் அதிசயம் — வருடம் முழுவதும் வயல்களுக்கு நீர் வழங்குகிறது.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🌸</div>
-          <h3>Flower Cultivation</h3>
-          <p>Lotus flowers bloom abundantly in and around Poongulam and are regularly sent to the nearby temples — including the Srivanjiyam Vanchinadha Swamy temple — as sacred offerings. Jasmine and marigold are also grown, closely tied to the village's daily spiritual life and local markets.</p>
+          <h3 data-lang="en">Flower Cultivation</h3>
+          <h3 data-lang="ta">மலர் சாகுபடி</h3>
+          <p data-lang="en">Lotus flowers bloom abundantly in and around Poongulam and are regularly sent to the nearby temples — including the Srivanjiyam Vanchinadha Swamy temple — as sacred offerings. Jasmine and marigold are also grown, closely tied to the village's daily spiritual life and local markets.</p>
+          <p data-lang="ta">பூங்குளத்தில் தாமரை மலர்கள் அதிகமாக பூக்கின்றன; அருகிலுள்ள ஸ்ரீவஞ்சியம் வஞ்சிநாத சுவாமி கோவிலுக்கு படைப்பாக அனுப்பப்படுகின்றன. மல்லிகை மற்றும் மேரிகோல்டும் பயிரிடப்படுகின்றன.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🌿</div>
-          <h3>Cotton</h3>
-          <p>Cotton is one of the principal crops of Poongulam, grown across sizeable stretches of farmland. The Cauvery delta's well-irrigated, black soil conditions are well-suited to cotton cultivation, making it a key source of income for farming families alongside paddy.</p>
+          <h3 data-lang="en">Cotton</h3>
+          <h3 data-lang="ta">பருத்தி</h3>
+          <p data-lang="en">Cotton is one of the principal crops of Poongulam, grown across sizeable stretches of farmland. The Cauvery delta's well-irrigated, black soil conditions are well-suited to cotton cultivation, making it a key source of income for farming families alongside paddy.</p>
+          <p data-lang="ta">பருத்தி பூங்குளத்தின் முக்கிய பயிர்களில் ஒன்று. காவிரி டெல்டாவின் நன்கு நீர்ப்பாசனம் செய்யப்பட்ட கருமண் நிலங்கள் பருத்தி சாகுபடிக்கு ஏற்றவை; நெல்லுடன் சேர்ந்து பண்ணை குடும்பங்களுக்கு முக்கிய வருமான ஆதாரமாக உள்ளது.</p>
         </div>
         <div class="agri-card">
           <div class="agri-icon">🐄</div>
-          <h3>Dairy &amp; Cattle</h3>
-          <p>Many households rear cattle, contributing to a thriving small-scale dairy tradition. Native cattle breeds are treasured for their hardiness and milk yield.</p>
+          <h3 data-lang="en">Dairy &amp; Cattle</h3>
+          <h3 data-lang="ta">பால் உற்பத்தி மற்றும் கால்நடை</h3>
+          <p data-lang="en">Many households rear cattle, contributing to a thriving small-scale dairy tradition. Native cattle breeds are treasured for their hardiness and milk yield.</p>
+          <p data-lang="ta">பல குடும்பங்கள் கால்நடைகளை வளர்க்கின்றன, சிறிய அளவிலான பால் உற்பத்தி மரபை வளர்க்கின்றன. நாட்டு கால்நடை ரகங்கள் தங்கள் வலிமைக்கும் பால் திறனுக்கும் மதிக்கப்படுகின்றன.</p>
         </div>
       </div>
 
       <!-- Agroforestry subsection -->
       <div class="agri-sub-heading">
-        <div class="section-label" style="margin-bottom:6px;">Agroforestry</div>
-        <h3 class="agri-sub-title">Timber &amp; Forest Trees</h3>
-        <p class="agri-sub-desc">Alongside food crops, Poongulam's farmlands are home to a rich mix of commercially and ecologically valuable trees — intercropped with paddy and cultivated on bunds and field margins.</p>
+        <div class="section-label agri-sub-label" data-i18n="label-agroforestry" style="margin-bottom:6px;">Agroforestry</div>
+        <h3 class="agri-sub-title" data-i18n="title-agri-trees">Timber &amp; Forest Trees</h3>
+        <p class="agri-sub-desc" data-lang="en">Alongside food crops, Poongulam's farmlands are home to a rich mix of commercially and ecologically valuable trees — intercropped with paddy and cultivated on bunds and field margins.</p>
+        <p class="agri-sub-desc" data-lang="ta">உணவுப் பயிர்களுடன் சேர்ந்து, பூங்குளத்தின் பண்ணை நிலங்களில் வணிக மற்றும் சுற்றுச்சூழல் மதிப்புள்ள பல மரங்கள் உள்ளன.</p>
       </div>
       <div class="agri-grid agri-tree-grid">
         <div class="agri-card agri-tree-card">
           <div class="agri-icon">🌲</div>
-          <h3>Eucalyptus</h3>
-          <p>Fast-growing and widely planted along field bunds and roadsides. Eucalyptus provides timber for construction, firewood for households, and pulpwood for paper mills in the region — a reliable cash crop with a short rotation cycle.</p>
+          <h3 data-lang="en">Eucalyptus</h3>
+          <h3 data-lang="ta">யூகலிப்டஸ்</h3>
+          <p data-lang="en">Fast-growing and widely planted along field bunds and roadsides. Eucalyptus provides timber for construction, firewood for households, and pulpwood for paper mills in the region — a reliable cash crop with a short rotation cycle.</p>
+          <p data-lang="ta">வேகமாக வளரும் இம் மரங்கள் வரப்புகளிலும் சாலை ஓரங்களிலும் பரவலாக நடப்படுகின்றன. கட்டுமானத்திற்கு கட்டை, எரிகட்டை மற்றும் காகித ஆலைகளுக்கு மரக்கூழ் வழங்குகின்றன.</p>
         </div>
         <div class="agri-card agri-tree-card">
           <div class="agri-icon">🌳</div>
-          <h3>Teak</h3>
-          <p>One of the most prized timber trees in Tamil Nadu. Teak grown in and around Poongulam is valued for its durability and fine grain, used in furniture, doors, and boat-building. The long-term investment of teak planting has benefited several farming families.</p>
+          <h3 data-lang="en">Teak</h3>
+          <h3 data-lang="ta">தேக்கு</h3>
+          <p data-lang="en">One of the most prized timber trees in Tamil Nadu. Teak grown in and around Poongulam is valued for its durability and fine grain, used in furniture, doors, and boat-building. The long-term investment of teak planting has benefited several farming families.</p>
+          <p data-lang="ta">தமிழ்நாட்டில் மிகவும் மதிக்கப்படும் மரக்கட்டை மரங்களில் ஒன்று. பூங்குளத்தில் வளரும் தேக்கு மரம் நீடித்த தன்மைக்கும் நுண்ணிய இழையமைப்புக்கும் மதிக்கப்படுகிறது — தளபாடங்கள், கதவுகள் மற்றும் படகு கட்டுமானத்தில் பயன்படுகிறது.</p>
         </div>
         <div class="agri-card agri-tree-card">
           <div class="agri-icon">🎋</div>
-          <h3>Bamboo</h3>
-          <p>Bamboo groves are found across the village, serving multiple purposes — scaffolding, baskets, fencing, and traditional household tools. Bamboo is also a key material for local artisans and grows rapidly with minimal maintenance.</p>
+          <h3 data-lang="en">Bamboo</h3>
+          <h3 data-lang="ta">மூங்கில்</h3>
+          <p data-lang="en">Bamboo groves are found across the village, serving multiple purposes — scaffolding, baskets, fencing, and traditional household tools. Bamboo is also a key material for local artisans and grows rapidly with minimal maintenance.</p>
+          <p data-lang="ta">கிராமம் முழுவதும் மூங்கில் தோப்புகள் காணப்படுகின்றன — கட்டும் படிகம், கூடைகள், வேலி மற்றும் பாரம்பரிய வீட்டுப் பொருட்களுக்கு பயன்படுகின்றன. உள்ளூர் கைவினைஞர்களுக்கும் முக்கியமான பொருளாகும்.</p>
         </div>
         <div class="agri-card agri-tree-card">
           <div class="agri-icon">🌿</div>
-          <h3>Sandalwood</h3>
-          <p>Among the most valuable trees grown in the region, sandalwood is cultivated carefully by a few farmers in Poongulam. The heartwood commands premium prices for incense, oils, and religious use. Its slow growth makes it a long-term but highly rewarding crop.</p>
+          <h3 data-lang="en">Sandalwood</h3>
+          <h3 data-lang="ta">சந்தனம்</h3>
+          <p data-lang="en">Among the most valuable trees grown in the region, sandalwood is cultivated carefully by a few farmers in Poongulam. The heartwood commands premium prices for incense, oils, and religious use. Its slow growth makes it a long-term but highly rewarding crop.</p>
+          <p data-lang="ta">மிகவும் மதிப்புமிக்க மரங்களில் ஒன்று; பூங்குளத்தில் சில விவசாயிகள் கவனமாக வளர்க்கின்றனர். கலைப் பொருட்கள், எண்ணெய்கள் மற்றும் மத பயன்பாட்டிற்கு அதிக விலை கிடைக்கிறது.</p>
         </div>
         <div class="agri-card agri-tree-card">
           <div class="agri-icon">🌴</div>
-          <h3>Oil Palm</h3>
-          <p>Palm oil cultivation is a growing addition to Poongulam's agroforestry landscape. Oil palm trees thrive in the humid Cauvery delta climate and yield high quantities of palm oil used in cooking, cosmetics, and industry — providing farmers a perennial, high-value income crop with relatively low maintenance once established.</p>
+          <h3 data-lang="en">Oil Palm</h3>
+          <h3 data-lang="ta">எண்ணெய் பனை</h3>
+          <p data-lang="en">Palm oil cultivation is a growing addition to Poongulam's agroforestry landscape. Oil palm trees thrive in the humid Cauvery delta climate and yield high quantities of palm oil used in cooking, cosmetics, and industry — providing farmers a perennial, high-value income crop with relatively low maintenance once established.</p>
+          <p data-lang="ta">பனை எண்ணெய் சாகுபடி பூங்குளத்தின் வேளாண்காடு நிலப்பரப்பில் வளர்ந்து வரும் கூடுதலாகும். காவிரி டெல்டாவின் ஈர சூழலில் நன்கு வளரும் இம் மரங்கள் சமையல், அழகுப் பொருட்கள் மற்றும் தொழிலுக்கு பயன்படும் பனை எண்ணெய் கொடுக்கின்றன.</p>
         </div>
       </div>
     </div>
@@ -1820,98 +1883,113 @@
       <div class="section-label saffron" data-i18n="label-discover">Discover</div>
       <h2 class="section-title" data-i18n="title-tourism">Tourism &amp; Experiences</h2>
       <div class="saffron-line"></div>
-      <p class="tourism-intro">
+      <p class="tourism-intro" data-lang="en">
         Poongulam offers visitors an unhurried, authentic Tamil Nadu experience — ancient temple trails, golden paddy walks, canal-side mornings, and the warmth of a village that still lives by the rhythm of nature and tradition.
+      </p>
+      <p class="tourism-intro" data-lang="ta">
+        பூங்குளம் பார்வையாளர்களுக்கு அவசரமற்ற, உண்மையான தமிழ்நாடு அனுபவம் வழங்குகிறது — பண்டைய கோவில் பாதைகள், பொன்னிற நெல்வயல் நடை, கால்வாய் ஓர காலை நேரங்கள் மற்றும் இயற்கை மற்றும் மரபின் தாளத்தில் இன்னும் வாழும் கிராமத்தின் அன்பு.
       </p>
       <div class="tourism-grid">
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#f5e9c0,#e8cc7a);">🛕</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-heritage">Heritage</span>
-            <h3>Temple Heritage Trail</h3>
-            <p>Walk the temples of Poongulam — Mariamman, Agastheeswarar, and Ayyanar — with a knowledgeable village guide. Explore stone carvings, inscriptions, and ancient traditions. Also visit the restoration site of the Sri Lakshmi Narayana Perumal Temple, a Chola-era shrine being reclaimed after nearly a century.</p>
+            <span class="tourism-tag tag-heritage" data-lang="en">Heritage</span>
+            <span class="tourism-tag tag-heritage" data-lang="ta">பாரம்பரியம்</span>
+            <h3 data-lang="en">Temple Heritage Trail</h3>
+            <h3 data-lang="ta">கோவில் பாரம்பரிய பாதை</h3>
+            <p data-lang="en">Walk the temples of Poongulam — Mariamman, Agastheeswarar, and Ayyanar — with a knowledgeable village guide. Explore stone carvings, inscriptions, and ancient traditions. Also visit the restoration site of the Sri Lakshmi Narayana Perumal Temple, a Chola-era shrine being reclaimed after nearly a century.</p>
+            <p data-lang="ta">பூங்குளத்தின் கோவில்களை — மாரியம்மன், அகஸ்தீஸ்வரர் மற்றும் அய்யனார் — அனுபவமிக்க வழிகாட்டியுடன் சுற்றிப் பாருங்கள். கல் சிற்பங்கள், கல்வெட்டுகள் மற்றும் பண்டைய மரபுகளை ஆராயுங்கள்.</p>
             <div class="tourism-meta">
               <span>🕐 2–3 hrs</span>
               <span>🚶 Walking</span>
               <span>📅 All year</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Temple Heritage Trail')">📅 Book This Experience</button>
           </div>
         </div>
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#e8f0e0,#a8c89e);">🌾</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-nature">Nature</span>
-            <h3>Paddy Field Walk</h3>
-            <p>Stroll through glimmering green paddy fields as far as the eye can see. Visit during the Samba harvest season (Nov–Jan) to witness the entire village engaged in a 1000-year-old tradition of hand-harvesting.</p>
+            <span class="tourism-tag tag-nature" data-lang="en">Nature</span>
+            <span class="tourism-tag tag-nature" data-lang="ta">இயற்கை</span>
+            <h3 data-lang="en">Paddy Field Walk</h3>
+            <h3 data-lang="ta">நெல்வயல் நடை</h3>
+            <p data-lang="en">Stroll through glimmering green paddy fields as far as the eye can see. Visit during the Samba harvest season (Nov–Jan) to witness the entire village engaged in a 1000-year-old tradition of hand-harvesting.</p>
+            <p data-lang="ta">கண்ணுக்கெட்டும் தூரம் வரை பளபளக்கும் பச்சை நெல்வயல்களில் உலாவுங்கள். நவம்பர்–ஜனவரி சம்பா அறுவடை காலத்தில் வருகை தந்து ஆயிரம் ஆண்டு பழமையான கை அறுவடை மரபை நேரில் கண்டு அனுபவியுங்கள்.</p>
             <div class="tourism-meta">
               <span>🕐 1–2 hrs</span>
               <span>🌅 Early morning</span>
               <span>📅 Oct–Feb</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Paddy Field Walk')">📅 Book This Experience</button>
           </div>
         </div>
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#fde8d8,#f4924a);">🎭</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-culture">Culture</span>
-            <h3>Village Cultural Immersion</h3>
-            <p>Spend a morning with a local family — learn kolam art, participate in traditional cooking, and witness the daily rhythms of a Tamil village from the inside. Includes a traditional lunch.</p>
+            <span class="tourism-tag tag-culture" data-lang="en">Culture</span>
+            <span class="tourism-tag tag-culture" data-lang="ta">கலாச்சாரம்</span>
+            <h3 data-lang="en">Village Cultural Immersion</h3>
+            <h3 data-lang="ta">கிராம கலாச்சார மூழ்கல்</h3>
+            <p data-lang="en">Spend a morning with a local family — learn kolam art, participate in traditional cooking, and witness the daily rhythms of a Tamil village from the inside. Includes a traditional lunch.</p>
+            <p data-lang="ta">உள்ளூர் குடும்பத்துடன் ஒரு காலை நேரம் கழியுங்கள் — கோலம் கலை கற்று, பாரம்பரிய சமையலில் பங்கெடுத்து, தமிழ் கிராமத்தின் அன்றாட வாழ்க்கையை உள்ளிருந்து அனுபவியுங்கள். பாரம்பரிய மதிய உணவு உட்பட.</p>
             <div class="tourism-meta">
               <span>🕐 Half day</span>
               <span>👨‍👩‍👧 Families</span>
               <span>📅 All year</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Village Cultural Immersion')">📅 Book This Experience</button>
           </div>
         </div>
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#dff0ff,#a0c8e8);">🚣</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-nature">Nature</span>
-            <h3>Canal &amp; Waterway Walk</h3>
-            <p>Walk along the Grand Anicut canal that runs near Poongulam — a living remnant of Chola hydraulic engineering. Watch farmers channel water to fields in the same way their ancestors did centuries ago.</p>
+            <span class="tourism-tag tag-nature" data-lang="en">Nature</span>
+            <span class="tourism-tag tag-nature" data-lang="ta">இயற்கை</span>
+            <h3 data-lang="en">Canal &amp; Waterway Walk</h3>
+            <h3 data-lang="ta">கால்வாய் மற்றும் நீர்வழி நடை</h3>
+            <p data-lang="en">Walk along the Grand Anicut canal that runs near Poongulam — a living remnant of Chola hydraulic engineering. Watch farmers channel water to fields in the same way their ancestors did centuries ago.</p>
+            <p data-lang="ta">பூங்குளம் அருகே செல்லும் கிராண்ட் அணிக்கட் கால்வாயில் நடந்து செல்லுங்கள் — சோழர் நீர் பொறியியலின் வாழும் நினைவுச்சின்னம். விவசாயிகள் தங்கள் மூதாதையர் செய்தது போலவே வயல்களுக்கு நீர் திருப்பிவிடுவதை கண்டு ரசியுங்கள்.</p>
             <div class="tourism-meta">
               <span>🕐 1.5 hrs</span>
               <span>🌿 Scenic</span>
               <span>📅 All year</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Canal &amp; Waterway Walk')">📅 Book This Experience</button>
           </div>
         </div>
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#fff8e0,#f5e9c0);">🎨</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-culture">Culture</span>
-            <h3>Kolam &amp; Art Workshop</h3>
-            <p>Learn the sacred art of Kolam (rice-flour rangoli) from a village artisan. Each pattern tells a story — of prosperity, of the seasons, of the gods. Take your own design home as a souvenir.</p>
+            <span class="tourism-tag tag-culture" data-lang="en">Culture</span>
+            <span class="tourism-tag tag-culture" data-lang="ta">கலாச்சாரம்</span>
+            <h3 data-lang="en">Kolam &amp; Art Workshop</h3>
+            <h3 data-lang="ta">கோலம் மற்றும் கலை பயிலரங்கு</h3>
+            <p data-lang="en">Learn the sacred art of Kolam (rice-flour rangoli) from a village artisan. Each pattern tells a story — of prosperity, of the seasons, of the gods. Take your own design home as a souvenir.</p>
+            <p data-lang="ta">கிராம கலைஞரிடம் கோலம் (அரிசி மாவு ரங்கோலி) புனித கலையை கற்றுக்கொள்ளுங்கள். ஒவ்வொரு வடிவமும் செழிப்பு, பருவங்கள் மற்றும் தெய்வங்களின் கதையை சொல்கிறது. உங்கள் சொந்த வடிவத்தை நினைவுப் பரிசாக எடுத்துச் செல்லுங்கள்.</p>
             <div class="tourism-meta">
               <span>🕐 1 hr</span>
               <span>🎨 Interactive</span>
               <span>📅 All year</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Kolam &amp; Art Workshop')">📅 Book This Experience</button>
           </div>
         </div>
 
         <div class="tourism-card">
           <div class="tourism-thumb" style="background: linear-gradient(135deg,#f0e8f5,#c8a0d8);">📸</div>
           <div class="tourism-body">
-            <span class="tourism-tag tag-heritage">Photography</span>
-            <h3>Village Photography Tour</h3>
-            <p>Capture the magic of Poongulam — temple gopurams at golden hour, cattle returning at dusk, women carrying jasmine garlands, and elders sitting beneath banyan trees. A photographer's paradise.</p>
+            <span class="tourism-tag tag-heritage" data-lang="en">Photography</span>
+            <span class="tourism-tag tag-heritage" data-lang="ta">புகைப்படம்</span>
+            <h3 data-lang="en">Village Photography Tour</h3>
+            <h3 data-lang="ta">கிராம புகைப்படம் சுற்றுலா</h3>
+            <p data-lang="en">Capture the magic of Poongulam — temple gopurams at golden hour, cattle returning at dusk, women carrying jasmine garlands, and elders sitting beneath banyan trees. A photographer's paradise.</p>
+            <p data-lang="ta">பூங்குளத்தின் அற்புதங்களை படம் பிடியுங்கள் — பொன்னொளியில் கோபுரங்கள், மாலை நேரத்தில் திரும்பும் கால்நடைகள், மல்லிகை மாலை சுமக்கும் பெண்கள், ஆலமர நிழலில் முதியோர். புகைப்படக் கலைஞர்களின் சொர்க்கம்.</p>
             <div class="tourism-meta">
               <span>🕐 2 hrs</span>
               <span>🌅 Sunrise/Sunset</span>
               <span>📅 All year</span>
             </div>
-            <button class="btn-book" onclick="openBooking('Village Photography Tour')">📅 Book This Experience</button>
           </div>
         </div>
 
@@ -1919,9 +1997,12 @@
 
       <!-- Nearby Attractions subsection -->
       <div class="nearby-sub-heading">
-        <div class="section-label saffron" style="margin-bottom:6px;">Day Trips &amp; Sacred Sites</div>
-        <h3 class="nearby-sub-title">Nearby Attractions</h3>
-        <p class="nearby-sub-desc">Poongulam sits at the heart of one of Tamil Nadu's richest temple corridors. Within a short drive you can visit some of the most revered sacred sites and historic towns in the Cauvery delta.</p>
+        <div class="section-label saffron" style="margin-bottom:6px;" data-lang="en">Day Trips &amp; Sacred Sites</div>
+        <div class="section-label saffron" style="margin-bottom:6px;" data-lang="ta">நாள் சுற்றுலா மற்றும் புனித தலங்கள்</div>
+        <h3 class="nearby-sub-title" data-lang="en">Nearby Attractions</h3>
+        <h3 class="nearby-sub-title" data-lang="ta">அருகிலுள்ள சுற்றுலா இடங்கள்</h3>
+        <p class="nearby-sub-desc" data-lang="en">Poongulam sits at the heart of one of Tamil Nadu's richest temple corridors. Within a short drive you can visit some of the most revered sacred sites and historic towns in the Cauvery delta.</p>
+        <p class="nearby-sub-desc" data-lang="ta">பூங்குளம் தமிழ்நாட்டின் மிக வளமான கோவில் தளங்களில் ஒன்றின் மையத்தில் அமைந்துள்ளது. குறுகிய தூர இயக்கத்தில் காவிரி டெல்டாவின் மிகவும் மதிக்கப்படும் புனித தலங்களையும் வரலாற்று நகரங்களையும் தரிசிக்கலாம்.</p>
       </div>
 
       <div class="nearby-grid">
@@ -1932,11 +2013,13 @@
           <div style="flex:1;">
             <div class="nearby-header">
               <span class="nearby-dist">📍 ~2 km from Poongulam</span>
-              <h3>Srivanjiyam — Vanchinadha Swamy Temple</h3>
+              <h3 data-lang="en">Srivanjiyam — Vanchinadha Swamy Temple</h3>
+              <h3 data-lang="ta">ஸ்ரீவஞ்சியம் — வஞ்சிநாத சுவாமி கோவில்</h3>
               <div class="nearby-tamil">வஞ்சிநாத சுவாமி கோவில், ஸ்ரீவஞ்சியம்</div>
             </div>
             <div class="nearby-body">
-              <p>Just 2 km away, Srivanjiyam's ancient Vanchinadha Swamy temple is one of the 276 Paadal Petra Shiva Sthalangal on the River Mudikondan. Uniquely, it holds a separate shrine for Lord Yamadharmaraja — a rare distinction in Tamil Nadu — and is revered as a place that washes away the sins of past lives.</p>
+              <p data-lang="en">Just 2 km away, Srivanjiyam's ancient Vanchinadha Swamy temple is one of the 276 Paadal Petra Shiva Sthalangal on the River Mudikondan. Uniquely, it holds a separate shrine for Lord Yamadharmaraja — a rare distinction in Tamil Nadu — and is revered as a place that washes away the sins of past lives.</p>
+              <p data-lang="ta">2 கி.மீ. தொலைவில் உள்ள ஸ்ரீவஞ்சியம் வஞ்சிநாத சுவாமி கோவில் முடிகொண்டான் ஆற்றின் கரையில் அமைந்த 276 பாடல் பெற்ற சிவத் தலங்களில் ஒன்று. தமிழ்நாட்டில் அரிதாக காணப்படும் யமதர்மராஜா தனிக் கோவிலும் இங்கு உள்ளது.</p>
               <div class="nearby-facts">
                 <span class="nearby-fact">🛕 Paadal Petra Sthalangal</span>
                 <span class="nearby-fact">⚡ Unique Yamadharmaraja Shrine</span>
@@ -1951,11 +2034,13 @@
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~10 km · 15 mins drive</span>
-            <h3>Koothanur Maha Saraswathi Temple</h3>
+            <h3 data-lang="en">Koothanur Maha Saraswathi Temple</h3>
+            <h3 data-lang="ta">கூத்தனூர் மகா சரஸ்வதி கோவில்</h3>
             <div class="nearby-tamil">கூத்தனூர் மகா சரஸ்வதி அம்மன் கோவில்</div>
           </div>
           <div class="nearby-body">
-            <p>One of Tamil Nadu's most celebrated Saraswathi temples, drawing lakhs of devotees — especially students seeking blessings before exams. Also revered as the Dakshina Thiruveni Sangamam (sacred confluence of Ganga, Yamuna &amp; Saraswathi). Spectacular during Navarathri and Vijayadasami.</p>
+            <p data-lang="en">One of Tamil Nadu's most celebrated Saraswathi temples, drawing lakhs of devotees — especially students seeking blessings before exams. Also revered as the Dakshina Thiruveni Sangamam (sacred confluence of Ganga, Yamuna &amp; Saraswathi). Spectacular during Navarathri and Vijayadasami.</p>
+            <p data-lang="ta">தமிழ்நாட்டின் மிகவும் புகழ்பெற்ற சரஸ்வதி கோவில்களில் ஒன்று — குறிப்பாக தேர்வுக்கு முன் ஆசியை நாடும் மாணவர்கள் லட்சக்கணக்கில் வருகை தருகின்றனர். நவராத்திரி மற்றும் விஜயதசமியில் கோலாகலமாக கொண்டாடப்படுகிறது.</p>
             <div class="nearby-facts">
               <span class="nearby-fact">📚 Goddess of Learning</span>
               <span class="nearby-fact">🎓 Famous Among Students</span>
@@ -1968,11 +2053,13 @@
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~17 km · 20 mins drive</span>
-            <h3>Thiruvarur — Thyagarajaswamy Temple</h3>
+            <h3 data-lang="en">Thiruvarur — Thyagarajaswamy Temple</h3>
+            <h3 data-lang="ta">திருவாரூர் — தியாகராஜசுவாமி கோவில்</h3>
             <div class="nearby-tamil">திருவாரூர் தியாகராஜசுவாமி கோவில்</div>
           </div>
           <div class="nearby-body">
-            <p>Home to the magnificent Thyagarajaswamy Temple — a Paadal Petra Sthalangal and one of the Panchasabhas (five cosmic dance halls of Shiva), known as the Nithya Sabha. The world's largest temple chariot is drawn here during Brahmotsavam, attracting lakhs of devotees from across Tamil Nadu.</p>
+            <p data-lang="en">Home to the magnificent Thyagarajaswamy Temple — a Paadal Petra Sthalangal and one of the Panchasabhas (five cosmic dance halls of Shiva), known as the Nithya Sabha. The world's largest temple chariot is drawn here during Brahmotsavam, attracting lakhs of devotees from across Tamil Nadu.</p>
+            <p data-lang="ta">பாடல் பெற்ற தலமும் ஐந்து சபைகளில் ஒன்றான நித்ய சபையும் கொண்ட தியாகராஜசுவாமி கோவில் இங்கு உள்ளது. உலகின் மிகப் பெரிய கோவில் தேர் பிரம்மோத்சவத்தின் போது இங்கு இழுக்கப்படுகிறது.</p>
             <div class="nearby-facts">
               <span class="nearby-fact">🛕 Paadal Petra Sthalangal</span>
               <span class="nearby-fact">💃 Panchasabha — Nithya Sabha</span>
@@ -1986,11 +2073,13 @@
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~30 km · 30 mins drive</span>
-            <h3>Kumbakonam — City of Temples</h3>
+            <h3 data-lang="en">Kumbakonam — City of Temples</h3>
+            <h3 data-lang="ta">கும்பகோணம் — கோவில்களின் நகரம்</h3>
             <div class="nearby-tamil">கும்பகோணம் — கோவில்களின் நகரம்</div>
           </div>
           <div class="nearby-body">
-            <p>The "City of Temples" — 188+ temples, including the Adi Kumbeswarar, Sarangapani, and Ramaswamy temples. The legendary Mahamaham tank hosts a sacred festival every 12 years drawing millions of pilgrims. Also famous for silk sarees, bronze castings, and traditional sweets.</p>
+            <p data-lang="en">The "City of Temples" — 188+ temples, including the Adi Kumbeswarar, Sarangapani, and Ramaswamy temples. The legendary Mahamaham tank hosts a sacred festival every 12 years drawing millions of pilgrims. Also famous for silk sarees, bronze castings, and traditional sweets.</p>
+            <p data-lang="ta">"கோவில்களின் நகரம்" — ஆதி கும்பேஸ்வரர், சாரங்கபாணி மற்றும் ராமசுவாமி கோவில்கள் உட்பட 188+ கோவில்கள். ஒவ்வொரு 12 ஆண்டுக்கும் ஒரு முறை நடைபெறும் மகாமகம் திருவிழாவில் கோடிக்கணக்கான யாத்ரீகர்கள் வருகிறார்கள்.</p>
             <div class="nearby-facts">
               <span class="nearby-fact">🛕 188+ Temples</span>
               <span class="nearby-fact">💧 Mahamaham Tank</span>
@@ -2004,11 +2093,13 @@
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~55 km from Poongulam</span>
-            <h3>Thanjavur — Brihadeeswara Temple</h3>
+            <h3 data-lang="en">Thanjavur — Brihadeeswara Temple</h3>
+            <h3 data-lang="ta">தஞ்சாவூர் — பிரஹதீஸ்வரர் கோவில்</h3>
             <div class="nearby-tamil">தஞ்சாவூர் — பெரிய கோவில், பிரஹதீஸ்வரர்</div>
           </div>
           <div class="nearby-body">
-            <p>A UNESCO World Heritage Site and one of the greatest temples ever built. The Brihadeeswara Temple — known simply as the Big Temple — was constructed by the Chola Emperor Raja Raja Chola I around 1010 CE. Its 66-metre vimana (tower) stands as a marvel of Dravidian architecture, and the 80-tonne granite capstone placed without ramps remains an unsolved wonder. Thanjavur is also the cultural capital of Tamil Nadu, famed for its Carnatic music tradition and Tanjore painting.</p>
+            <p data-lang="en">A UNESCO World Heritage Site and one of the greatest temples ever built. The Brihadeeswara Temple — known simply as the Big Temple — was constructed by the Chola Emperor Raja Raja Chola I around 1010 CE. Its 66-metre vimana (tower) stands as a marvel of Dravidian architecture, and the 80-tonne granite capstone placed without ramps remains an unsolved wonder. Thanjavur is also the cultural capital of Tamil Nadu, famed for its Carnatic music tradition and Tanjore painting.</p>
+            <p data-lang="ta">யுனெஸ்கோ உலக பாரம்பரிய தளமும் கட்டப்பட்ட மிகப் பெரிய கோவில்களில் ஒன்றும். சோழ மன்னர் இராஜ இராஜ சோழன் சுமார் 1010 கி.பி. இல் கட்டியது. 66 மீட்டர் உயர விமானம் திராவிட கட்டிடக்கலையின் மகத்தான சாதனை. தஞ்சாவூர் கர்நாடக இசை மரபின் கலாச்சார தலைநகரமும் ஆகும்.</p>
             <div class="nearby-facts">
               <span class="nearby-fact">🏛️ UNESCO World Heritage</span>
               <span class="nearby-fact">👑 Chola Emperor — 1010 CE</span>
@@ -2022,11 +2113,13 @@
         <div class="nearby-card">
           <div class="nearby-header">
             <span class="nearby-dist">📍 ~65 km from Poongulam</span>
-            <h3>Chidambaram — Nataraja Temple</h3>
+            <h3 data-lang="en">Chidambaram — Nataraja Temple</h3>
+            <h3 data-lang="ta">சிதம்பரம் — நடராஜர் கோவில்</h3>
             <div class="nearby-tamil">சிதம்பரம் — நடராஜர் கோவில்</div>
           </div>
           <div class="nearby-body">
-            <p>The Nataraja Temple at Chidambaram is one of the most sacred Shiva temples in India — the cosmic abode where Lord Shiva performs the Ananda Tandava (dance of bliss) for eternity. It is the Chit Sabha, the most revered of the Panchasabhas (five cosmic dance halls). The temple is unique for its Chidambara Rahasyam — a golden curtain that, when drawn, reveals the formless nature of the divine. Managed by hereditary Dikshitar priests for over a thousand years.</p>
+            <p data-lang="en">The Nataraja Temple at Chidambaram is one of the most sacred Shiva temples in India — the cosmic abode where Lord Shiva performs the Ananda Tandava (dance of bliss) for eternity. It is the Chit Sabha, the most revered of the Panchasabhas (five cosmic dance halls). The temple is unique for its Chidambara Rahasyam — a golden curtain that, when drawn, reveals the formless nature of the divine. Managed by hereditary Dikshitar priests for over a thousand years.</p>
+            <p data-lang="ta">சிதம்பரம் நடராஜர் கோவில் இந்தியாவின் மிகவும் புனிதமான சிவன் கோவில்களில் ஒன்று — சிவபெருமான் ஆனந்த தாண்டவம் நடனமாடும் பிரபஞ்சவாசம். பஞ்சசபைகளில் சிறப்பிடம் பெற்ற சிற்சபை இங்கு உள்ளது. சிதம்பர ரகசியம் — ஆயிரம் ஆண்டுகளாக தீட்சிதர்களால் பாதுகாக்கப்படுகிறது.</p>
             <div class="nearby-facts">
               <span class="nearby-fact">💃 Panchasabha — Chit Sabha</span>
               <span class="nearby-fact">🌌 Chidambara Rahasyam</span>
@@ -2043,11 +2136,14 @@
   <!-- ═══════════════════ SHOP ═══════════════════ -->
   <section class="shop" id="shop">
     <div class="container">
-      <div class="section-label saffron">Village Market</div>
-      <h2 class="section-title">Buy from Poongulam</h2>
+      <div class="section-label saffron" data-i18n="label-shop">Village Market</div>
+      <h2 class="section-title" data-i18n="title-shop">Buy from Poongulam</h2>
       <div class="saffron-line"></div>
-      <p class="shop-intro">
+      <p class="shop-intro" data-lang="en">
         Pure, farm-fresh produce grown and crafted by the families of Poongulam. Every purchase supports a village farmer directly — no middlemen, no shortcuts.
+      </p>
+      <p class="shop-intro" data-lang="ta">
+        பூங்குளத்தின் குடும்பங்களால் விளைவிக்கப்பட்டு தயாரிக்கப்பட்ட தூய, பண்ணை-புதிய விளைபொருட்கள். ஒவ்வொரு வாங்குதலும் கிராம விவசாயிகளை நேரடியாக ஆதரிக்கிறது — இடைத்தரகர் இல்லை.
       </p>
       <div class="shop-grid">
 
@@ -2057,9 +2153,12 @@
             <span class="product-badge">Bestseller</span>
           </div>
           <div class="product-body">
-            <div class="product-origin">Poongulam Farms · Thiruvarur</div>
-            <h3>Samba Raw Rice</h3>
-            <p>Traditional Samba paddy, hand-harvested from Poongulam's fertile fields. Rich aroma, long grain, and the taste of authentic Tamil Nadu farming.</p>
+            <div class="product-origin" data-lang="en">Poongulam Farms · Thiruvarur</div>
+            <div class="product-origin" data-lang="ta">பூங்குளம் பண்ணைகள் · திருவாரூர்</div>
+            <h3 data-lang="en">Samba Raw Rice</h3>
+            <h3 data-lang="ta">சம்பா பச்சரிசி</h3>
+            <p data-lang="en">Traditional Samba paddy, hand-harvested from Poongulam's fertile fields. Rich aroma, long grain, and the taste of authentic Tamil Nadu farming.</p>
+            <p data-lang="ta">பூங்குளத்தின் வளமான வயல்களில் கையால் அறுவடை செய்யப்பட்ட பாரம்பரிய சம்பா நெல். வாசனை மிக்க, நீண்ட தானியம், உண்மையான தமிழ்நாடு வேளாண்மையின் சுவை.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹150 <span>per kg</span></div>
@@ -2073,9 +2172,12 @@
             <span class="product-badge">Cold Pressed</span>
           </div>
           <div class="product-body">
-            <div class="product-origin">Village Coconut Gardens</div>
-            <h3>Virgin Coconut Oil</h3>
-            <p>Cold-pressed from fresh coconuts grown in Poongulam's gardens. No chemicals, no heat processing — just pure, golden coconut goodness.</p>
+            <div class="product-origin" data-lang="en">Village Coconut Gardens</div>
+            <div class="product-origin" data-lang="ta">கிராம தேங்காய் தோட்டங்கள்</div>
+            <h3 data-lang="en">Virgin Coconut Oil</h3>
+            <h3 data-lang="ta">விர்ஜின் தேங்காய் எண்ணெய்</h3>
+            <p data-lang="en">Cold-pressed from fresh coconuts grown in Poongulam's gardens. No chemicals, no heat processing — just pure, golden coconut goodness.</p>
+            <p data-lang="ta">பூங்குளத்தின் தோட்டங்களில் வளரும் புதிய தேங்காயிலிருந்து குளிர் அழுத்தம். எந்த இரசாயனமும் இல்லை — தூய, பொன்னிற தேங்காய் நன்மை.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹280 <span>per 500ml</span></div>
@@ -2089,9 +2191,12 @@
             <span class="product-badge">Raw · Unfiltered</span>
           </div>
           <div class="product-body">
-            <div class="product-origin">Forest Apiaries · Poongulam</div>
-            <h3>Raw Village Honey</h3>
-            <p>Collected from wild hives in the farmlands and mango groves around Poongulam. Raw, unfiltered, and packed with natural enzymes and flavour.</p>
+            <div class="product-origin" data-lang="en">Forest Apiaries · Poongulam</div>
+            <div class="product-origin" data-lang="ta">காட்டு தேனீ பண்ணை · பூங்குளம்</div>
+            <h3 data-lang="en">Raw Village Honey</h3>
+            <h3 data-lang="ta">கச்சா கிராம தேன்</h3>
+            <p data-lang="en">Collected from wild hives in the farmlands and mango groves around Poongulam. Raw, unfiltered, and packed with natural enzymes and flavour.</p>
+            <p data-lang="ta">பூங்குளத்தைச் சுற்றியுள்ள பண்ணை நிலங்களிலும் மாஞ்சோலைகளிலும் உள்ள காட்டு தேன்கூடுகளிலிருந்து சேகரிக்கப்படுகிறது. கச்சா, வடிகட்டப்படாமல், இயற்கையான நொதிகளும் சுவையும் நிரம்பியது.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹450 <span>per 500g</span></div>
@@ -2104,9 +2209,12 @@
             🌸
           </div>
           <div class="product-body">
-            <div class="product-origin">Flower Fields · Poongulam</div>
-            <h3>Fresh Jasmine Garlands</h3>
-            <p>Hand-strung fresh jasmine from the village's own flower cultivation. Perfect for temples, homes, and celebrations. Fragrant and lovingly crafted.</p>
+            <div class="product-origin" data-lang="en">Flower Fields · Poongulam</div>
+            <div class="product-origin" data-lang="ta">மலர் வயல்கள் · பூங்குளம்</div>
+            <h3 data-lang="en">Fresh Jasmine Garlands</h3>
+            <h3 data-lang="ta">புதிய மல்லிகை மாலை</h3>
+            <p data-lang="en">Hand-strung fresh jasmine from the village's own flower cultivation. Perfect for temples, homes, and celebrations. Fragrant and lovingly crafted.</p>
+            <p data-lang="ta">கிராமத்தின் சொந்த மலர் சாகுபடியிலிருந்து கையால் கட்டிய புதிய மல்லிகை. கோவில்கள், வீடுகள் மற்றும் கொண்டாட்டங்களுக்கு ஏற்றது. மணம் வீசும் அன்பான கைவினை.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹60 <span>per bundle</span></div>
@@ -2120,9 +2228,12 @@
             <span class="product-badge">Handmade</span>
           </div>
           <div class="product-body">
-            <div class="product-origin">Village Artisans · Poongulam</div>
-            <h3>Traditional Clay Pottery</h3>
-            <p>Handcrafted by Poongulam's pottery artisans using local clay and traditional techniques passed down through generations. Each piece is unique.</p>
+            <div class="product-origin" data-lang="en">Village Artisans · Poongulam</div>
+            <div class="product-origin" data-lang="ta">கிராம கைவினைஞர்கள் · பூங்குளம்</div>
+            <h3 data-lang="en">Traditional Clay Pottery</h3>
+            <h3 data-lang="ta">பாரம்பரிய மண் பாத்திரங்கள்</h3>
+            <p data-lang="en">Handcrafted by Poongulam's pottery artisans using local clay and traditional techniques passed down through generations. Each piece is unique.</p>
+            <p data-lang="ta">பூங்குளத்தின் குயவர் கைவினைஞர்களால் தலைமுறை தோறும் கடைப்பிடிக்கப்படும் பாரம்பரிய நுட்பங்களை பயன்படுத்தி உள்ளூர் களிமண்ணால் கைவினை நேர்த்தியோடு தயாரிக்கப்படுகிறது. ஒவ்வொரு பாத்திரமும் தனித்துவமானது.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹350 <span>per piece</span></div>
@@ -2135,9 +2246,12 @@
             🍌
           </div>
           <div class="product-body">
-            <div class="product-origin">Village Kitchens · Poongulam</div>
-            <h3>Banana Chips</h3>
-            <p>Crispy, golden banana chips made from village-grown plantains. Fried in coconut oil with a light salting — a timeless Tamil Nadu snack.</p>
+            <div class="product-origin" data-lang="en">Village Kitchens · Poongulam</div>
+            <div class="product-origin" data-lang="ta">கிராம சமையலறைகள் · பூங்குளம்</div>
+            <h3 data-lang="en">Banana Chips</h3>
+            <h3 data-lang="ta">வாழைக்காய் சிப்ஸ்</h3>
+            <p data-lang="en">Crispy, golden banana chips made from village-grown plantains. Fried in coconut oil with a light salting — a timeless Tamil Nadu snack.</p>
+            <p data-lang="ta">கிராமத்தில் விளைந்த வாழைக்காய்களிலிருந்து செய்யப்பட்ட மொறுமொறுப்பான, பொன்னிற சிப்ஸ். தேங்காய் எண்ணெயில் வறுத்து, லேசாக உப்பிட்டது — காலத்தால் மாறாத தமிழ்நாடு தின்பண்டம்.</p>
           </div>
           <div class="product-footer">
             <div class="product-price">₹130 <span>per 250g</span></div>
@@ -2146,19 +2260,21 @@
         </div>
 
       </div>
-      <div class="shop-note">
+      <div class="shop-note" data-lang="en">
         <strong>📦 Local delivery within Thiruvarur district.</strong> For outstation orders, WhatsApp us at <strong>+91 85239 86239</strong> to confirm availability and arrange courier. All products are freshly sourced from Poongulam's farms and artisans.
       </div>
+      <div class="shop-note" data-lang="ta"><strong>📦 திருவாரூர் மாவட்டத்திற்குள் உள்ளூர் டெலிவரி.</strong> வெளியூர் ஆர்டர்களுக்கு, கிடைக்கும் தன்மை உறுதிப்படுத்தவும் கூரியர் ஏற்பாடு செய்யவும் <strong>+91 85239 86239</strong> என்ற எண்ணில் WhatsApp செய்யுங்கள். அனைத்து பொருட்களும் பூங்குளம் பண்ணைகள் மற்றும் கைவினைஞர்களிடமிருந்து நேரடியாக வருகின்றன.</div>
     </div>
   </section>
 
   <!-- ═══════════════════ PROGRAMS ═══════════════════ -->
   <section class="programs" id="programs">
     <div class="container">
-      <div class="section-label saffron">What's On</div>
-      <h2 class="section-title">Events &amp; Programs</h2>
+      <div class="section-label saffron" data-i18n="label-programs">What's On</div>
+      <h2 class="section-title" data-i18n="title-programs">Events &amp; Programs</h2>
       <div class="saffron-line"></div>
-      <p class="programs-intro">Upcoming festivals, agricultural programs, community events, and government camps in and around Poongulam. Watch key events live on YouTube.</p>
+      <p class="programs-intro" data-lang="en">Upcoming festivals, agricultural programs, community events, and government camps in and around Poongulam. Watch key events live on YouTube.</p>
+      <p class="programs-intro" data-lang="ta">பூங்குளம் மற்றும் அதனைச் சுற்றியுள்ள பகுதிகளில் வரவிருக்கும் திருவிழாக்கள், வேளாண்மை திட்டங்கள், சமுதாய நிகழ்வுகள் மற்றும் அரசு முகாம்கள். YouTube-இல் முக்கிய நிகழ்வுகளை நேரலையில் பார்க்கவும்.</p>
 
       <!-- ── LIVE NOW BANNER (set LIVE_YT_ID in script below to activate) ── -->
       <div class="live-banner" id="liveBanner">
@@ -2199,8 +2315,10 @@
               <span class="event-tag tag-festival">Temple Festival</span>
               <span class="event-tag tag-live">YouTube Live</span>
             </div>
-            <h3>Tamil New Year — Chithirai Celebrations</h3>
-            <p>Panchanga sravanam, special puja at Agastheeswarar temple, kolam competition, and traditional sweets distribution. Village gathering open to all.</p>
+            <h3 data-lang="en">Tamil New Year — Chithirai Celebrations</h3>
+            <h3 data-lang="ta">தமிழ் புத்தாண்டு — சித்திரை விழா</h3>
+            <p data-lang="en">Panchanga sravanam, special puja at Agastheeswarar temple, kolam competition, and traditional sweets distribution. Village gathering open to all.</p>
+            <p data-lang="ta">பஞ்சாங்க சிரவணம், அகஸ்தீஸ்வரர் கோவிலில் சிறப்பு பூஜை, கோலம் போட்டி மற்றும் பாரம்பரிய இனிப்பு விநியோகம். அனைவரும் வரவேற்கப்படும் கிராம கூட்டம்.</p>
             <div class="event-meta-row">
               <span>📍 Agastheeswarar Temple, Poongulam</span>
               <span>🕐 6:00 AM – 8:00 PM</span>
@@ -2221,8 +2339,10 @@
             <div class="event-tags">
               <span class="event-tag tag-agri">Agriculture</span>
             </div>
-            <h3>Kuruvai Paddy Sowing Season Begins</h3>
-            <p>The summer paddy sowing season opens across Poongulam's fields. Visitors are welcome to join farmers for a hands-on sowing experience in the early morning.</p>
+            <h3 data-lang="en">Kuruvai Paddy Sowing Season Begins</h3>
+            <h3 data-lang="ta">குறுவை நெல் விதைப்பு காலம் தொடங்குகிறது</h3>
+            <p data-lang="en">The summer paddy sowing season opens across Poongulam's fields. Visitors are welcome to join farmers for a hands-on sowing experience in the early morning.</p>
+            <p data-lang="ta">கோடை நெல் விதைப்பு காலம் பூங்குளத்தின் வயல்களில் துவங்குகிறது. பார்வையாளர்கள் விவசாயிகளுடன் காலை நேர கை விதைப்பு அனுபவத்தில் கலந்துகொள்ள வரவேற்கப்படுகிறார்கள்.</p>
             <div class="event-meta-row">
               <span>📍 Poongulam Paddy Fields</span>
               <span>🕐 5:30 AM – 10:00 AM</span>
@@ -2244,8 +2364,10 @@
               <span class="event-tag tag-festival">Temple Festival</span>
               <span class="event-tag tag-live">YouTube Live</span>
             </div>
-            <h3>Mariamman Annual Temple Festival</h3>
-            <p>Three-day annual festival with chariot procession, traditional Nadaswaram music, evening puja, and cultural performances. One of the village's grandest celebrations.</p>
+            <h3 data-lang="en">Mariamman Annual Temple Festival</h3>
+            <h3 data-lang="ta">மாரியம்மன் வருடாந்திர கோவில் திருவிழா</h3>
+            <p data-lang="en">Three-day annual festival with chariot procession, traditional Nadaswaram music, evening puja, and cultural performances. One of the village's grandest celebrations.</p>
+            <p data-lang="ta">தேர்த் திருவிழா, பாரம்பரிய நாதஸ்வரம் இசை, மாலை பூஜை மற்றும் கலாச்சார நிகழ்ச்சிகளுடன் மூன்று நாள் ஆண்டு திருவிழா. கிராமத்தின் மிக கோலாகலமான கொண்டாட்டங்களில் ஒன்று.</p>
             <div class="event-meta-row">
               <span>📍 Mariamman Temple, Poongulam</span>
               <span>🕐 3 days · 18–20 May</span>
@@ -2266,8 +2388,10 @@
             <div class="event-tags">
               <span class="event-tag tag-govt">Government Camp</span>
             </div>
-            <h3>PM Kisan &amp; Crop Insurance Awareness Camp</h3>
-            <p>Block Agriculture Officer hosts a camp on PM Kisan Samman Nidhi enrollment, crop insurance (PMFBY), and soil health card distribution for Poongulam farmers.</p>
+            <h3 data-lang="en">PM Kisan &amp; Crop Insurance Awareness Camp</h3>
+            <h3 data-lang="ta">PM கிசான் மற்றும் பயிர் காப்பீடு விழிப்புணர்வு முகாம்</h3>
+            <p data-lang="en">Block Agriculture Officer hosts a camp on PM Kisan Samman Nidhi enrollment, crop insurance (PMFBY), and soil health card distribution for Poongulam farmers.</p>
+            <p data-lang="ta">வட்டார வேளாண்மை அலுவலர் PM கிசான் சம்மான் நிதி பதிவு, பயிர் காப்பீடு (PMFBY) மற்றும் பூங்குளம் விவசாயிகளுக்கு மண் சுகாதார அட்டை விநியோகம் குறித்த முகாம் நடத்துகிறார்.</p>
             <div class="event-meta-row">
               <span>📍 Panchayat Office, Poongulam</span>
               <span>🕐 10:00 AM – 2:00 PM</span>
@@ -2288,8 +2412,10 @@
             <div class="event-tags">
               <span class="event-tag tag-community">Community</span>
             </div>
-            <h3>Pond Desilting Volunteer Day — தூர் வாருதல்</h3>
-            <p>Community volunteer drive to desilt Poongulam's main pond. Join villagers, NRIs, and supporters for a day of collective action. Breakfast and lunch provided.</p>
+            <h3 data-lang="en">Pond Desilting Volunteer Day — தூர் வாருதல்</h3>
+            <h3 data-lang="ta">குளம் தூர் வாருதல் தன்னார்வ நாள்</h3>
+            <p data-lang="en">Community volunteer drive to desilt Poongulam's main pond. Join villagers, NRIs, and supporters for a day of collective action. Breakfast and lunch provided.</p>
+            <p data-lang="ta">பூங்குளத்தின் முக்கிய குளத்தை தூர் வார சமுதாய தன்னார்வல அழைப்பு. கிராம மக்கள், NRI கள் மற்றும் ஆதரவாளர்களுடன் கூட்டு செயலில் ஒரு நாள் கலந்துகொள்ளுங்கள். காலை உணவும் மதிய உணவும் வழங்கப்படும்.</p>
             <div class="event-meta-row">
               <span>📍 Main Village Pond, Poongulam</span>
               <span>🕐 6:00 AM – 1:00 PM</span>
@@ -2310,8 +2436,11 @@
       <div class="section-label" data-i18n="label-visual">Visual Story</div>
       <h2 class="section-title light" data-i18n="title-gallery">Photos of Poongulam</h2>
       <div class="gold-line"></div>
-      <p class="gallery-intro">
+      <p class="gallery-intro" data-lang="en">
         A glimpse of everyday life, golden harvests, ancient temples, and the natural beauty that makes Poongulam unlike any other village in the Cauvery delta.
+      </p>
+      <p class="gallery-intro" data-lang="ta">
+        காவிரி டெல்டாவில் பூங்குளத்தை தனித்துவமாக்கும் அன்றாட வாழ்க்கை, பொன்னிற அறுவடை, பண்டைய கோவில்கள் மற்றும் இயற்கை அழகின் சிறு பார்வை.
       </p>
 
       <div class="gallery-grid">
@@ -2450,12 +2579,14 @@
       <div class="section-label saffron" data-i18n="label-giveback">Give Back</div>
       <h2 class="section-title light" data-i18n="title-donate">Support Poongulam</h2>
       <div class="saffron-line"></div>
-      <p style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:8px;">
+      <p data-lang="en" style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:8px;">
         Poongulam is a village that has given so much — to its people, to its culture, to Tamil Nadu's heritage. Yet like many rural communities, it faces challenges: deteriorating school infrastructure, water access, and temple restoration.
       </p>
-      <p style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:24px;">
+      <p data-lang="ta" style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:8px;">பூங்குளம் தன் மக்களுக்கும், கலாச்சாரத்திற்கும், தமிழ்நாட்டின் பாரம்பரியத்திற்கும் மிகவும் கொடுத்த கிராமம். ஆனால் பல கிராமப்புற சமூகங்களைப் போல, பள்ளி உள்கட்டமைப்பு, நீர் வசதி மற்றும் கோவில் மீட்பு என்ற சவால்களை எதிர்கொள்கிறது.</p>
+      <p data-lang="en" style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:24px;">
         Your donation — no matter how small — goes directly to real, on-the-ground projects managed transparently by the village panchayat. Every rupee is accounted for and shared with the community.
       </p>
+      <p data-lang="ta" style="font-size:1.05rem; color:rgba(255,255,255,0.75); line-height:1.85; margin-bottom:24px;">உங்கள் நன்கொடை — எவ்வளவு சிறியதாக இருந்தாலும் — கிராம பஞ்சாயத்தால் வெளிப்படையாக நிர்வகிக்கப்படும் உண்மையான திட்டங்களுக்கு நேரடியாக செல்கிறது. ஒவ்வொரு ரூபாயும் கணக்கிடப்பட்டு சமூகத்துடன் பகிரப்படும்.</p>
       <div class="donations-grid">
 
         <div class="donate-intro">
@@ -2463,58 +2594,73 @@
             <div class="impact-item">
               <div class="impact-icon">🏫</div>
               <div class="impact-text">
-                <strong>School Supplies</strong>
-                Books, bags &amp; stationery for children who need them.
+                <strong data-lang="en">School Supplies</strong>
+                <strong data-lang="ta">பள்ளி பொருட்கள்</strong>
+                <span data-lang="en">Books, bags &amp; stationery for children who need them.</span>
+                <span data-lang="ta">தேவையுள்ள குழந்தைகளுக்கு புத்தகங்கள், பைகள் மற்றும் எழுது பொருட்கள்.</span>
               </div>
             </div>
             <div class="impact-item">
               <div class="impact-icon">💧</div>
               <div class="impact-text">
-                <strong>Clean Water</strong>
-                Maintaining bore wells and clean water access points.
+                <strong data-lang="en">Clean Water</strong>
+                <strong data-lang="ta">சுத்தமான நீர்</strong>
+                <span data-lang="en">Maintaining bore wells and clean water access points.</span>
+                <span data-lang="ta">குழாய் கிணறுகள் மற்றும் சுத்தமான நீர் இடங்களை பராமரித்தல்.</span>
               </div>
             </div>
             <div class="impact-item">
               <div class="impact-icon">🛕</div>
               <div class="impact-text">
-                <strong>Temple Restoration</strong>
-                Preserving 1000-year-old temple structures and carvings.
+                <strong data-lang="en">Temple Restoration</strong>
+                <strong data-lang="ta">கோவில் மீட்பு</strong>
+                <span data-lang="en">Preserving 1000-year-old temple structures and carvings.</span>
+                <span data-lang="ta">ஆயிரம் ஆண்டு கோவில் கட்டமைப்புகளும் சிற்பங்களும் பாதுகாத்தல்.</span>
               </div>
             </div>
             <div class="impact-item">
               <div class="impact-icon">🌾</div>
               <div class="impact-text">
-                <strong>Farmer Support</strong>
-                Seeds, tools, and soil-health programmes for small farmers.
+                <strong data-lang="en">Farmer Support</strong>
+                <strong data-lang="ta">விவசாயி ஆதரவு</strong>
+                <span data-lang="en">Seeds, tools, and soil-health programmes for small farmers.</span>
+                <span data-lang="ta">சிறு விவசாயிகளுக்கு விதைகள், கருவிகள் மற்றும் மண் சுகாதார திட்டங்கள்.</span>
               </div>
             </div>
             <div class="impact-item">
               <div class="impact-icon">📚</div>
               <div class="impact-text">
-                <strong>Village Library</strong>
-                Stocking Tamil literature and study resources for youth.
+                <strong data-lang="en">Village Library</strong>
+                <strong data-lang="ta">கிராம நூலகம்</strong>
+                <span data-lang="en">Stocking Tamil literature and study resources for youth.</span>
+                <span data-lang="ta">இளைஞர்களுக்கு தமிழ் இலக்கியம் மற்றும் படிப்பு வளங்கள் நிரப்புதல்.</span>
               </div>
             </div>
             <div class="impact-item">
               <div class="impact-icon">🩺</div>
               <div class="impact-text">
-                <strong>Medical Camps</strong>
-                Funding quarterly health check-up camps for elders.
+                <strong data-lang="en">Medical Camps</strong>
+                <strong data-lang="ta">மருத்துவ முகாம்கள்</strong>
+                <span data-lang="en">Funding quarterly health check-up camps for elders.</span>
+                <span data-lang="ta">முதியோர்களுக்கு காலாண்டு சுகாதார பரிசோதனை முகாம்களுக்கு நிதியளித்தல்.</span>
               </div>
             </div>
             <div class="impact-item" style="grid-column:1/-1; border-color:var(--saffron); background:rgba(232,117,26,0.08);">
               <div class="impact-icon">🏞️</div>
               <div class="impact-text">
-                <strong>தூர் வாருதல் — Pond Desilting</strong>
-                Poongulam has 3 ponds that urgently need desilting. Restoring them is the single most impactful step to recharge the village's groundwater and sustain farming through dry seasons.
+                <strong data-lang="en">தூர் வாருதல் — Pond Desilting</strong>
+                <strong data-lang="ta">தூர் வாருதல் — குளம் தூர்வாரல்</strong>
+                <span data-lang="en">Poongulam has 3 ponds that urgently need desilting. Restoring them is the single most impactful step to recharge the village's groundwater and sustain farming through dry seasons.</span>
+                <span data-lang="ta">பூங்குளத்தில் 3 குளங்கள் அவசரமாக தூர்வாரல் தேவைப்படுகின்றன. அவற்றை மீட்பது நிலத்தடி நீரை நிரப்பி வறண்ட பருவங்களில் வேளாண்மையை நிலைநிறுத்த மிக முக்கியம்.</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="donate-card">
-          <h3>Make a Donation</h3>
-          <p>100% of your contribution reaches Poongulam village directly.</p>
+          <h3 data-i18n="donate-heading">Make a Donation</h3>
+          <p data-lang="en">100% of your contribution reaches Poongulam village directly.</p>
+          <p data-lang="ta">உங்கள் பங்களிப்பில் 100% பூங்குளம் கிராமத்தை நேரடியாக சென்றடைகிறது.</p>
 
           <!-- Fundraising Progress Tracker -->
           <div class="fundraise-tracker">
@@ -2535,7 +2681,7 @@
             </div>
           </div>
 
-          <span class="donate-label">Choose Amount</span>
+          <span class="donate-label" data-i18n="donate-label-amount">Choose Amount</span>
           <div class="donate-amounts">
             <button class="donate-amt-btn" data-amt="100"  onclick="setDonate(100)">₹100</button>
             <button class="donate-amt-btn" data-amt="250"  onclick="setDonate(250)">₹250</button>
@@ -2544,7 +2690,7 @@
             <button class="donate-amt-btn" data-amt="2500" onclick="setDonate(2500)">₹2,500</button>
           </div>
 
-          <span class="donate-label">Or Enter Custom Amount</span>
+          <span class="donate-label" data-i18n="donate-label-custom">Or Enter Custom Amount</span>
           <div class="donate-custom-wrap">
             <input
               type="number"
@@ -2555,7 +2701,7 @@
             />
           </div>
 
-          <button class="btn-donate-main" onclick="submitDonate()">
+          <button class="btn-donate-main" data-i18n="donate-btn" onclick="submitDonate()">
             ♥ &nbsp;Donate Now via Razorpay
           </button>
           <div class="donate-secure">
@@ -2576,34 +2722,50 @@
       <div class="gold-line"></div>
       <div class="community-grid">
         <div class="community-main">
-          <p>
+          <p data-lang="en">
             The people of Poongulam are warm, resilient, and deeply rooted in their traditions. The village is a close-knit community where every household knows its neighbour, and collective celebrations — from weddings to temple festivals — are grand, inclusive affairs attended by all.
           </p>
-          <p>
+          <p data-lang="ta">பூங்குளத்தின் மக்கள் அன்பானவர்கள், உறுதியானவர்கள் மற்றும் தங்கள் மரபுகளில் ஆழமாக வேரூன்றியவர்கள். கிராமம் ஒரு நெருக்கமான சமூகம்; ஒவ்வொரு வீடும் தன் அண்டை வீட்டினரை அறியும், திருமணங்கள் முதல் கோவில் திருவிழாக்கள் வரை கூட்டு கொண்டாட்டங்கள் அனைவரும் கலந்துகொள்ளும் பெரிய விழாக்கள்.</p>
+          <p data-lang="en">
             The village is home to several traditional communities including agriculturists, weavers, potters, and priests who have practised their craft for generations. The local panchayat plays an active role in village welfare, infrastructure development, and maintaining cultural traditions.
           </p>
-          <p>
+          <p data-lang="ta">கிராமத்தில் வேளாண்மையாளர்கள், நெசவாளர்கள், குயவர்கள் மற்றும் தலைமுறை தோறும் தங்கள் கலையை கடைப்பிடிக்கும் அர்ச்சகர்கள் உள்ளிட்ட பல பாரம்பரிய சமுதாயங்கள் உள்ளன. உள்ளூர் பஞ்சாயத்து கிராம நலன், உள்கட்டமைப்பு மேம்பாடு மற்றும் கலாச்சார மரபுகளை பாதுகாப்பதில் தீவிர பங்கு வகிக்கிறது.</p>
+          <p data-lang="en">
             Women of Poongulam are known for their intricate kolam art and expertise in traditional cooking — particularly the famed Pongal and Kuzhambu recipes passed down through generations. The village also has a vibrant youth community that participates in sports, education, and cultural programs.
           </p>
+          <p data-lang="ta">பூங்குளத்தின் பெண்கள் தங்கள் நுண்ணிய கோலம் கலை மற்றும் பாரம்பரிய சமையலில் நிபுணத்துவத்திற்கு பெயர் பெற்றவர்கள் — குறிப்பாக தலைமுறை தோறும் வழங்கப்படும் பொங்கல் மற்றும் குழம்பு வகைகள். கிராமம் விளையாட்டு, கல்வி மற்றும் கலாச்சார திட்டங்களில் பங்கேற்கும் துடிப்பான இளையோர் சமூகத்தையும் கொண்டுள்ளது.</p>
           <div class="community-highlights">
-            <div class="highlight-chip">🏏 Village Cricket Team</div>
-            <div class="highlight-chip">🎭 Koothu &amp; Drama Groups</div>
-            <div class="highlight-chip">🎵 Nadaswaram Players</div>
-            <div class="highlight-chip">🤝 Active Village Panchayat</div>
-            <div class="highlight-chip">👩‍🌾 Women's Self-Help Groups</div>
-            <div class="highlight-chip">🎨 Traditional Kolam Artists</div>
+            <div class="highlight-chip" data-lang="en">🏏 Village Cricket Team</div>
+            <div class="highlight-chip" data-lang="ta">🏏 கிராம கிரிக்கெட் அணி</div>
+            <div class="highlight-chip" data-lang="en">🎭 Koothu &amp; Drama Groups</div>
+            <div class="highlight-chip" data-lang="ta">🎭 கூத்து மற்றும் நாடக குழுக்கள்</div>
+            <div class="highlight-chip" data-lang="en">🎵 Nadaswaram Players</div>
+            <div class="highlight-chip" data-lang="ta">🎵 நாதஸ்வரம் வாசிப்பாளர்கள்</div>
+            <div class="highlight-chip" data-lang="en">🤝 Active Village Panchayat</div>
+            <div class="highlight-chip" data-lang="ta">🤝 செயல்திறன் மிகு கிராம பஞ்சாயத்து</div>
+            <div class="highlight-chip" data-lang="en">👩‍🌾 Women's Self-Help Groups</div>
+            <div class="highlight-chip" data-lang="ta">👩‍🌾 பெண்கள் சுயஉதவி குழுக்கள்</div>
+            <div class="highlight-chip" data-lang="en">🎨 Traditional Kolam Artists</div>
+            <div class="highlight-chip" data-lang="ta">🎨 பாரம்பரிய கோலம் கலைஞர்கள்</div>
           </div>
         </div>
         <div class="community-sidebar">
-          <h3>Festivals of Poongulam</h3>
+          <h3 data-i18n="sidebar-festivals">Festivals of Poongulam</h3>
           <ul class="festival-list">
-            <li>Pongal – The Harvest Festival</li>
-            <li>Navarathri – Nine Nights of Mariamman</li>
-            <li>Maha Shivaratri – All-night Puja</li>
-            <li>Karthigai Deepam – Festival of Lights</li>
-            <li>Aadi Perukku – River Thanksgiving</li>
-            <li>Ayyanar Festival – Village Guardian Worship</li>
-            <li>Tamil New Year – Chithirai Celebrations</li>
+            <li data-lang="en">Pongal – The Harvest Festival</li>
+            <li data-lang="ta">பொங்கல் – அறுவடை திருவிழா</li>
+            <li data-lang="en">Navarathri – Nine Nights of Mariamman</li>
+            <li data-lang="ta">நவராத்திரி – மாரியம்மன் ஒன்பது இரவுகள்</li>
+            <li data-lang="en">Maha Shivaratri – All-night Puja</li>
+            <li data-lang="ta">மகா சிவராத்திரி – இரவு முழுவதும் பூஜை</li>
+            <li data-lang="en">Karthigai Deepam – Festival of Lights</li>
+            <li data-lang="ta">கார்த்திகை தீபம் – விளக்கு திருவிழா</li>
+            <li data-lang="en">Aadi Perukku – River Thanksgiving</li>
+            <li data-lang="ta">ஆடி பெருக்கு – ஆற்று நன்றி விழா</li>
+            <li data-lang="en">Ayyanar Festival – Village Guardian Worship</li>
+            <li data-lang="ta">அய்யனார் திருவிழா – கிராம காவல் தெய்வ வழிபாடு</li>
+            <li data-lang="en">Tamil New Year – Chithirai Celebrations</li>
+            <li data-lang="ta">தமிழ் புத்தாண்டு – சித்திரை விழா</li>
           </ul>
         </div>
       </div>
@@ -2618,35 +2780,158 @@
       <div class="gold-line"></div>
       <div class="edu-grid">
         <div class="edu-card">
-          <h3>🏫 Government Primary School</h3>
-          <p>The village's primary school provides free education to children from Poongulam and surrounding hamlets. Dedicated teachers ensure quality education in Tamil medium from Classes 1–5.</p>
-          <span class="edu-badge">Classes 1–5</span>
+          <h3 data-lang="en">🏫 Government Primary School</h3>
+          <h3 data-lang="ta">🏫 அரசு தொடக்க பள்ளி</h3>
+          <p data-lang="en">The village's primary school provides free education to children from Poongulam and surrounding hamlets. Dedicated teachers ensure quality education in Tamil medium from Classes 1–5.</p>
+          <p data-lang="ta">கிராமத்தின் தொடக்க பள்ளி பூங்குளம் மற்றும் சுற்றியுள்ள கிராமங்களின் குழந்தைகளுக்கு இலவச கல்வி வழங்குகிறது. அர்ப்பணிப்புள்ள ஆசிரியர்கள் வகுப்பு 1–5 வரை தமிழ் வழியில் தரமான கல்வி உறுதிசெய்கிறார்கள்.</p>
+          <span class="edu-badge" data-lang="en">Classes 1–5</span>
+          <span class="edu-badge" data-lang="ta">வகுப்பு 1–5</span>
         </div>
         <div class="edu-card">
-          <h3>📚 Middle School (Nannilam)</h3>
-          <p>Students continue at the nearby Nannilam Middle School, a short bus ride away, offering education up to Class 8 with science and math labs.</p>
-          <span class="edu-badge">Classes 6–8</span>
+          <h3 data-lang="en">📚 Middle School (Nannilam)</h3>
+          <h3 data-lang="ta">📚 நடுநிலைப் பள்ளி (நன்னிலம்)</h3>
+          <p data-lang="en">Students continue at the nearby Nannilam Middle School, a short bus ride away, offering education up to Class 8 with science and math labs.</p>
+          <p data-lang="ta">மாணவர்கள் அருகிலுள்ள நன்னிலம் நடுநிலைப் பள்ளியில் தொடர்கின்றனர் — குறுகிய பேருந்து தூரத்தில் — அறிவியல் மற்றும் கணித ஆய்வகங்களுடன் வகுப்பு 8 வரை கல்வி வழங்குகிறது.</p>
+          <span class="edu-badge" data-lang="en">Classes 6–8</span>
+          <span class="edu-badge" data-lang="ta">வகுப்பு 6–8</span>
         </div>
         <div class="edu-card">
-          <h3>🎓 Higher Secondary Access</h3>
-          <p>Poongulam students access government and aided Higher Secondary Schools in Nannilam and Thiruvarur for Classes 9–12, with many going on to colleges in Thiruvarur and beyond.</p>
-          <span class="edu-badge">Classes 9–12</span>
+          <h3 data-lang="en">🎓 Higher Secondary Access</h3>
+          <h3 data-lang="ta">🎓 மேல்நிலைக் கல்வி அணுகல்</h3>
+          <p data-lang="en">Poongulam students access government and aided Higher Secondary Schools in Nannilam and Thiruvarur for Classes 9–12, with many going on to colleges in Thiruvarur and beyond.</p>
+          <p data-lang="ta">பூங்குளம் மாணவர்கள் நன்னிலம் மற்றும் திருவாரூரில் உள்ள அரசு மற்றும் அரசு உதவிபெறும் மேல்நிலைப் பள்ளிகளில் வகுப்பு 9–12 படிக்கின்றனர்; பலர் திருவாரூர் மற்றும் அதற்கு அப்பால் உள்ள கல்லூரிகளில் சேர்கின்றனர்.</p>
+          <span class="edu-badge" data-lang="en">Classes 9–12</span>
+          <span class="edu-badge" data-lang="ta">வகுப்பு 9–12</span>
         </div>
         <div class="edu-card">
-          <h3>🌟 Village Library</h3>
-          <p>A small community reading room maintained by the village panchayat stocks newspapers, Tamil literature, and educational books. It serves as an informal study hall for students.</p>
-          <span class="edu-badge">Community Resource</span>
+          <h3 data-lang="en">🌟 Village Library</h3>
+          <h3 data-lang="ta">🌟 கிராம நூலகம்</h3>
+          <p data-lang="en">A small community reading room maintained by the village panchayat stocks newspapers, Tamil literature, and educational books. It serves as an informal study hall for students.</p>
+          <p data-lang="ta">கிராம பஞ்சாயத்தால் பராமரிக்கப்படும் ஒரு சிறிய சமுதாய வாசிப்பு அறை செய்தித்தாள்கள், தமிழ் இலக்கியம் மற்றும் கல்வி புத்தகங்களை இருப்பில் வைத்துள்ளது. மாணவர்களுக்கு முறைசாரா படிப்பு அரங்காக செயல்படுகிறது.</p>
+          <span class="edu-badge" data-lang="en">Community Resource</span>
+          <span class="edu-badge" data-lang="ta">சமுதாய வளம்</span>
         </div>
         <div class="edu-card">
-          <h3>👶 Anganwadi Centre</h3>
-          <p>The village Anganwadi provides early childhood care, nutrition, and pre-school education for children under 6. It is a lifeline for working mothers in the village.</p>
-          <span class="edu-badge">Early Childhood</span>
+          <h3 data-lang="en">👶 Anganwadi Centre</h3>
+          <h3 data-lang="ta">👶 அங்கன்வாடி மையம்</h3>
+          <p data-lang="en">The village Anganwadi provides early childhood care, nutrition, and pre-school education for children under 6. It is a lifeline for working mothers in the village.</p>
+          <p data-lang="ta">கிராம அங்கன்வாடி 6 வயதுக்கு கீழ் உள்ள குழந்தைகளுக்கு ஆரம்ப குழந்தை பராமரிப்பு, ஊட்டம் மற்றும் முன் பள்ளிக் கல்வி வழங்குகிறது. வேலை செய்யும் தாய்மார்களுக்கு இது ஒரு உயிர்நாடி.</p>
+          <span class="edu-badge" data-lang="en">Early Childhood</span>
+          <span class="edu-badge" data-lang="ta">ஆரம்ப குழந்தைப் பருவம்</span>
         </div>
         <div class="edu-card">
-          <h3>🖥️ Digital Literacy</h3>
-          <p>Youth of Poongulam increasingly access digital education platforms. Several students have gone on to engineering and medical colleges, becoming proud ambassadors of the village.</p>
-          <span class="edu-badge">Growing Initiative</span>
+          <h3 data-lang="en">🖥️ Digital Literacy</h3>
+          <h3 data-lang="ta">🖥️ டிஜிட்டல் கல்வியறிவு</h3>
+          <p data-lang="en">Youth of Poongulam increasingly access digital education platforms. Several students have gone on to engineering and medical colleges, becoming proud ambassadors of the village.</p>
+          <p data-lang="ta">பூங்குளத்தின் இளைஞர்கள் டிஜிட்டல் கல்வி தளங்களை அதிகமாக அணுகுகின்றனர். பலர் பொறியியல் மற்றும் மருத்துவக் கல்லூரிகளுக்கு சென்று கிராமத்தின் பெருமிதமான தூதர்களாக விளங்குகின்றனர்.</p>
+          <span class="edu-badge" data-lang="en">Growing Initiative</span>
+          <span class="edu-badge" data-lang="ta">வளரும் முயற்சி</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ NEWS & EVENTS ═══════════════════ -->
+  <section class="news" id="news">
+    <div class="container">
+      <div class="section-label" data-i18n="label-news">Village Updates</div>
+      <h2 class="section-title" data-i18n="title-news">News &amp; Events</h2>
+      <div class="gold-line"></div>
+      <div class="news-grid">
+
+        <!-- Featured: Pond Desilting Drive -->
+        <div class="news-card news-featured">
+          <div class="news-featured-thumb">🏞️</div>
+          <div class="news-card-content">
+            <div class="news-card-top">
+              <div class="news-date">📌 Ongoing Initiative</div>
+              <span class="news-tag tag-update">Village Initiative</span>
+              <h3 data-lang="en">தூர் வாருதல் — Pond Restoration Drive</h3>
+            <h3 data-lang="ta">தூர் வாருதல் — குளம் மீட்பு இயக்கம்</h3>
+            </div>
+            <div class="news-card-body">
+              <p data-lang="en">Poongulam's three ponds are actively undergoing desilting — a critical step to recharge groundwater, restore wells, and sustain farming through dry seasons. The community has united for this effort and donations are being channelled directly to the work on the ground.</p>
+              <p data-lang="ta">பூங்குளத்தின் மூன்று குளங்கள் தீவிரமாக தூர்வாரப்படுகின்றன — நிலத்தடி நீரை நிரப்பவும், கிணறுகளை மீட்கவும், வறண்ட பருவங்களில் வேளாண்மையை நிலைப்படுத்தவும் இது ஒரு முக்கியமான படி. சமூகம் இந்த முயற்சியில் ஐக்கியமாகியுள்ளது.</p>
+            </div>
+            <div class="news-card-footer">🤝 Community-led &nbsp;·&nbsp; <a href="#donate" style="color:var(--saffron);text-decoration:none;">Donations open ♥</a></div>
+          </div>
+        </div>
+
+        <!-- Pongal 2026 -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 January 14, 2026</div>
+            <span class="news-tag tag-festival">Festival</span>
+            <h3 data-lang="en">Pongal — The Harvest Festival</h3>
+            <h3 data-lang="ta">பொங்கல் — அறுவடை திருவிழா</h3>
+          </div>
+          <div class="news-card-body">
+            <p data-lang="en">Poongulam celebrated Pongal with great joy — traditional Kolam decorations, Pongal cooking in every courtyard, and Mattu Pongal cattle worship. The village was filled with fragrance of freshly cooked rice and sugarcane.</p>
+            <p data-lang="ta">பூங்குளம் பொங்கலை மிகுந்த மகிழ்ச்சியுடன் கொண்டாடியது — பாரம்பரிய கோலம் அலங்காரங்கள், ஒவ்வொரு முற்றத்திலும் பொங்கல் சமையல், மற்றும் மட்டு பொங்கல் கால்நடை வழிபாடு. கிராமம் புதிதாக வேகவைத்த சோறு மற்றும் கரும்பின் மணத்தால் நிரம்பியிருந்தது.</p>
+          </div>
+          <div class="news-card-footer">🎊 Village-wide celebration</div>
+        </div>
+
+        <!-- Vishnu Temple Update -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 July 2024</div>
+            <span class="news-tag tag-update">Heritage Revival</span>
+            <h3 data-lang="en">Bhoomi Pooja — Sri Lakshmi Narayana Perumal Temple</h3>
+            <h3 data-lang="ta">பூமி பூஜை — ஸ்ரீ லக்ஷ்மி நாராயண பெருமாள் கோவில்</h3>
+          </div>
+          <div class="news-card-body">
+            <p data-lang="en">After nearly a century of absence, Lord Vishnu returned to Poongulam. The grand Bhoomi Pooja for the restoration of the ancient Sri Lakshmi Narayana Perumal Temple was performed in July 2024 with Harikatha sessions marking the return of Lord Vishnu to his ancestral abode. The clearing of the site revealed original Chola-era foundations and sacred Vigrahams, confirming the elders' oral histories of a grand temple once standing here. Construction follows traditional Agama Shastras using stone masonry — built to stand for centuries.</p>
+            <p data-lang="ta">கிட்டத்தட்ட ஒரு நூற்றாண்டிற்கு பிறகு, விஷ்ணு பகவான் பூங்குளத்திற்கு திரும்பினார். பண்டைய ஸ்ரீ லக்ஷ்மி நாராயண பெருமாள் கோவிலின் மீட்பிற்கான பூமி பூஜை ஜூலை 2024 இல் நடைபெற்றது. தளத்தை சுத்தப்படுத்தியது சோழர் காலத்திய அடித்தளங்களையும் புனித விக்கிரகங்களையும் வெளிப்படுத்தியது.</p>
+          </div>
+          <div class="news-card-footer">🏛️ Ancient temple restored &nbsp;·&nbsp; Donations welcome</div>
+        </div>
+
+        <!-- Navarathri -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 October 2026</div>
+            <span class="news-tag tag-festival">Upcoming Festival</span>
+            <h3 data-lang="en">Navarathri — Mariamman Nine Nights</h3>
+            <h3 data-lang="ta">நவராத்திரி — மாரியம்மன் ஒன்பது இரவுகள்</h3>
+          </div>
+          <div class="news-card-body">
+            <p data-lang="en">The village's grandest annual celebration — nine nights of devotion at the Mariamman temple. Kolam competition, nadaswaram concerts, and the grand chariot procession on Vijayadasami. Every household participates.</p>
+            <p data-lang="ta">கிராமத்தின் மிகப் பெரிய வருடாந்திர கொண்டாட்டம் — மாரியம்மன் கோவிலில் பக்தியின் ஒன்பது இரவுகள். கோலம் போட்டி, நாதஸ்வரம் இசை நிகழ்ச்சிகள் மற்றும் விஜயதசமியில் பெரிய தேர்ப் பவனி. ஒவ்வொரு வீடும் பங்கேற்கும்.</p>
+          </div>
+          <div class="news-card-footer">📅 Coming Soon · October 2026</div>
+        </div>
+
+        <!-- Samba Harvest -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 November – January</div>
+            <span class="news-tag tag-agri">Agriculture</span>
+            <h3 data-lang="en">Samba Harvest Season</h3>
+            <h3 data-lang="ta">சம்பா அறுவடை காலம்</h3>
+          </div>
+          <div class="news-card-body">
+            <p data-lang="en">The Samba paddy harvest is the most vibrant time in Poongulam. Golden fields are hand-cut in a tradition unchanged for centuries. Visitors are welcome to witness and participate in the harvest experience.</p>
+            <p data-lang="ta">சம்பா நெல் அறுவடை பூங்குளத்தின் மிகவும் துடிப்பான காலம். நூற்றாண்டுகளாக மாறாத மரபில் பொன்னிற வயல்கள் கையால் அறுவடை செய்யப்படுகின்றன. பார்வையாளர்கள் அறுவடை அனுபவத்தை நேரில் காணவும் பங்கேற்கவும் வரவேற்கப்படுகிறார்கள்.</p>
+          </div>
+          <div class="news-card-footer">🌾 Best time to visit Poongulam</div>
+        </div>
+
+        <!-- School Supplies Drive -->
+        <div class="news-card">
+          <div class="news-card-top">
+            <div class="news-date">📅 June 2026</div>
+            <span class="news-tag tag-community">Education</span>
+            <h3 data-lang="en">School Supplies Drive — June 2026</h3>
+            <h3 data-lang="ta">பள்ளி பொருட்கள் திட்டம் — ஜூன் 2026</h3>
+          </div>
+          <div class="news-card-body">
+            <p data-lang="en">As the new academic year begins, the village panchayat is organising a school supplies distribution drive — books, bags, and stationery for children in need. Help us reach every child in Poongulam.</p>
+            <p data-lang="ta">புதிய கல்வியாண்டு தொடங்கும் நேரத்தில், கிராம பஞ்சாயத்து பள்ளி பொருட்கள் விநியோக திட்டத்தை ஏற்பாடு செய்கிறது — தேவையுள்ள குழந்தைகளுக்கு புத்தகங்கள், பைகள் மற்றும் எழுது பொருட்கள். பூங்குளத்தின் ஒவ்வொரு குழந்தையையும் சென்றடைய உதவுங்கள்.</p>
+          </div>
+          <div class="news-card-footer">🏫 <a href="#donate" style="color:var(--saffron);text-decoration:none;">Support this initiative ♥</a></div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2659,49 +2944,55 @@
       <div class="gold-line"></div>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Getting to Poongulam</h3>
+          <h3 data-i18n="contact-getting">Getting to Poongulam</h3>
           <div class="info-row">
             <div class="info-icon">📍</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>Address</strong>
               Poongulam Village, Nannilam Taluk,<br>
               Thiruvarur District, Tamil Nadu – 610 107
             </div>
+            <div class="info-text" data-lang="ta"><strong>முகவரி</strong><br>பூங்குளம் கிராமம், நன்னிலம் வட்டம்,<br>திருவாரூர் மாவட்டம், தமிழ்நாடு – 610 107</div>
           </div>
           <div class="info-row">
             <div class="info-icon">🚌</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>By Bus</strong>
               State transport buses connect Poongulam to Nannilam (4 km) and Thiruvarur (~17 km). Frequent services run throughout the day.
             </div>
+            <div class="info-text" data-lang="ta"><strong>பேருந்தில்</strong> மாநில போக்குவரத்து பேருந்துகள் பூங்குளத்தை நன்னிலம் (4 கி.மீ.) மற்றும் திருவாரூர் (~17 கி.மீ.) உடன் இணைக்கின்றன. நாள் முழுவதும் இயக்கங்கள் உள்ளன.</div>
           </div>
           <div class="info-row">
             <div class="info-icon">🚂</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>By Train</strong>
               Nearest railway station: Nannilam or Thiruvarur, well-connected to Chennai, Thanjavur, and Mayiladuthurai.
             </div>
+            <div class="info-text" data-lang="ta"><strong>ரயிலில்</strong> அருகிலுள்ள ரயில் நிலையம்: நன்னிலம் அல்லது திருவாரூர் — சென்னை, தஞ்சாவூர் மற்றும் மயிலாடுதுறையுடன் நன்கு இணைக்கப்பட்டுள்ளன.</div>
           </div>
           <div class="info-row">
             <div class="info-icon">✈️</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>By Air</strong>
               Nearest airport: Tiruchirappalli International Airport (TRZ) — approximately 100 km from the village.
             </div>
+            <div class="info-text" data-lang="ta"><strong>விமானத்தில்</strong> அருகிலுள்ள விமான நிலையம்: திருச்சிராப்பள்ளி சர்வதேச விமான நிலையம் (TRZ) — கிராமத்திலிருந்து சுமார் 100 கி.மீ. தொலைவில்.</div>
           </div>
           <div class="info-row">
             <div class="info-icon">🏛️</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>Village Panchayat</strong>
               Poongulam Gram Panchayat, Nannilam Block,<br>Thiruvarur District
             </div>
+            <div class="info-text" data-lang="ta"><strong>கிராம பஞ்சாயத்து</strong> பூங்குளம் கிராம பஞ்சாயத்து, நன்னிலம் வட்டம்,<br>திருவாரூர் மாவட்டம்</div>
           </div>
           <div class="info-row">
             <div class="info-icon">📧</div>
-            <div class="info-text">
+            <div class="info-text" data-lang="en">
               <strong>Email</strong>
               <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a>
             </div>
+            <div class="info-text" data-lang="ta"><strong>மின்னஞ்சல்</strong><br><a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a></div>
           </div>
         </div>
         <div>
@@ -2725,19 +3016,20 @@
 
       <!-- Contact Form -->
       <div class="contact-form-wrap">
-        <h3>✉ Write to Us</h3>
-        <p>Have a question, want to visit, or planning to support Poongulam? We'd love to hear from you. You can also reach us directly at <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a>.</p>
+        <h3 data-i18n="contact-write">✉ Write to Us</h3>
+        <p data-lang="en">Have a question, want to visit, or planning to support Poongulam? We'd love to hear from you. You can also reach us directly at <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a>.</p>
+        <p data-lang="ta">கேள்வி இருந்தால், வருகை திட்டமிட்டால், அல்லது பூங்குளத்தை ஆதரிக்க விரும்பினால்? உங்களிடமிருந்து கேட்க விரும்புகிறோம். <a href="mailto:poongulamvillage@gmail.com" style="color:var(--gold-light); text-decoration:none;">poongulamvillage@gmail.com</a> இல் நேரடியாக தொடர்புகொள்ளலாம்.</p>
         <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
           <div class="cf-field">
-            <label class="cf-label" for="cf-name">Your Name</label>
+            <label class="cf-label" data-i18n="cf-name-label" for="cf-name">Your Name</label>
             <input class="cf-input" type="text" id="cf-name" placeholder="Enter your name" required>
           </div>
           <div class="cf-field">
-            <label class="cf-label" for="cf-contact">Phone / Email</label>
+            <label class="cf-label" data-i18n="cf-contact-label" for="cf-contact">Phone / Email</label>
             <input class="cf-input" type="text" id="cf-contact" placeholder="+91 or email address">
           </div>
           <div class="cf-field cf-full">
-            <label class="cf-label" for="cf-subject">Subject</label>
+            <label class="cf-label" data-i18n="cf-subject-label" for="cf-subject">Subject</label>
             <select class="cf-select" id="cf-subject">
               <option value="General Enquiry">General Enquiry</option>
               <option value="Tourism &amp; Visit">Tourism &amp; Visit</option>
@@ -2748,106 +3040,13 @@
             </select>
           </div>
           <div class="cf-field cf-full">
-            <label class="cf-label" for="cf-message">Message</label>
+            <label class="cf-label" data-i18n="cf-message-label" for="cf-message">Message</label>
             <textarea class="cf-textarea" id="cf-message" placeholder="Write your message here…" required></textarea>
           </div>
           <div class="cf-full">
-            <button type="submit" class="btn-send">✉ &nbsp;Send Message</button>
+            <button type="submit" class="btn-send" data-i18n="cf-submit">✉ &nbsp;Send Message</button>
           </div>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ NEWS & EVENTS ═══════════════════ -->
-  <section class="news" id="news">
-    <div class="container">
-      <div class="section-label" data-i18n="label-news">Village Updates</div>
-      <h2 class="section-title" data-i18n="title-news">News &amp; Events</h2>
-      <div class="gold-line"></div>
-      <div class="news-grid">
-
-        <!-- Featured: Pond Desilting Drive -->
-        <div class="news-card news-featured">
-          <div class="news-featured-thumb">🏞️</div>
-          <div class="news-card-content">
-            <div class="news-card-top">
-              <div class="news-date">📌 Ongoing Initiative</div>
-              <span class="news-tag tag-update">Village Initiative</span>
-              <h3>தூர் வாருதல் — Pond Restoration Drive</h3>
-            </div>
-            <div class="news-card-body">
-              <p>Poongulam's three ponds are actively undergoing desilting — a critical step to recharge groundwater, restore wells, and sustain farming through dry seasons. The community has united for this effort and donations are being channelled directly to the work on the ground.</p>
-            </div>
-            <div class="news-card-footer">🤝 Community-led &nbsp;·&nbsp; <a href="#donate" style="color:var(--saffron);text-decoration:none;">Donations open ♥</a></div>
-          </div>
-        </div>
-
-        <!-- Pongal 2026 -->
-        <div class="news-card">
-          <div class="news-card-top">
-            <div class="news-date">📅 January 14, 2026</div>
-            <span class="news-tag tag-festival">Festival</span>
-            <h3>Pongal — The Harvest Festival</h3>
-          </div>
-          <div class="news-card-body">
-            <p>Poongulam celebrated Pongal with great joy — traditional Kolam decorations, Pongal cooking in every courtyard, and Mattu Pongal cattle worship. The village was filled with fragrance of freshly cooked rice and sugarcane.</p>
-          </div>
-          <div class="news-card-footer">🎊 Village-wide celebration</div>
-        </div>
-
-        <!-- Vishnu Temple Update -->
-        <div class="news-card">
-          <div class="news-card-top">
-            <div class="news-date">📅 July 2024</div>
-            <span class="news-tag tag-update">Heritage Revival</span>
-            <h3>Bhoomi Pooja — Sri Lakshmi Narayana Perumal Temple</h3>
-          </div>
-          <div class="news-card-body">
-            <p>After nearly a century of absence, Lord Vishnu returned to Poongulam. The grand Bhoomi Pooja for the restoration of the ancient Sri Lakshmi Narayana Perumal Temple was performed in July 2024 with Harikatha sessions marking the return of Lord Vishnu to his ancestral abode. The clearing of the site revealed original Chola-era foundations and sacred Vigrahams, confirming the elders' oral histories of a grand temple once standing here. Construction follows traditional Agama Shastras using stone masonry — built to stand for centuries.</p>
-          </div>
-          <div class="news-card-footer">🏛️ Ancient temple restored &nbsp;·&nbsp; Donations welcome</div>
-        </div>
-
-        <!-- Navarathri -->
-        <div class="news-card">
-          <div class="news-card-top">
-            <div class="news-date">📅 October 2026</div>
-            <span class="news-tag tag-festival">Upcoming Festival</span>
-            <h3>Navarathri — Mariamman Nine Nights</h3>
-          </div>
-          <div class="news-card-body">
-            <p>The village's grandest annual celebration — nine nights of devotion at the Mariamman temple. Kolam competition, nadaswaram concerts, and the grand chariot procession on Vijayadasami. Every household participates.</p>
-          </div>
-          <div class="news-card-footer">📅 Coming Soon · October 2026</div>
-        </div>
-
-        <!-- Samba Harvest -->
-        <div class="news-card">
-          <div class="news-card-top">
-            <div class="news-date">📅 November – January</div>
-            <span class="news-tag tag-agri">Agriculture</span>
-            <h3>Samba Harvest Season</h3>
-          </div>
-          <div class="news-card-body">
-            <p>The Samba paddy harvest is the most vibrant time in Poongulam. Golden fields are hand-cut in a tradition unchanged for centuries. Visitors are welcome to witness and participate in the harvest experience.</p>
-          </div>
-          <div class="news-card-footer">🌾 Best time to visit Poongulam</div>
-        </div>
-
-        <!-- School Supplies Drive -->
-        <div class="news-card">
-          <div class="news-card-top">
-            <div class="news-date">📅 June 2026</div>
-            <span class="news-tag tag-community">Education</span>
-            <h3>School Supplies Drive — June 2026</h3>
-          </div>
-          <div class="news-card-body">
-            <p>As the new academic year begins, the village panchayat is organising a school supplies distribution drive — books, bags, and stationery for children in need. Help us reach every child in Poongulam.</p>
-          </div>
-          <div class="news-card-footer">🏫 <a href="#donate" style="color:var(--saffron);text-decoration:none;">Support this initiative ♥</a></div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -2857,18 +3056,27 @@
     <div class="footer-logo">Poongulam</div>
     <div class="footer-sub">பூங்குளம் — அழகான ஊர்</div>
     <nav class="footer-links">
-      <a href="#about">About</a>
-      <a href="#agriculture">Agriculture</a>
-      <a href="#tourism">Tourism</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#donate">Donate</a>
-      <a href="#temples">Temples</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-lang="en">About</a>
+      <a href="#about" data-lang="ta">எங்களைப் பற்றி</a>
+      <a href="#agriculture" data-lang="en">Agriculture</a>
+      <a href="#agriculture" data-lang="ta">வேளாண்மை</a>
+      <a href="#tourism" data-lang="en">Tourism</a>
+      <a href="#tourism" data-lang="ta">சுற்றுலா</a>
+      <a href="#gallery" data-lang="en">Gallery</a>
+      <a href="#gallery" data-lang="ta">படங்கள்</a>
+      <a href="#donate" data-lang="en">Donate</a>
+      <a href="#donate" data-lang="ta">நன்கொடை</a>
+      <a href="#temples" data-lang="en">Temples</a>
+      <a href="#temples" data-lang="ta">கோவில்கள்</a>
+      <a href="#news" data-lang="en">News</a>
+      <a href="#news" data-lang="ta">செய்திகள்</a>
+      <a href="#contact" data-lang="en">Contact</a>
+      <a href="#contact" data-lang="ta">தொடர்பு</a>
     </nav>
-    <div class="footer-note">
+    <div class="footer-note" data-lang="en">
       Thiruvarur District · Tamil Nadu · India &nbsp;|&nbsp; Built with pride for our village
     </div>
+    <div class="footer-note" data-lang="ta">திருவாரூர் மாவட்டம் · தமிழ்நாடு · இந்தியா &nbsp;|&nbsp; எங்கள் கிராமத்தின் மீதான பெருமிதத்துடன் கட்டமைக்கப்பட்டது</div>
     <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.15); font-size: 0.78rem; color: rgba(255,255,255,0.25);">
       Crafted with pride for Poongulam &nbsp;·&nbsp; By <span style="color: var(--gold-light); font-weight: 700; letter-spacing: 0.5px;">Jayender</span> &nbsp;·&nbsp; 2026
     </div>
@@ -3184,6 +3392,29 @@
         'label-learning': 'Learning',     'title-education': 'Schools &amp; Education',
         'label-findus': 'Find Us',        'title-contact': 'Contact &amp; Location',
         'label-news': 'Village Updates',  'title-news': 'News &amp; Events',
+        'label-agroforestry': 'Agroforestry',
+        'title-agri-trees': 'Timber &amp; Forest Trees',
+        'label-shop': 'Village Market',
+        'title-shop': 'Buy from Poongulam',
+        'label-programs': "What's On",
+        'title-programs': 'Events &amp; Programs',
+        'donate-heading': 'Make a Donation',
+        'donate-label-amount': 'Choose Amount',
+        'donate-label-custom': 'Or Enter Custom Amount',
+        'donate-btn': '♥ &nbsp;Donate Now via Razorpay',
+        'sidebar-festivals': 'Festivals of Poongulam',
+        'contact-getting': 'Getting to Poongulam',
+        'contact-write': '✉ Write to Us',
+        'cf-name-label': 'Your Name',
+        'cf-contact-label': 'Phone / Email',
+        'cf-subject-label': 'Subject',
+        'cf-message-label': 'Message',
+        'cf-submit': '✉ &nbsp;Send Message',
+        'nav-temples': 'Temples',
+        'nav-shop': 'Shop',
+        'nav-programs': 'Programs',
+        'nav-community': 'Community',
+        'nav-education': 'Education',
       },
       ta: {
         'nav-home': 'முகப்பு', 'nav-about': 'எங்களைப் பற்றி',
@@ -3206,6 +3437,29 @@
         'label-learning': 'கல்வி',         'title-education': 'பள்ளிகளும் கல்வியும்',
         'label-findus': 'எங்களைக் காணுங்கள்', 'title-contact': 'தொடர்பு &amp; இடம்',
         'label-news': 'கிராம செய்திகள்',  'title-news': 'செய்திகளும் நிகழ்வுகளும்',
+        'label-agroforestry': 'வேளாண்காடு',
+        'title-agri-trees': 'மரங்கள் மற்றும் காட்டு மரங்கள்',
+        'label-shop': 'கிராம சந்தை',
+        'title-shop': 'பூங்குளத்திலிருந்து வாங்குங்கள்',
+        'label-programs': 'நடப்பவை',
+        'title-programs': 'நிகழ்வுகளும் திட்டங்களும்',
+        'donate-heading': 'நன்கொடை செய்யுங்கள்',
+        'donate-label-amount': 'தொகையை தேர்ந்தெடுங்கள்',
+        'donate-label-custom': 'அல்லது தனிப்பயன் தொகை உள்ளிடுங்கள்',
+        'donate-btn': '♥ &nbsp;இப்போது நன்கொடை செய்யுங்கள்',
+        'sidebar-festivals': 'பூங்குளத்தின் திருவிழாக்கள்',
+        'contact-getting': 'பூங்குளம் எப்படி வருவது',
+        'contact-write': '✉ எங்களுக்கு எழுதுங்கள்',
+        'cf-name-label': 'உங்கள் பெயர்',
+        'cf-contact-label': 'தொலைபேசி / மின்னஞ்சல்',
+        'cf-subject-label': 'பொருள்',
+        'cf-message-label': 'செய்தி',
+        'cf-submit': '✉ &nbsp;செய்தி அனுப்புங்கள்',
+        'nav-temples': 'கோவில்கள்',
+        'nav-shop': 'கடை',
+        'nav-programs': 'திட்டங்கள்',
+        'nav-community': 'சமூகம்',
+        'nav-education': 'கல்வி',
       }
     };
 
